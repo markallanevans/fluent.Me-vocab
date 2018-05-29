@@ -1,23 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import MainRoot from './MainRoot';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+const wordBank = [
+  'dog',
+  'cat',
+  'bird',
+  'lizard',
+  'fox',
+  'elephant'
+];
+
+const vocabList = (state = wordBank, action) => {
+  switch(action.type) {
+    case 'ADD_WORD':
+      return state.concat(action.data);
+    default:
+      return state;
   }
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const store = createStore(vocabList);
+
+const App = () => (
+    <Provider store={store}>
+      <MainRoot />
+    </Provider>  
+)
+
+export default App;

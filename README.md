@@ -15,10 +15,21 @@ This app is about learning and developing vocab quickly, efficiently and in a fu
 
 ## NICE TO HAVE:
 
-+ user should receive weekly language tips
++ user should receive language tips as push notifications
++ pronciation tune-up: minimal pairs activity where the app plays a recording and you chose the word you saw;
++ vocab recall: the app plays the recording of a word in a simple sentence and you select the one you hear;
 + words should be attatched to a pron example (via forvo perhaps)
 + words should link to examples and definitions from several dictionaries
 + user should be able to upload one image of their own choosing to add to the bank of images for each word
 + exercises for word association 
 + exercises for sentence building
 + memory exercises
+
+
+## Other Ideas:
+
+### Details/Ideas on Pronunciation Component:
+The idea could be that when you learn a word, you record the foreign word AND the word in your native language. The word in your Native Language is used for others when listening to the word, the word you record in the foreign language is then rated. You rate and get feedback. By giving feedback, you improve your score as a community contributor. Community contributors got to the top of lists for language exchanges.
+
+### Places Vocabulary:
+Could use MapView to find places and give locations on Map.
