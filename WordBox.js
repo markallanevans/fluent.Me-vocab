@@ -9,6 +9,7 @@ const WordBox = ({ word, dispatch }) => (
       <TouchableHighlight
         onPress={() => dispatch({type: 'FLIP_CARD', id: word.id})}
         onLongPress={() => dispatch({type: 'SHOW_IMAGE', id: word.id})}>
+      <View style={styles.flashBox}>
       {
       !word.showImage ?
         <Text style={styles.vocabText}>{word.showFront ? 
@@ -16,6 +17,7 @@ const WordBox = ({ word, dispatch }) => (
       :
         <Image source={{uri: `https://source.unsplash.com/150x150/?${word.English}`}} style={{width: 150, height: 150}}/>
       }
+      </View>
       </TouchableHighlight>
     </View>
 );

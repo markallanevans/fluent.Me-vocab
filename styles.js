@@ -81,5 +81,10 @@ export default styles = StyleSheet.create({
   vocabText: {
     color: $primaryWhite,
     fontSize: $mainFont,
-  }
+  },
+  flashBox: {
+    height: 150, 
+    width: 150, 
+    alignItems: 'center', 
+    justifyContent: 'center'}
 });
