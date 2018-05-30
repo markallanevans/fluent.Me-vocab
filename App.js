@@ -1,27 +1,15 @@
 import React from 'react';
 import MainRoot from './MainRoot';
 import { createStore, combineReducers } from 'redux';
+
 import { Provider } from 'react-redux';
+import { vocabList } from './reducers';
 
-const wordBank = [
-  'dog',
-  'cat',
-  'bird',
-  'lizard',
-  'fox',
-  'elephant'
-];
+const reducers = combineReducers({
+  vocabList
+})
 
-const vocabList = (state = wordBank, action) => {
-  switch(action.type) {
-    case 'ADD_WORD':
-      return state.concat(action.data);
-    default:
-      return state;
-  }
-};
-
-const store = createStore(vocabList);
+const store = createStore(reducers);
 
 const App = () => (
     <Provider store={store}>

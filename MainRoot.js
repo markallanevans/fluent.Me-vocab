@@ -3,7 +3,6 @@ import { createStackNavigator } from 'react-navigation';
 import Login from './Login';
 import NewVocab from './NewVocab';
 import styles from './styles'
-import $primaryRed from './styles';
 
 const rootConfigs = {
   Home: {screen: Login},
