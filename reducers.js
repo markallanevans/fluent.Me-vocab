@@ -42,9 +42,15 @@ export const vocabList = (state = wordBank, action) => {
     case 'ADD_WORD':
       return state.concat(action.data);
     case 'FLIP_CARD':
-      console.log(action);
-      console.log(state);
-      return state;
+      let keyToUpdate = action.id 
+      console.log(keyToUpdate);
+      return {
+        ...state,
+        [keyToUpdate]: {
+          ...state[keyToUpdate],
+          showFront: !state[keyToUpdate].showFront
+        },
+      };
     default:
       return state;
   }

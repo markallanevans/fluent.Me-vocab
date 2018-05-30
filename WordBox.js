@@ -8,8 +8,8 @@ const WordBox = ({ word, dispatch }) => (
     <View style={styles.wordBox}>
       <TouchableHighlight
         onPress={() => dispatch({type: 'FLIP_CARD', id: word.id})}>
-      <Text style={styles.vocabText}>{/*word.show === 'front' ? */
-      word.English/* : word.Spanish*/}</Text>
+      <Text style={styles.vocabText}>{word.showFront ? 
+      word.English : word.Spanish}</Text>
       </TouchableHighlight>
     </View>
 );
