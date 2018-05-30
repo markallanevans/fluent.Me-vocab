@@ -173,4 +173,3 @@ const randomWord = () => {
   return list[rand];
 }
 
-console.log(randomWord());

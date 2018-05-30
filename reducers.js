@@ -43,7 +43,6 @@ export const vocabList = (state = wordBank, action) => {
       return state.concat(action.data);
     case 'FLIP_CARD':
       let keyToUpdate = action.id 
-      console.log(keyToUpdate);
       return {
         ...state,
         [keyToUpdate]: {

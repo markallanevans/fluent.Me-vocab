@@ -7,7 +7,6 @@ import WordBox from './WordBox';
 const NewVocab = ( {vocabList} ) => (
   <View style={styles.container}>
     <View style={styles.boxContainer}>
-      {console.log(Object.values(vocabList))}
       {Object.values(vocabList).map((word, index) => (
           <WordBox 
           word={word}

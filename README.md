@@ -15,6 +15,24 @@ This app is about learning and developing vocab quickly, efficiently and in a fu
 
 ## NICE TO HAVE:
 
+### FLASHCARDS:
++ cards should have "checkbox" in green allowing the user to check as "learned" which then stores the object in the learned card state and triggers future push notifications automatically. Once the card is "checked" it fades out and is replaced by a new card, until the daily limit is reached. As the daily limit is reached, the total number of cards disappears. Progress bar at the bottom shows the number of new cards learned.
+
+### PRONUNCIATION MINIMAL PAIRS:
++ For Vietnamese Tones: 
+++ Level 1: five words are played of the same tone, then the user gets 10 tries at guessing ifnext words have the same tone. TONE 1
+++ Level 2: (after reaching 75% accuraccy) Activity for Level 1 is repeated with different tone; TONE 2
+++ Level 3: (same criteria) Activity for previous level with TONE 3
+++ Level 4: (same criteria) Activity for previous level with TONE 4
+++ Level 5: (same criteria) Activity for previous level with TONE 5
+++ Level 6: First set of two tones are mixed, user swipes left/right to put them in Tone 1 VS Tone 2
+++ Level 7: Second set of two tones are mixed, user swipes left/right to put them in Tone 3 VS Tone 4
+++ Level 8: Third set of two tones are mixed, user swipes left/right to put them in Tone 5 VS Tone 6
+++ Level 9: First half of 3 tones are mixed, user swipes left/right to put them in Tone 1 VS Tone 2 VS Tone 3
+++ Level 10: First half of 3 tones are mixed, user swipes left/right to put them in Tone 4 VS Tone 5 VS Tone 6
+++ MASTERY: all tones mixed, USER moves word into correct tone box (like a hexagon)
+
+### GENERAL:
 + user should receive language tips as push notifications
 + pronciation tune-up: minimal pairs activity where the app plays a recording and you chose the word you saw;
 + vocab recall: the app plays the recording of a word in a simple sentence and you select the one you hear;
@@ -26,10 +44,11 @@ This app is about learning and developing vocab quickly, efficiently and in a fu
 + memory exercises
 
 
+
 ## Other Ideas:
 
 ### Details/Ideas on Pronunciation Component:
-The idea could be that when you learn a word, you record the foreign word AND the word in your native language. The word in your Native Language is used for others when listening to the word, the word you record in the foreign language is then rated. You rate and get feedback. By giving feedback, you improve your score as a community contributor. Community contributors got to the top of lists for language exchanges.
++ The idea could be that when you learn a word, you record the foreign word AND the word in your native language. The word in your Native Language is used for others when listening to the word, the word you record in the foreign language is then rated. You rate and get feedback. By giving feedback, you improve your score as a community contributor. Community contributors got to the top of lists for language exchanges.
 
 ### Places Vocabulary:
-Could use MapView to find places and give locations on Map.
++ Could use MapView to find places and give locations on Map.

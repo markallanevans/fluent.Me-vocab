@@ -1,7 +1,7 @@
 import React from 'react';
 import MainRoot from './MainRoot';
-import { createStore, combineReducers } from 'redux';
-
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { vocabList } from './reducers';
 
@@ -9,7 +9,11 @@ const reducers = combineReducers({
   vocabList
 })
 
-const store = createStore(reducers);
+const middleware = applyMiddleware(
+  logger
+)
+
+const store = createStore(reducers, middleware);
 
 const App = () => (
     <Provider store={store}>
