@@ -2,7 +2,7 @@ export const flipCard = (id) => {
   type: 'FLIP_CARD',
   id
 }
-export const showImage = (id) => {
-  type: 'SHOW_IMAGE',
+export const toggleImage = (id) => {
+  type: 'TOGGLE_IMAGE',
   id
 }

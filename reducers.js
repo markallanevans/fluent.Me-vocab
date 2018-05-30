@@ -4,42 +4,42 @@ const wordBank = {
     English: 'dog',
     Spanish: 'perro',
     showFront: true,
-    showImage: false,
+    showImage: true,
   },
   '2': {
     id: '2',
     English: 'cat',
     Spanish: 'gata',
     showFront: true,
-    showImage: false,
+    showImage: true,
   },
   '3': {
     id: '3',
     English: 'bird',
     Spanish: 'ave',
     showFront: true,
-    showImage: false,
+    showImage: true,
   },
   '4': {
     id: '4',
     English: 'lizard',
     Spanish: 'lagartija',
     showFront: true,
-    showImage: false,
+    showImage: true,
   },
   '5': {
     id: '5',
     English: 'fox',
     Spanish: 'zorro',
     showFront: true,
-    showImage: false,
+    showImage: true,
   },
   '6': { 
     id: '6',
     English: 'elephant',
     Spanish: 'elefante',
     showFront: true,
-    showImage: false,
+    showImage: true,
   }
 };
 
@@ -56,7 +56,7 @@ export const vocabList = (state = wordBank, action) => {
           showFront: !state[keyToUpdate].showFront
         },
       };
-    case 'SHOW_IMAGE':
+    case 'TOGGLE_IMAGE':
       return {
         ...state,
         [keyToUpdate]: {

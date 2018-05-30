@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { flipCard, showImage } from './actions';
+import { flipCard, toggleImage } from './actions';
 import styles from './styles';
 
 const WordBox = ({ word, dispatch }) => (
     <View style={word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>
       <TouchableHighlight
         onPress={() => dispatch({type: 'FLIP_CARD', id: word.id})}
-        onLongPress={() => dispatch({type: 'SHOW_IMAGE', id: word.id})}>
+        onLongPress={() => dispatch({type: 'TOGGLE_IMAGE', id: word.id})}>
       <View style={styles.flashBox}>
       {
       !word.showImage ?
