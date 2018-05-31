@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { flipCard, toggleImage } from './actions';
-import styles from './styles/styles';
+import { flipCard, toggleImage } from '../actions';
+import styles from '../styles/styles';
 
 const WordBox = ({ word, dispatch }) => (
     <View style={word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>

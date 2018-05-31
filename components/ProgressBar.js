@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 // import s from './styles/progressBarStyles';
-import { $secondaryRed, $tertiaryRed, $primaryWhite, $secondaryWhite } from './styles/styles';
+import { $secondaryRed, $tertiaryRed, $primaryWhite, $secondaryWhite } from '../styles/styles';
 
 const dumbProgress = 7;
 const dumbTotal = 10;

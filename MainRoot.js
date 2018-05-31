@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Login from './Login';
-import NewVocab from './NewVocab';
-import VocabReview from './VocabReview';
+import NewVocab from './components/NewVocab';
+import VocabReview from './components/VocabReview';
 import styles from './styles/styles'
 
 const rootConfigs = {

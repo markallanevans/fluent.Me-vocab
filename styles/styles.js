@@ -89,5 +89,14 @@ export default styles = StyleSheet.create({
     height: 150, 
     width: 150, 
     alignItems: 'center', 
-    justifyContent: 'center'}
+    justifyContent: 'center'
+  },
+  answerBox: {
+    backgroundColor: $secondaryWhite,
+    borderColor: $secondaryRed,
+    borderWidth: 2,
+    borderRadius: 10,
+    padding: 20,
+    fontSize: 40,
+  }
 });

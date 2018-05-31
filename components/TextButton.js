@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
-import styles from './styles/styles';
+import styles from '../styles/styles';
 
 export default TextButton = ( { text, navTo, navigation } ) => (
   <View>
