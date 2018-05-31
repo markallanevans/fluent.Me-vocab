@@ -1,8 +1,10 @@
 import React from 'react';
+import { Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Login from './Login';
 import NewVocab from './NewVocab';
-import styles from './styles'
+import VocabReview from './VocabReview';
+import styles from './styles/styles'
 
 const rootConfigs = {
   Home: {screen: Login},
@@ -11,8 +13,15 @@ const rootConfigs = {
     screen: NewVocab, 
     navigationOptions: {
     title: "New Vocabulary",
-    }
-  }
+    },
+  },
+  VocabReview: 
+    {
+    screen: VocabReview, 
+    navigationOptions: {
+    title: "Time to Review!",
+    },
+  },
 }
 
 const otherStackConfigs = {

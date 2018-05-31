@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
+//COLORS
 export const $primaryRed = '#D13C33';
-const $secondaryRed = '#b13a33';
-const $tertiaryRed = '#a13003';
-const $primaryWhite = '#ffeeee';
-const $secondaryWhite = '#ddaaaa';
-const $mainFont = 24;
-const $headerFont = $mainFont*1.5;
-const $p3 = 3*8;
+export const $secondaryRed = '#b13a33';
+export const $tertiaryRed = '#a13003';
+export const $primaryWhite = '#ffeeee';
+export const $secondaryWhite = '#ddaaaa';
+
+//DIMENSIONS
+export const $mainFont = 24;
+export const $headerFont = $mainFont*1.5;
+export const $p3 = 3*8;
 
 export default styles = StyleSheet.create({
   container: {
@@ -24,8 +27,8 @@ export default styles = StyleSheet.create({
   button: {
     fontSize: $headerFont,
     marginTop: 16,
-    padding: $headerFont/2,
-    width: 300,
+    padding: $headerFont/2.5,
+    width: 250,
     textAlign: 'center',
     backgroundColor: $secondaryRed,
     color: $primaryWhite,

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { flipCard, toggleImage } from './actions';
-import styles from './styles';
+import styles from './styles/styles';
 
 const WordBox = ({ word, dispatch }) => (
     <View style={word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>
@@ -24,6 +24,11 @@ const WordBox = ({ word, dispatch }) => (
 
 export default connect()(WordBox);
 
+/*
+MaterialIcons from react-native-vector-icons 
+https://oblador.github.io/react-native-vector-icons/
 
-<Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
-       style={{width: 400, height: 400}} />
+'check-circle' would be good as an icon in the lower-right corner of the flashCard to show hold when ready to learn new word.
+instead of the current solution of toggling the whole box, perhaps a little toggle buttin in the upper right corner of the text view would be good for switching languages
+
+*/

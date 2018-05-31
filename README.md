@@ -17,6 +17,9 @@ This app is about learning and developing vocab quickly, efficiently and in a fu
 
 ### FLASHCARDS:
 + cards should have "checkbox" in green allowing the user to check as "learned" which then stores the object in the learned card state and triggers future push notifications automatically. Once the card is "checked" it fades out and is replaced by a new card, until the daily limit is reached. As the daily limit is reached, the total number of cards disappears. Progress bar at the bottom shows the number of new cards learned.
++ idea: on the image you can swipe down to get a new image? for example if you don't like the initially loaded image.
++ idea: after seeing all the L2 words from the vocab list, could swipe down whole page to refresh images and this time, after pressing, get a list of three words and choose the right one: (i.e: the dog picture reveals "perro, gato, lagartiza" this would require selecting ONE word from the card's values, and two more from the rest of the array's values)
++ consider having a container component that draws from the original store of the vocab list
 
 ### PRONUNCIATION MINIMAL PAIRS:
 + For Vietnamese Tones: 
