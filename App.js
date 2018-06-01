@@ -3,10 +3,12 @@ import MainRoot from './MainRoot';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
-import { vocabList } from './reducers';
+import { vocabList, reviewList, checkAnswer } from './reducers';
 
 const reducers = combineReducers({
-  vocabList
+  vocabList,
+  reviewList,
+  checkAnswer
 })
 
 const middleware = applyMiddleware(

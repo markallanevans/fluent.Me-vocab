@@ -2,9 +2,11 @@ import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { flipCard, toggleImage } from '../actions';
+import VocabTools from './VocabTools';
 import styles from '../styles/styles';
 
 const WordBox = ({ word, dispatch }) => (
+  <View>
     <View style={word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>
       <TouchableHighlight
         onPress={() => dispatch({type: 'FLIP_CARD', id: word.id})}
@@ -20,6 +22,8 @@ const WordBox = ({ word, dispatch }) => (
       </View>
       </TouchableHighlight>
     </View>
+    <VocabTools id={word.id}/> {/* now need to simply add the ID to an array of studied words */}
+  </View>
 );
 
 export default connect()(WordBox);

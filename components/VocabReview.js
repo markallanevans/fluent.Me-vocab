@@ -19,7 +19,6 @@ const NewVocab = ( { vocabList, navigation } ) => (
     </View>
     <WordCheck answer={Object.values(vocabList)[0].English}/> {/* Also need to figure out where to source this from. Later this will need to be changed so it reflects the proper target language */}
     <ProgressBar />
-    <TextButton text={'Next Screen!'} navTo={'VocabReview'} navigation={navigation} />
   </View>
 );
 

@@ -6,3 +6,14 @@ export const toggleImage = (id) => {
   type: 'TOGGLE_IMAGE',
   id
 }
+
+export const addReviewWord = (id) => {
+  type: 'ADD_REVIEW_WORD',
+  id
+}
+
+export const checkAnswer = (text, answer) => {
+  type: 'CHECK_ANSWER',
+  text,
+  answer
+}

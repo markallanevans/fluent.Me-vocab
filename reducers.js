@@ -43,6 +43,17 @@ const wordBank = {
   }
 };
 
+const initialReviewList = [];
+
+export const reviewList = (state = initialReviewList, action) => {
+  switch(action.type) {
+    case 'ADD_REVIEW_WORD':
+      return state.concat(action.id);
+    default:
+      return state;
+  }
+}
+
 export const vocabList = (state = wordBank, action) => {
   let keyToUpdate = action.id 
   switch(action.type) {
@@ -69,5 +80,12 @@ export const vocabList = (state = wordBank, action) => {
   }
 };
 
-//showfront as true/false
-//
+export const checkAnswer = (state = null, action) => {
+  switch(action.type) {
+    case 'CHECK_ANSWER':
+      action.text.toLowerCase().trim() === action.answer ? newState = true : newState = false;
+      return newState;
+    default:
+      return null;
+  }
+}

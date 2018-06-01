@@ -9,7 +9,7 @@ import TextButton from './TextButton';
 const NewVocab = ( { vocabList, navigation } ) => (
   <View style={styles.container}>
     <View style={styles.boxContainer}>
-      {Object.values(vocabList).map((word, index) => (
+      {Object.values(vocabList).slice(0,4).map((word, index) => (
           <WordBox 
           word={word}
           key={index}
