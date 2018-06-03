@@ -4,7 +4,7 @@ import styles from '../styles/styles';
 
 export default TextButton = ( { text, navTo, navigation } ) => (
   <View>
-    <TouchableHighlight onPress={() => navigation.navigate(navTo)}>
+    <TouchableHighlight onPress={() => navigation.push(navTo)}>
     <Text style={styles.button}>{text}</Text>
     </TouchableHighlight>
   </View>

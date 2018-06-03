@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import Login from './Login';
-import NewVocab from './components/NewVocab';
-import VocabReview from './components/VocabReview';
-import styles from './styles/styles'
+import Login from '../components/Login';
+import NewVocab from '../components/NewVocab';
+import VocabReview from '../components/VocabReview';
+import styles from '../styles/styles'
 
 const rootConfigs = {
   Home: {screen: Login},

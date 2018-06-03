@@ -5,19 +5,23 @@ import styles from '../styles/styles';
 import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import TextButton from './TextButton';
+import VocabReview from './VocabReview';
+import VocabTools from './VocabTools';
 
 const NewVocab = ( { vocabList, navigation } ) => (
   <View style={styles.container}>
     <View style={styles.boxContainer}>
       {Object.values(vocabList).slice(0,4).map((word, index) => (
-          <WordBox 
-          word={word}
-          key={index}
-          />
+          <View key={index}>
+            <WordBox 
+              word={word}
+            />
+            <VocabTools id={word.id}/>
+          </View>
       ))}
     </View>
     <ProgressBar />
-    <TextButton text={'Next Screen!'} navTo={'VocabReview'} navigation={navigation} />
+    <TextButton text={'Review'} navTo={'VocabReview'} navigation={navigation} />
   </View>
 );
 

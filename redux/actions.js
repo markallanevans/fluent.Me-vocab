@@ -12,6 +12,11 @@ export const addReviewWord = (id) => {
   id
 }
 
+export const removeReviewWord = (id) => {
+  type: 'REMOVE_REVIEW_WORD',
+  id
+}
+
 export const checkAnswer = (text, answer) => {
   type: 'CHECK_ANSWER',
   text,

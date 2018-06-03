@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { flipCard, toggleImage } from '../actions';
+import { flipCard, toggleImage } from '../redux/actions';
 import VocabTools from './VocabTools';
 import styles from '../styles/styles';
 
@@ -22,7 +22,6 @@ const WordBox = ({ word, dispatch }) => (
       </View>
       </TouchableHighlight>
     </View>
-    <VocabTools id={word.id}/> {/* now need to simply add the ID to an array of studied words */}
   </View>
 );
 

@@ -38,7 +38,7 @@ export default styles = StyleSheet.create({
       height: 0,
     },
     shadowOpacity: 0.5,
-    shadowRadius: 10,
+    shadowRadius: 2,
   },
   boxContainer: {
     flexDirection: 'row',
@@ -100,5 +100,11 @@ export default styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 30,
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  p15: {
+    padding: 15,
   }
 });

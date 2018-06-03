@@ -6,27 +6,25 @@ import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
 import TextButton from './TextButton';
+import VocabTools from './VocabTools';
 
-const NewVocab = ( { vocabList, navigation } ) => (
+const VocabReview = ( { vocabList, reviewList, navigation, dispatch } ) => (
   <View style={styles.container}>
     <View style={styles.boxContainer}>
-      {Object.values(vocabList).slice(0,1).map((word, index) => (
-          <WordBox 
-          word={word}
-          key={index}
-          />
-      ))}
+      <WordBox word={Object.values(vocabList)[reviewList.length]} />
     </View>
-    <WordCheck answer={Object.values(vocabList)[0].English}/> {/* Also need to figure out where to source this from. Later this will need to be changed so it reflects the proper target language */}
+    <WordCheck answer={Object.values(vocabList)[reviewList.length].English}/>
     <ProgressBar />
+    <TextButton text={'next'} navTo={'VocabReview'} navigation={navigation}/>
   </View>
 );
 
 const mapStateToProps = (state, props) => {
   return {
-  vocabList: state.vocabList
+  vocabList: state.vocabList,
+  reviewList: state.reviewList,
   }
 }
 
-export default connect(mapStateToProps)(NewVocab);
+export default connect(mapStateToProps)(VocabReview);
 
