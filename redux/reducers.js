@@ -1,66 +1,24 @@
-const wordBank = {
-  '1': {
-    id: '1',
-    English: 'dog',
-    Spanish: 'perro',
-    showFront: true,
-    showImage: true,
-  },
-  '2': {
-    id: '2',
-    English: 'cat',
-    Spanish: 'gata',
-    showFront: true,
-    showImage: true,
-  },
-  '3': {
-    id: '3',
-    English: 'bird',
-    Spanish: 'ave',
-    showFront: true,
-    showImage: true,
-  },
-  '4': {
-    id: '4',
-    English: 'lizard',
-    Spanish: 'lagartija',
-    showFront: true,
-    showImage: true,
-  },
-  '5': {
-    id: '5',
-    English: 'fox',
-    Spanish: 'zorro',
-    showFront: true,
-    showImage: true,
-  },
-  '6': { 
-    id: '6',
-    English: 'elephant',
-    Spanish: 'elefante',
-    showFront: true,
-    showImage: true,
-  }
-};
+import wordBank from '../data/wordbank';
 
 const initialReviewList = [];
 
 export const reviewList = (state = initialReviewList, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'ADD_REVIEW_WORD':
-      console.log(state.indexOf(action.id));
       return state.indexOf(action.id) === -1 ? state.concat(action.id) : state;
-    case 'REMOVE_REVIEW_WORD':
-      let indexToRemove = state.indexOf(action.id);
-      return state.slice(indexToRemove, indexToRemove + 1);
+    case 'REMOVE_REVIEW_WORD': {
+      // const indexToRemove = state.indexOf(action.id);
+      // const itemToRemove = state.splice(indexToRemove, 1);
+      return state;
+    }
     default:
       return state;
   }
-}
+};
 
 export const vocabList = (state = wordBank, action) => {
-  let keyToUpdate = action.id 
-  switch(action.type) {
+  const keyToUpdate = action.id;
+  switch (action.type) {
     case 'ADD_WORD':
       return state.concat(action.data);
     case 'FLIP_CARD':
@@ -68,7 +26,7 @@ export const vocabList = (state = wordBank, action) => {
         ...state,
         [keyToUpdate]: {
           ...state[keyToUpdate],
-          showFront: !state[keyToUpdate].showFront
+          showFront: !state[keyToUpdate].showFront,
         },
       };
     case 'TOGGLE_IMAGE':
@@ -76,7 +34,7 @@ export const vocabList = (state = wordBank, action) => {
         ...state,
         [keyToUpdate]: {
           ...state[keyToUpdate],
-          showImage: !state[keyToUpdate].showImage
+          showImage: !state[keyToUpdate].showImage,
         },
       };
     default:
@@ -85,11 +43,12 @@ export const vocabList = (state = wordBank, action) => {
 };
 
 export const checkAnswer = (state = null, action) => {
-  switch(action.type) {
-    case 'CHECK_ANSWER':
-      action.text.toLowerCase().trim() === action.answer ? newState = true : newState = false;
-      return newState;
+  switch (action.type) {
+    case 'CHECK_ANSWER': {
+      action.text.toLowerCase().trim() === action.answer ? state = true : state = false;
+      return state;
+    }
     default:
-      return null;
+      return state;
   }
-}
+};

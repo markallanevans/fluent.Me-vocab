@@ -1,19 +1,18 @@
-import React from 'react';
 import { StyleSheet } from 'react-native';
 
-//COLORS
+// COLORS
 export const $primaryRed = '#D13C33';
 export const $secondaryRed = '#b13a33';
 export const $tertiaryRed = '#a13003';
 export const $primaryWhite = '#ffeeee';
 export const $secondaryWhite = '#ddaaaa';
 
-//DIMENSIONS
+// DIMENSIONS
 export const $mainFont = 24;
-export const $headerFont = $mainFont*1.5;
-export const $p3 = 3*8;
+export const $headerFont = $mainFont * 1.5;
+export const $p3 = 3 * 8;
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: $primaryRed,
@@ -27,7 +26,7 @@ export default styles = StyleSheet.create({
   button: {
     fontSize: $headerFont,
     marginTop: 16,
-    padding: $headerFont/2.5,
+    padding: $headerFont / 2.5,
     width: 250,
     textAlign: 'center',
     backgroundColor: $secondaryRed,
@@ -44,6 +43,10 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+  },
+  imageSize: {
+    width: 150,
+    height: 150,
   },
   wordBoxEng: {
     width: 150,
@@ -86,10 +89,10 @@ export default styles = StyleSheet.create({
     fontSize: $mainFont,
   },
   flashBox: {
-    height: 150, 
-    width: 150, 
-    alignItems: 'center', 
-    justifyContent: 'center'
+    height: 150,
+    width: 150,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   answerBox: {
     width: 200,
@@ -106,5 +109,7 @@ export default styles = StyleSheet.create({
   },
   p15: {
     padding: 15,
-  }
+  },
 });
+
+export default styles;
