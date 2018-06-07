@@ -1,26 +1,25 @@
 import React from 'react';
-import MainRoot from './navigation/MainRoot';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { vocabList, reviewList, checkAnswer } from './redux/reducers';
+import { vocabList, reviewList, checkAnswer, sentenceStore } from './redux/reducers';
+import MainRoot from './navigation/MainRoot';
 
 const reducers = combineReducers({
   vocabList,
   reviewList,
-  checkAnswer
-})
+  checkAnswer,
+  sentenceStore,
+});
 
-const middleware = applyMiddleware(
-  logger
-)
+const middleware = applyMiddleware(logger);
 
 const store = createStore(reducers, middleware);
 
 const App = () => (
-    <Provider store={store}>
-      <MainRoot />
-    </Provider>  
-)
+  <Provider store={store}>
+    <MainRoot />
+  </Provider>
+);
 
 export default App;

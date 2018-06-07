@@ -1,0 +1,37 @@
+import React from 'react';
+import { createBottomTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Sentences from '../components/Sentences/Sentences';
+import NewVocab from '../components/NewVocab';
+
+
+const tabScreenConfigs = {
+  Vocab: { screen: NewVocab },
+  Sentences: { screen: Sentences },
+};
+
+const otherTabConfigs = {
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      if (routeName === 'Vocab') {
+        iconName = 'school';
+      } else if (routeName === 'Sentences') {
+        iconName = 'short-text';
+      }
+
+      return <Icon name={iconName} size={25} color={tintColor} />;
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: 'tomato',
+    inactiveTintColor: 'gray',
+  },
+};
+
+
+const RootTab = createBottomTabNavigator(tabScreenConfigs, otherTabConfigs);
+
+export default RootTab;
+

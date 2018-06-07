@@ -1,17 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
 import styles from '../styles/styles';
 
-export default class Login extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.header}>Welcome to fluent.Me</Text>
-        <Text 
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate('NewVocab')}>get Started!</Text>
-      </View>
-    );
-  }
-}
+const Login = ({ navigation }) => (
+  <View style={styles.container}>
+    <Text style={styles.header}>Welcome to fluent.Me</Text>
+    <Text
+      style={styles.button}
+      onPress={() => navigation.navigate('RootTab')}
+    >get Started!
+    </Text>
+  </View>
+);
 
+Login.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+export default Login;

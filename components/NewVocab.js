@@ -1,35 +1,38 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from '../styles/styles';
 import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import TextButton from './TextButton';
-import VocabReview from './VocabReview';
 import VocabTools from './VocabTools';
 
-const NewVocab = ( { vocabList, navigation } ) => (
+const NewVocab = ({ vocabList, navigation }) => (
   <View style={styles.container}>
     <View style={styles.boxContainer}>
-      {Object.values(vocabList).slice(0,4).map((word, index) => (
-          <View key={index}>
-            <WordBox 
-              word={word}
-            />
-            <VocabTools id={word.id}/>
-          </View>
+      {Object.values(vocabList).slice(0, 4).map(word => (
+        <View key={word.id}>
+          <WordBox
+            word={word}
+          />
+          <VocabTools id={word.id} />
+        </View>
       ))}
     </View>
     <ProgressBar />
-    <TextButton text={'Review'} navTo={'VocabReview'} navigation={navigation} />
+    <TextButton text="Review" navTo="VocabReview" navigation={navigation} />
   </View>
 );
 
-const mapStateToProps = (state, props) => {
-  return {
-  vocabList: state.vocabList
-  }
-}
+const mapStateToProps = state => ({
+  vocabList: state.vocabList,
+});
+
+NewVocab.propTypes = {
+  vocabList: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
 export default connect(mapStateToProps)(NewVocab);
 

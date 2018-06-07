@@ -8,20 +8,29 @@ import styles from '../styles/styles';
 const correctIcon = (<Icon name="check-circle" size={30} color="#900" />);
 const incorrectIcon = (<Icon name="error" size={30} color="#900" />);
 
-const WordCheck = ({ answer, dispatch, isCorrect }) => (
-  <View style={styles.row}>
-    <TextInput
-      placeholder="..."
-      style={styles.answerBox}
-      onSubmitEditing={e => dispatch({ type: 'CHECK_ANSWER', text: e.nativeEvent.text, answer })}
-      // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
-      // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}
-    />
-    <Text style={styles.p15}>
-      {isCorrect === null ? '' : isCorrect ? correctIcon : incorrectIcon}
-    </Text>
-  </View>
-);
+const WordCheck = ({ answer, dispatch, isCorrect }) => {
+  let answerStatusIcon = '';
+  if (isCorrect === true) {
+    answerStatusIcon = correctIcon;
+  } else if (isCorrect === false) {
+    answerStatusIcon = incorrectIcon;
+  }
+
+  return (
+    <View style={styles.row}>
+      <TextInput
+        placeholder="..."
+        style={styles.answerBox}
+        onSubmitEditing={e => dispatch({ type: 'CHECK_ANSWER', text: e.nativeEvent.text, answer })}
+        // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
+        // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}
+      />
+      <Text style={styles.p15}>
+        {answerStatusIcon}
+      </Text>
+    </View>
+  );
+};
 
 const mapStateToProps = state => ({
   isCorrect: state.checkAnswer,

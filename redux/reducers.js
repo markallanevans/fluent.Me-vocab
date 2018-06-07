@@ -1,4 +1,5 @@
 import wordBank from '../data/wordbank';
+import sentences from '../data/sentences';
 
 const initialReviewList = [];
 
@@ -45,9 +46,24 @@ export const vocabList = (state = wordBank, action) => {
 export const checkAnswer = (state = null, action) => {
   switch (action.type) {
     case 'CHECK_ANSWER': {
-      action.text.toLowerCase().trim() === action.answer ? state = true : state = false;
+      const formattedText = action.text.toLowerCase().trim();
+      formattedText === action.answer ? state = true : state = false;
       return state;
     }
+    default:
+      return state;
+  }
+};
+
+export const sentenceStore = (state = 'I am a sentence and I come from the store.', action) => {
+  switch (action.type) {
+    case 'GET_SENTENCES': {
+      const sentenceList = sentences[action.category].sentences;
+      console.log(sentenceList);
+      return state;
+    }
+    case 'CHECK_SENTENCE':
+      return state;
     default:
       return state;
   }
