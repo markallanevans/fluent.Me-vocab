@@ -3,17 +3,18 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
+import getSentences from '../../redux/actions';
 
 class SentenceEmpty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sentence: this.props.sentence,
+      sentence: this.props.sentence['Animals'].sentences['dog'],
     };
   }
 
   componentWillMount() {
-    // getSentences('Animals');
+    // this.props.getSentences('Animals', 'dog');
     const words = this.state.sentence.split(' ');
     const wordCount = words.length;
     this.setState({
@@ -23,7 +24,6 @@ class SentenceEmpty extends Component {
   }
 
   render() {
-    console.log(this.props);
     const blanks = this.state.words.map((word, index) => <Blank word={word} key={index} />);
     return (
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -34,16 +34,18 @@ class SentenceEmpty extends Component {
 }
 
 SentenceEmpty.propTypes = {
-  sentence: PropTypes.string.isRequired,
+  sentence: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   sentence: state.sentenceStore,
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   getSentences: (category) => dispatch(getSentences(category)),
-// });
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     getSentences: (category, word) => dispatch(getSentences(category, word)),
+//   };
+// };
 
 export default connect(mapStateToProps)(SentenceEmpty);
 

@@ -3,11 +3,12 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Sentences from '../components/Sentences/Sentences';
 import NewVocab from '../components/NewVocab';
-
+import PointsScreen from '../components/PointsScreen';
 
 const tabScreenConfigs = {
   Vocab: { screen: NewVocab },
   Sentences: { screen: Sentences },
+  Points: { screen: PointsScreen },
 };
 
 const otherTabConfigs = {
@@ -19,6 +20,8 @@ const otherTabConfigs = {
         iconName = 'school';
       } else if (routeName === 'Sentences') {
         iconName = 'short-text';
+      } else if (routeName === 'Points') {
+        iconName = 'bubble-chart';
       }
 
       return <Icon name={iconName} size={25} color={tintColor} />;

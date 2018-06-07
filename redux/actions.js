@@ -24,8 +24,9 @@ export const checkAnswer = (text, answer) => {
   answer
 };
 
-export const getSentences = (category) => {
+export const getSentences = (category, word) => {
   type: 'GET_SENTENCES',
-  category
+  category,
+  word
 };
 

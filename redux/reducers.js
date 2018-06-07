@@ -55,11 +55,11 @@ export const checkAnswer = (state = null, action) => {
   }
 };
 
-export const sentenceStore = (state = 'I am a sentence and I come from the store.', action) => {
+export const sentenceStore = (state = sentences, action) => {
   switch (action.type) {
     case 'GET_SENTENCES': {
-      const sentenceList = sentences[action.category].sentences;
-      console.log(sentenceList);
+      // const sentenceList = sentences[action.category].sentences;
+      console.log(state[action.category].sentences[action.word]);
       return state;
     }
     case 'CHECK_SENTENCE':
@@ -68,3 +68,22 @@ export const sentenceStore = (state = 'I am a sentence and I come from the store
       return state;
   }
 };
+
+export const studyStats = (state = { expPoints: 0, wordsStudied: 0, sentencesStudied: 0 }, action) => {
+  switch (action.type) {
+    case 'GAIN_EXP_POINTS':
+      // do something
+      return state;
+    case 'LOSE_EXP_POINTS':
+      // do something
+      return state;
+    case 'ADD_WORDPOINTS':
+      // do something
+      return state;
+    case 'ADD_SENTENCEPOINTS':
+      // do something
+      return state;
+    default:
+      return state;
+  }
+}
