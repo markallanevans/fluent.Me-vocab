@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
@@ -7,6 +7,7 @@ import { loadCategory } from '../../redux/actions';
 
 const category = 'Animals';
 const word = 'dog';
+const index = 0;
 
 class SentenceEmpty extends Component {
   constructor() {
@@ -17,22 +18,24 @@ class SentenceEmpty extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.sentenceStore);
-    this.props.loadCategory(category);  
+    this.props.loadCategory(category);
+    this.props.loadSentence(this.props.currentSentenceIndex);
     const sentenceObject = this.props.sentenceStore.allCategories[category].sentences;
-    const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex];
+    const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex+1];
     const words = sentence.split(' ');
+    console.log(this.props.sentenceStore);
     this.setState({
       words,
     })
   }
-  
+
   render() {
-    console.log(this.props.sentenceStore);
-    const blanks = this.state.words.map((word, index) => <Blank word={word} key={index} />);
+    const words = this.props.currentSentence.split(' ');
+    const blanks = words.map((word, index) => <Blank word={word} key={index} />);
     return (
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {blanks}
+        <Text>{this.props.currentSentence}</Text>
       </View>
     );
   }
@@ -47,8 +50,9 @@ const mapStateToProps = state => ({
   currentSentenceIndex: state.studyStats.currentSentenceIndex,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
+  loadSentence: index => dispatch({ type: 'LOAD_SENTENCE', index }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SentenceEmpty);

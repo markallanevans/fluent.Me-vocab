@@ -7,10 +7,10 @@ import SentenceEmpty from './SentenceEmpty';
 import CheckButton from '../CheckButton';
 import styles from '../../styles/styles';
 
-const Sentences = ({ dispatch, sentenceStore, currentSentenceIndex, navigation, nextSentenceScreen }) => (
+const Sentences = ({ dispatch, loadedSentence, sentenceStore, currentSentenceIndex, navigation, nextSentenceScreen }) => (
   <View style={styles.container}>
     <Text> {currentSentenceIndex} / {Object.keys(sentenceStore.loadedCategory).length} </Text>
-    <SentenceEmpty />
+    <SentenceEmpty currentSentence={loadedSentence} />
     <TouchableHighlight onPress={() => nextSentenceScreen()} >
       <CheckButton />
     </TouchableHighlight>
@@ -20,6 +20,7 @@ const Sentences = ({ dispatch, sentenceStore, currentSentenceIndex, navigation, 
 const nextSentenceScreen = () => (dispatch) => {
   dispatch({ type: 'INCREMENT_SENTENCE_COUNTER' });
   // will call the next sentence from here as well
+  dispatch({ type: 'LOAD_SENTENCE', index: 3});
 };
 
 Sentences.propTypes = ({
@@ -28,6 +29,7 @@ Sentences.propTypes = ({
 
 const mapStateToProps = state => ({
   sentenceStore: state.sentenceStore,
+  loadedSentence: state.sentenceStore.loadedSentence,
   currentSentenceIndex: state.studyStats.currentSentenceIndex,
 });
 

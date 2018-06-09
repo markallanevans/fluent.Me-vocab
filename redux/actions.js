@@ -36,3 +36,7 @@ export const loadCategory = (category, word) => {
   word
 };
 
+export const loadSentence = (index) => {
+  type: 'LOAD_SENTENCE',
+  index
+};
