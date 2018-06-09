@@ -4,11 +4,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Sentences from '../components/Sentences/Sentences';
 import NewVocab from '../components/NewVocab';
 import PointsScreen from '../components/PointsScreen';
+import Animation from '../components/Animation';
 
 const tabScreenConfigs = {
   Vocab: { screen: NewVocab },
   Sentences: { screen: Sentences },
   Points: { screen: PointsScreen },
+  Animation: { screen: Animation },
 };
 
 const otherTabConfigs = {

@@ -7,11 +7,19 @@ import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
 import TextButton from './TextButton';
+import AnimatedCheckBox from './AnimatedCheckBox';
 
-const VocabReview = ({ vocabList, reviewList, navigation }) => {
+const VocabReview = ({ vocabList, reviewList, navigation, isCorrect }) => {
   const randCardId = Math.floor(Math.random() * reviewList.length);
+  let animatedCheckBox = '';
+  if (isCorrect === true) {
+    animatedCheckBox = <AnimatedCheckBox />
+  }
   return (
     <View style={styles.container}>
+      <View style={{ height: 100, width: 100 }}>
+        {animatedCheckBox}
+      </View>
       <View style={styles.boxContainer}>
         <WordBox word={Object.values(vocabList)[randCardId]} />
       </View>
@@ -27,6 +35,7 @@ const mapStateToProps = state => (
   {
     vocabList: state.vocabList,
     reviewList: state.reviewList,
+    isCorrect: state.checkAnswer,
   }
 );
 

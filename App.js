@@ -1,11 +1,14 @@
 import React from 'react';
-import logger from 'redux-logger';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import MainRoot from './navigation/MainRoot';
 
-const middleware = applyMiddleware(logger);
+const logger = createLogger();
+
+const middleware = applyMiddleware(thunk, logger);
 
 const store = createStore(reducers, middleware);
 

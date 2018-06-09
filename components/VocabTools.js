@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-
-const VocabTools = ({ id, dispatch }) => (
+const VocabTools = ({ id, addReviewWord }) => (
   <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
     <TouchableHighlight
-      onPress={() => dispatch({ type: 'ADD_REVIEW_WORD', id })}
+      onPress={() => addReviewWord(id)}
     >
       <Icon name="check-circle" size={20} color="#900" />
     </TouchableHighlight>
@@ -17,7 +16,12 @@ const VocabTools = ({ id, dispatch }) => (
 
 VocabTools.propTypes = {
   id: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  addReviewWord: PropTypes.func.isRequired,
 };
 
-export default connect()(VocabTools);
+const mapDispatchToProps = dispatch => ({
+  addReviewWord: id => dispatch({ type: 'ADD_REVIEW_WORD', id }),
+  // addReviewWord: id => addReviewWord(dispatch, id)
+});
+
+export default connect(null, mapDispatchToProps)(VocabTools);

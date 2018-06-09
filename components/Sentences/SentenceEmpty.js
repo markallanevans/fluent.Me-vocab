@@ -3,27 +3,32 @@ import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
-import getSentences from '../../redux/actions';
+import { loadCategory } from '../../redux/actions';
+
+const category = 'Animals';
+const word = 'dog';
 
 class SentenceEmpty extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      sentence: this.props.sentence['Animals'].sentences['dog'],
+      words: [],
     };
   }
 
   componentWillMount() {
-    // this.props.getSentences('Animals', 'dog');
-    const words = this.state.sentence.split(' ');
-    const wordCount = words.length;
+    console.log(this.props.sentenceStore);
+    this.props.loadCategory(category);  
+    const sentenceObject = this.props.sentenceStore.allCategories[category].sentences;
+    const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex];
+    const words = sentence.split(' ');
     this.setState({
       words,
-      wordCount,
-    });
+    })
   }
-
+  
   render() {
+    console.log(this.props.sentenceStore);
     const blanks = this.state.words.map((word, index) => <Blank word={word} key={index} />);
     return (
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -34,18 +39,17 @@ class SentenceEmpty extends Component {
 }
 
 SentenceEmpty.propTypes = {
-  sentence: PropTypes.object.isRequired,
+  loadCategory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  sentence: state.sentenceStore,
+  sentenceStore: state.sentenceStore,
+  currentSentenceIndex: state.studyStats.currentSentenceIndex,
 });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getSentences: (category, word) => dispatch(getSentences(category, word)),
-//   };
-// };
+const mapDispatchToProps = dispatch => ({
+  loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
+});
 
-export default connect(mapStateToProps)(SentenceEmpty);
+export default connect(mapStateToProps, mapDispatchToProps)(SentenceEmpty);
 

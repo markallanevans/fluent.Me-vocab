@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import AnimatedCheckBox from './AnimatedCheckBox';
 import styles from '../styles/styles';
 
 const correctIcon = (<Icon name="check-circle" size={30} color="#900" />);
@@ -15,6 +16,7 @@ const WordCheck = ({ answer, dispatch, isCorrect }) => {
   } else if (isCorrect === false) {
     answerStatusIcon = incorrectIcon;
   }
+
 
   return (
     <View style={styles.row}>
