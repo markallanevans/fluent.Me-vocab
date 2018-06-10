@@ -10,28 +10,27 @@ const word = 'dog';
 const index = 0;
 
 class SentenceEmpty extends Component {
-  constructor() {
-    super();
-    this.state = {
-      words: [],
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     words: [],
+  //   };
+  // }
 
   componentWillMount() {
     this.props.loadCategory(category);
     this.props.loadSentence(this.props.currentSentenceIndex);
-    const sentenceObject = this.props.sentenceStore.allCategories[category].sentences;
-    const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex+1];
-    const words = sentence.split(' ');
-    console.log(this.props.sentenceStore);
-    this.setState({
-      words,
-    })
+    // const sentenceObject = this.props.sentenceStore.allCategories[category].sentences;
+    // const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex+1];
+    // const words = sentence.split(' ');
+    // console.log(this.props.sentenceStore);
+    // this.setState({
+    //   words,
+    // })
   }
 
   render() {
-    const words = this.props.currentSentence.split(' ');
-    const blanks = words.map((word, index) => <Blank word={word} key={index} />);
+    const blanks = this.props.words.map((word, index) => <Blank word={word} key={index} />);
     return (
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {blanks}
@@ -43,11 +42,13 @@ class SentenceEmpty extends Component {
 
 SentenceEmpty.propTypes = {
   loadCategory: PropTypes.func.isRequired,
+  words: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
   sentenceStore: state.sentenceStore,
   currentSentenceIndex: state.studyStats.currentSentenceIndex,
+  words: state.sentenceStore.words,
 });
 
 const mapDispatchToProps = (dispatch) => ({

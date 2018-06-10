@@ -7,7 +7,12 @@ import SentenceEmpty from './SentenceEmpty';
 import CheckButton from '../CheckButton';
 import styles from '../../styles/styles';
 
-const Sentences = ({ dispatch, loadedSentence, sentenceStore, currentSentenceIndex, navigation, nextSentenceScreen }) => (
+const Sentences = ({
+  loadedSentence,
+  sentenceStore,
+  currentSentenceIndex,
+  nextSentenceScreen,
+}) => (
   <View style={styles.container}>
     <Text> {currentSentenceIndex} / {Object.keys(sentenceStore.loadedCategory).length} </Text>
     <SentenceEmpty currentSentence={loadedSentence} />
@@ -20,7 +25,7 @@ const Sentences = ({ dispatch, loadedSentence, sentenceStore, currentSentenceInd
 const nextSentenceScreen = () => (dispatch) => {
   dispatch({ type: 'INCREMENT_SENTENCE_COUNTER' });
   // will call the next sentence from here as well
-  dispatch({ type: 'LOAD_SENTENCE', index: 3});
+  dispatch({ type: 'LOAD_SENTENCE' });
 };
 
 Sentences.propTypes = ({
