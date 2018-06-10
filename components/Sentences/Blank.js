@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text, View } from 'react-native';
 
 const Blank = ({ word }) =>
@@ -7,5 +8,9 @@ const Blank = ({ word }) =>
       <Text> {word} </Text>
     </View>
   );
+
+Blank.propTypes = {
+  word: PropTypes.string.isRequired,
+};
 
 export default Blank;

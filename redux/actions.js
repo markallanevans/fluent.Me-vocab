@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const flipCard = (id) => {
   type: 'FLIP_CARD',
   id
@@ -40,3 +42,5 @@ export const loadSentence = (index) => {
   type: 'LOAD_SENTENCE',
   index
 };
+
+/* eslint-enable */

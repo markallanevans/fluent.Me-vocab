@@ -9,11 +9,16 @@ import WordCheck from './WordCheck';
 import TextButton from './TextButton';
 import AnimatedCheckBox from './AnimatedCheckBox';
 
-const VocabReview = ({ vocabList, reviewList, navigation, isCorrect }) => {
+const VocabReview = ({
+  vocabList,
+  reviewList,
+  navigation,
+  isCorrect,
+}) => {
   const randCardId = Math.floor(Math.random() * reviewList.length);
   let animatedCheckBox = '';
   if (isCorrect === true) {
-    animatedCheckBox = <AnimatedCheckBox />
+    animatedCheckBox = <AnimatedCheckBox />;
   }
   return (
     <View style={styles.container}>
@@ -43,6 +48,7 @@ VocabReview.propTypes = {
   vocabList: PropTypes.object.isRequired,
   reviewList: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(VocabReview);

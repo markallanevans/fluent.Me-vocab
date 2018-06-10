@@ -19,3 +19,7 @@ const App = () => (
 );
 
 export default App;
+
+/* eslint-disable no-console */
+console.ignoredYellowBox = ['Remote debugger'];
+/* eslint-enable no-console */

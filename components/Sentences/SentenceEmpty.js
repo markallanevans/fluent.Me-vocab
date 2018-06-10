@@ -1,40 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
-import { loadCategory } from '../../redux/actions';
 
 const category = 'Animals';
-const word = 'dog';
-const index = 0;
 
 class SentenceEmpty extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     words: [],
-  //   };
-  // }
-
   componentWillMount() {
     this.props.loadCategory(category);
     this.props.loadSentence(this.props.currentSentenceIndex);
-    // const sentenceObject = this.props.sentenceStore.allCategories[category].sentences;
-    // const sentence = Object.values(sentenceObject)[this.props.currentSentenceIndex+1];
-    // const words = sentence.split(' ');
-    // console.log(this.props.sentenceStore);
-    // this.setState({
-    //   words,
-    // })
   }
 
   render() {
-    const blanks = this.props.words.map((word, index) => <Blank word={word} key={index} />);
+    const blanks = this.props.words.map((word, index) =>
+      (<Blank
+        word={word}
+        key={index.toString()}
+      />));
     return (
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {blanks}
-        <Text>{this.props.currentSentence}</Text>
       </View>
     );
   }
@@ -42,6 +28,8 @@ class SentenceEmpty extends Component {
 
 SentenceEmpty.propTypes = {
   loadCategory: PropTypes.func.isRequired,
+  loadSentence: PropTypes.func.isRequired,
+  currentSentenceIndex: PropTypes.number.isRequired,
   words: PropTypes.array.isRequired,
 };
 
@@ -51,9 +39,9 @@ const mapStateToProps = state => ({
   words: state.sentenceStore.words,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
-  loadSentence: index => dispatch({ type: 'LOAD_SENTENCE', index }),
+  loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SentenceEmpty);

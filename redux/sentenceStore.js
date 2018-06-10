@@ -12,7 +12,6 @@ const sentenceStore = (state = { allCategories: sentences, loadedCategory: {}, l
     }
     case 'LOAD_SENTENCE': {
       const { allCategories, loadedCategory, currentWordIndex, words } = state;
-      const nextWord = currentWordIndex + 1;
       return {
         allCategories,
         loadedCategory,

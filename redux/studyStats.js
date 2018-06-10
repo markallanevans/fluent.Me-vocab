@@ -1,4 +1,9 @@
-const initialStudyState = { expPoints: 0, wordsStudied: 0, sentencesStudied: 0, currentSentenceIndex: 0 };
+const initialStudyState = {
+  expPoints: 0,
+  wordsStudied: 0,
+  sentencesStudied: 0,
+  currentSentenceIndex: 0,
+};
 
 const studyStats = (state = initialStudyState, action) => {
   switch (action.type) {

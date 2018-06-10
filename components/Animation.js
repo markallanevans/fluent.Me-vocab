@@ -2,6 +2,8 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import LottieView from 'lottie-react-native';
 
+const animationsrc = require('../animations/checked_done_.json');
+
 export default class BasicExample extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ export default class BasicExample extends React.Component {
 
   render() {
     return (
-      <LottieView source={require('../animations/checked_done_.json')} progress={this.state.progress} />
+      <LottieView source={animationsrc} progress={this.state.progress} />
     );
   }
 }
