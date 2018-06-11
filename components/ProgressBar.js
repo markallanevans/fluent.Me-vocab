@@ -11,9 +11,9 @@ import { connect } from 'react-redux';
 
 class ProgressBar extends React.Component {
   render() {
-    const dumbProgress = Object.values(this.props.reviewList).length;
-    const dumbTotal = Object.values(this.props.vocabList).length;
-    const progPercent = dumbProgress / dumbTotal;
+    const progress = this.props.progress;
+    const total = this.props.total;
+    const progPercent = progress / total;
     const s = StyleSheet.create({
       progressBarContainer: {
         marginTop: 20,

@@ -44,7 +44,7 @@ class VocabReview extends React.Component {
           checkAnswer={this.checkAnswer}
           id={randCardId}
         />
-        <ProgressBar />
+        <ProgressBar progress={5} total={10} />
         <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
       </View>
     );

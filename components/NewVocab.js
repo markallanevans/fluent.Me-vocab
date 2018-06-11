@@ -32,7 +32,7 @@ class NewVocab extends React.Component {
           : <Text>You are finished for today! Congrats! On to the Review!</Text>
         }
         </View>
-        <ProgressBar />
+        <ProgressBar progress={Object.values(this.props.reviewList).length} total={Object.values(this.props.vocabList).length} />
         <TextButton text="Review" navTo="VocabReview" navigation={this.props.navigation} />
       </View>
     );
@@ -41,6 +41,7 @@ class NewVocab extends React.Component {
 
 const mapStateToProps = state => ({
   vocabList: state.vocabList,
+  reviewList: state.reviewList,
 });
 
 NewVocab.propTypes = {
