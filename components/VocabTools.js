@@ -15,7 +15,7 @@ const VocabTools = ({ id, word, addReviewWord }) => (
 );
 
 VocabTools.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   word: PropTypes.string.isRequired,
   addReviewWord: PropTypes.func.isRequired,
 };

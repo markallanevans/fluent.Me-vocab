@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/styles';
@@ -22,6 +22,7 @@ class VocabReview extends React.Component {
     this.setState({
       isCorrect: correctness,
     });
+    (correctness === true) && this.props.removeReviewWord(realAnswer);
   }
 
   render() {
@@ -30,26 +31,29 @@ class VocabReview extends React.Component {
     if (this.state.isCorrect === true) {
       animatedCheckBox = <AnimatedCheckBox />;
     }
+    const word = this.props.reviewList[randCardId];
+
     return (
       <View style={styles.container}>
         <View style={{ height: 100, width: 100 }}>
           {animatedCheckBox}
         </View>
         <View style={styles.boxContainer}>
-          <WordBox word={Object.values(this.props.vocabList)[randCardId]} />
+          {this.props.reviewList.length === 0 ? <Text>That is all for today!</Text>
+          : <WordBox word={word} />}
         </View>
         <WordCheck
-          answer={Object.values(this.props.vocabList)[randCardId].English}
+          word={this.props.reviewList[randCardId]}
           isCorrect={this.state.isCorrect}
           checkAnswer={this.checkAnswer}
           id={randCardId}
         />
-        <ProgressBar progress={5} total={10} />
+        <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
         <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
       </View>
     );
   }
-};
+}
 
 
 const mapStateToProps = state => (
@@ -60,12 +64,15 @@ const mapStateToProps = state => (
   }
 );
 
+const mapDispatchToProps = dispatch => ({
+  removeReviewWord: (word) => dispatch({ type: 'REMOVE_REVIEW_WORD', word }),
+});
+
 VocabReview.propTypes = {
   vocabList: PropTypes.object.isRequired,
   reviewList: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
-  isCorrect: PropTypes.bool.isRequired,
 };
 
-export default connect(mapStateToProps)(VocabReview);
+export default connect(mapStateToProps, mapDispatchToProps)(VocabReview);
 

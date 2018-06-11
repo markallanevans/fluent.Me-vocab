@@ -1,6 +1,6 @@
 import sentences from '../data/sentences';
 
-const sentenceStore = (state = { 
+const sentenceStore = (state = {
   allCategories: sentences,
   loadedCategory: {},
   loadedSentence: '',
