@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 
 class ProgressBar extends React.Component {
   render() {
-    console.log(this.props);
     const dumbProgress = Object.values(this.props.reviewList).length;
     const dumbTotal = Object.values(this.props.vocabList).length;
     const progPercent = dumbProgress / dumbTotal;

@@ -18,16 +18,13 @@ class VocabReview extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
   }
   checkAnswer(userAnswer, realAnswer) {
-    console.log(userAnswer, realAnswer);
     const correctness = (userAnswer.toLowerCase().trim() === realAnswer);
-    console.log(correctness);
     this.setState({
       isCorrect: correctness,
     });
   }
 
   render() {
-    console.log('state:' + JSON.stringify(this.state));
     const randCardId = Math.floor(Math.random() * this.props.reviewList.length);
     let animatedCheckBox = '';
     if (this.state.isCorrect === true) {
