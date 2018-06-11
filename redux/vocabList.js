@@ -3,9 +3,10 @@ import sentences from '../data/sentences';
 
 const data = sentences;
 
-const vocabList = (state = [], action) => {
+const vocabList = (state = {}, action) => {
   const keyToUpdate = action.id;
   switch (action.type) {
+    // TODO: move logic below to transformer that is called when app/component is loaded
     case 'LOAD_WORDS': {
       const { Animals: { listWords } } = data;
       const wordListArray = listWords.map((word, index) => ({

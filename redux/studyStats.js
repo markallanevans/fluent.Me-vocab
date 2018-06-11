@@ -8,10 +8,10 @@ const initialStudyState = {
 const studyStats = (state = initialStudyState, action) => {
   switch (action.type) {
     case 'GAIN_EXP_POINTS':
-      // do something
+      // TODO: do something
       return state;
     case 'LOSE_EXP_POINTS':
-      // do something
+      // TODO: do something
       return state;
     case 'ADD_REVIEW_WORD': {
       const { expPoints } = state;

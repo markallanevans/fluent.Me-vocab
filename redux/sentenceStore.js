@@ -1,6 +1,12 @@
 import sentences from '../data/sentences';
 
-const sentenceStore = (state = { allCategories: sentences, loadedCategory: {}, loadedSentence: '', currentWordIndex: 0, words: [] }, action) => {
+const sentenceStore = (state = { 
+  allCategories: sentences,
+  loadedCategory: {},
+  loadedSentence: '',
+  currentWordIndex: 0,
+  words: [],
+}, action) => {
   switch (action.type) {
     case 'LOAD_CATEGORY': {
       const { allCategories } = state;
@@ -11,7 +17,7 @@ const sentenceStore = (state = { allCategories: sentences, loadedCategory: {}, l
       };
     }
     case 'LOAD_SENTENCE': {
-      const { 
+      const {
         allCategories,
         loadedCategory,
         currentWordIndex,

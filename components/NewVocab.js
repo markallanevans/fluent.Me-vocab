@@ -22,12 +22,12 @@ class NewVocab extends React.Component {
         <View style={styles.boxContainer}>
           {listToShow.length > 0 ?
             listToShow.map(word => (
-            <View key={word.id}>
-              <WordBox
-                word={word}
-              />
-              <VocabTools id={word.id} />
-            </View>
+              <View key={word.id}>
+                <WordBox
+                  word={word}
+                />
+                <VocabTools id={word.id} word={word.English} />
+              </View>
           ))
           : <Text>You are finished for today! Congrats! On to the Review!</Text>
         }
