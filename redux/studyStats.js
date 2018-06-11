@@ -13,9 +13,21 @@ const studyStats = (state = initialStudyState, action) => {
     case 'LOSE_EXP_POINTS':
       // do something
       return state;
-    case 'ADD_WORDPOINTS':
-      // do something
-      return state;
+    case 'ADD_REVIEW_WORD': {
+      const { expPoints } = state;
+      return {
+        ...state,
+        expPoints: expPoints + 20,
+      };
+    }
+    case 'LOAD_SENTENCE': {
+      const { expPoints, sentencesStudied } = state;
+      return {
+        ...state,
+        expPoints: expPoints + 50,
+        sentencesStudied: sentencesStudied + 100,
+      };
+    }
     case 'INCREMENT_SENTENCE_COUNTER': {
       const currentIndex = state.currentSentenceIndex + 1;
       return {

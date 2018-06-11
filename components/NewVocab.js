@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from '../styles/styles';
@@ -20,14 +20,17 @@ class NewVocab extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.boxContainer}>
-          {listToShow.map(word => (
+          {listToShow.length > 0 ?
+            listToShow.map(word => (
             <View key={word.id}>
               <WordBox
                 word={word}
               />
               <VocabTools id={word.id} />
             </View>
-          ))}
+          ))
+          : <Text>You are finished for today! Congrats! On to the Review!</Text>
+        }
         </View>
         <ProgressBar />
         <TextButton text="Review" navTo="VocabReview" navigation={this.props.navigation} />
