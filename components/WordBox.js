@@ -8,8 +8,8 @@ const WordBox = ({ word, dispatch }) => (
   <View>
     <View style={word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>
       <TouchableHighlight
-        onPress={() => dispatch({ type: 'FLIP_CARD', id: word.id })}
-        onLongPress={() => dispatch({ type: 'TOGGLE_IMAGE', id: word.id })}
+        // onPress={() => dispatch({ type: 'FLIP_CARD', id: word.id })}
+        onPress={() => dispatch({ type: 'TOGGLE_IMAGE', id: word.id })}
       >
         <View style={styles.flashBox}>
           {

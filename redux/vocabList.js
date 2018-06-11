@@ -1,10 +1,33 @@
-import wordBank from '../data/wordbank';
+// import wordBank from '../data/wordbank';
+import sentences from '../data/sentences';
 
-const vocabList = (state = wordBank, action) => {
+const data = sentences;
+
+const vocabList = (state = [], action) => {
   const keyToUpdate = action.id;
   switch (action.type) {
-    case 'ADD_WORD':
-      return state.concat(action.data);
+    case 'LOAD_WORDS': {
+      const { Animals: { listWords } } = data;
+      const wordListArray = listWords.map((word, index) => ({
+        id: index,
+        English: word,
+        Spanish: 'no translation for now',
+        showFront: true,
+        showImage: true,
+        toReview: false,
+      }));
+      const wordListObject = Object.assign({}, [...wordListArray]);
+      return wordListObject;
+    }
+    case 'ADD_REVIEW_WORD': {
+      return {
+        ...state,
+        [keyToUpdate]: {
+          ...state[keyToUpdate],
+          toReview: true,
+        },
+      };
+    }
     case 'FLIP_CARD':
       return {
         ...state,

@@ -11,14 +11,18 @@ const sentenceStore = (state = { allCategories: sentences, loadedCategory: {}, l
       };
     }
     case 'LOAD_SENTENCE': {
-      const { allCategories, loadedCategory, currentWordIndex, words } = state;
+      const { 
+        allCategories,
+        loadedCategory,
+        currentWordIndex,
+      } = state;
       return {
         allCategories,
         loadedCategory,
         currentWordIndex: currentWordIndex + 1,
         loadedSentence: Object.values(loadedCategory)[currentWordIndex],
         words: Object.values(loadedCategory)[currentWordIndex].split(' '),
-      }
+      };
     }
     case 'CHECK_SENTENCE':
       return state;
