@@ -8,7 +8,7 @@ import styles from '../styles/styles';
 const correctIcon = (<Icon name="check-circle" size={30} color="#900" />);
 const incorrectIcon = (<Icon name="error" size={30} color="#900" />);
 
-const WordCheck = ({ answer, dispatch, isCorrect }) => {
+const WordCheck = ({ answer, checkAnswer, isCorrect }) => {
   let answerStatusIcon = '';
   if (isCorrect === true) {
     answerStatusIcon = correctIcon;
@@ -22,7 +22,7 @@ const WordCheck = ({ answer, dispatch, isCorrect }) => {
       <TextInput
         placeholder="..."
         style={styles.answerBox}
-        onSubmitEditing={e => dispatch({ type: 'CHECK_ANSWER', text: e.nativeEvent.text, answer })}
+        onSubmitEditing={e => checkAnswer(e.nativeEvent.text, answer)}
         // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
         // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}
       />
@@ -33,9 +33,9 @@ const WordCheck = ({ answer, dispatch, isCorrect }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isCorrect: state.checkAnswer,
-});
+// const mapStateToProps = state => ({
+//   isCorrect: state.checkAnswer,
+// });
 
 WordCheck.propTypes = {
   answer: PropTypes.string.isRequired,
@@ -47,4 +47,4 @@ WordCheck.defaultProps = {
   isCorrect: null,
 };
 
-export default connect(mapStateToProps)(WordCheck);
+export default WordCheck;
