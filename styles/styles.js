@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   wordBoxEng: {
     width: 150,
     height: 150,
