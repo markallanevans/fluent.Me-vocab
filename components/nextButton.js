@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from '../styles/styles';
 
-const CheckButton = () => (
+const nextButton = () => (
   <View>
-    <Text style={styles.button}>Check Answer</Text>
+    <Text style={styles.button}> -> </Text>
   </View>
 );
 
-export default CheckButton;
+export default nextButton;

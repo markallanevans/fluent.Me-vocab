@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
 import WordBox from '../WordBox';
+import WordCheck from '../WordCheck';
+import Animation from '../Animation';
 import styles from '../../styles/styles';
 
 const category = 'Animals';
 
 class SentenceEmpty extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isCorrect: null,
+    };
+    this.checkAnswer = this.checkAnswer.bind(this);
+  }
+
   componentWillMount() {
     this.props.loadCategory(category);
     this.props.loadSentence(this.props.currentSentenceIndex);
+  }
+
+  checkAnswer(userAnswer, realAnswer) {
+    console.log(userAnswer.trim().toLowerCase(), realAnswer)
+    const result = (userAnswer.trim().toLowerCase() == realAnswer);
+    console.log(result);
+    console.log(this.state);
+    this.setState({
+      isCorrect: result,
+    });
   }
 
   render() {
     const { words, currentCategoryWords } = this.props;
     const newWord = words.filter(w => currentCategoryWords.indexOf(w) !== -1);
     const wordsWithBlank = [...words];
-    wordsWithBlank[words.indexOf(newWord.toString())] = '               ';
-
+    wordsWithBlank[words.indexOf(newWord.toString())] = '                   ';
+    //FIXME: above needs to be made more elegant
     const blanks = wordsWithBlank.map((word, index) =>
       (<Blank
         word={word}
@@ -30,9 +50,22 @@ class SentenceEmpty extends Component {
         <View>
           <WordBox word={{ id: 1, English: newWord, showFront: true, showImage: true, word: newWord }} />
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
           {blanks}
         </View>
+        {
+          this.state.isCorrect === true ? 
+          <Animation />
+          :
+          <View></View>
+        }
+          <TextInput
+            placeholder="..."
+            style={styles.answerBox}
+            onSubmitEditing={e => this.checkAnswer(e.nativeEvent.text, newWord)}
+            // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
+            // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}
+          />
       </View>
     );
   }

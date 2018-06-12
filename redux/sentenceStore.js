@@ -2,6 +2,7 @@ import sentences from '../data/sentences';
 
 const sentenceStore = (state = {
   allCategories: sentences,
+  currentCategoryTitle: '',
   loadedCategory: {},
   categoryWords: [],
   loadedSentence: '',
@@ -14,18 +15,17 @@ const sentenceStore = (state = {
       return {
         ...state,
         allCategories,
+        currentCategoryTitle: action.category,
         loadedCategory: allCategories[action.category].sentences,
       };
     }
     case 'LOAD_SENTENCE': {
       const {
-        allCategories,
         loadedCategory,
         currentWordIndex,
       } = state;
       return {
-        allCategories,
-        loadedCategory,
+        ...state,
         currentWordIndex: currentWordIndex + 1,
         categoryWords: Object.keys(loadedCategory),
         loadedSentence: Object.values(loadedCategory)[currentWordIndex],

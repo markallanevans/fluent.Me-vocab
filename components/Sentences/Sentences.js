@@ -3,7 +3,7 @@ import { View, TouchableHighlight, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SentenceEmpty from './SentenceEmpty';
-import CheckButton from '../CheckButton';
+import NextButton from '../nextButton';
 import styles from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
 
@@ -19,7 +19,7 @@ const Sentences = ({
     />
     <SentenceEmpty />
     <TouchableHighlight onPress={() => nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)} >
-      <CheckButton />
+      <NextButton />
     </TouchableHighlight>
   </View>
 );
