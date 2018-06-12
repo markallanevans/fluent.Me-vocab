@@ -7,7 +7,7 @@ import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import TextButton from './TextButton';
 import VocabTools from './VocabTools';
-import Animation from './Animation';
+import AnimationThumbsUp from './AnimationThumbUp';
 
 class NewVocab extends React.Component {
   componentWillMount() {
@@ -36,7 +36,7 @@ class NewVocab extends React.Component {
                 <Text style={styles.header}>That is all for now!</Text>
               </View>
               <View style={{ height: 150, width: 150 }}>
-                <Animation />
+                <AnimationThumbsUp />
               </View>
             </View>
         }

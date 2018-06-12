@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
+import styles, { $primaryRed, $primaryWhite, $tertiaryRed, $secondaryWhite } from '../styles/styles';
 
 const Login = ({ navigation, category }) => (
   <View style={styles.container}>
@@ -24,7 +24,23 @@ const Login = ({ navigation, category }) => (
     </View>
     <View style={{ marginTop: 50 }} />
     <Text style={styles.header} >Current Category</Text>
-    <Text style={{ backgroundColor: 'white', color: ''}} >{category || 'None Loaded'}</Text>
+    <View style={{
+      backgroundColor: $primaryWhite,
+      padding: 10,
+      marginTop: 20,
+      shadowColor: $secondaryWhite,
+      borderRadius: 20,
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
+    }}>
+      <Text style={{ 
+        color: $primaryRed}} >{category || 'None Loaded'}
+      </Text>
+    </View>
   </View>
 );
 

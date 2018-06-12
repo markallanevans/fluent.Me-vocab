@@ -17,6 +17,7 @@ const Sentences = ({
       progress={currentSentenceIndex} 
       total={Object.keys(sentenceStore.loadedCategory).length}
     />
+    <View style={{ height: 40 }}/>
     <SentenceEmpty />
     <TouchableHighlight onPress={() => nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)} >
       <NextButton />

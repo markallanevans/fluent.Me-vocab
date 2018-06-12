@@ -35,7 +35,7 @@ const otherTabConfigs = {
       } else if (routeName === 'Profile') {
         iconName = 'person';
       } else if (routeName === 'Add Words') {
-        iconName = 'person';
+        iconName = 'add-box';
       }
 
       return <Icon name={iconName} size={25} color={tintColor} />;

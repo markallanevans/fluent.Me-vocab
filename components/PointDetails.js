@@ -28,7 +28,6 @@ class PointDetails extends Component {
               color: $primaryWhite,
               fontSize: 25,
               textAlign: 'center',
-              justifySelf: 'center',
             }}
           > 
             {this.props.content} 
