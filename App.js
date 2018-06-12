@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
-import MainRoot from './navigation/MainRoot';
+import TabNavigator from './navigation/TabNavigator';
 
 const logger = createLogger();
 
@@ -14,7 +14,7 @@ const store = createStore(reducers, middleware);
 
 const App = () => (
   <Provider store={store}>
-    <MainRoot />
+    <TabNavigator />
   </Provider>
 );
 

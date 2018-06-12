@@ -8,7 +8,7 @@ const Login = ({ navigation }) => (
     <Text style={styles.header}>Welcome to fluent.Me</Text>
     <Text
       style={styles.button}
-      onPress={() => navigation.navigate('RootTab')}
+      onPress={() => navigation.navigate('Vocab')}
     >get Started!
     </Text>
   </View>
