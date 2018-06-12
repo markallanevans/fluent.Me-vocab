@@ -13,6 +13,7 @@ class VocabReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentWord: '',
       isCorrect: null,
     };
     this.checkAnswer = this.checkAnswer.bind(this);
@@ -28,6 +29,8 @@ class VocabReview extends React.Component {
     }
   }
 
+  //FIXME: problem with the rendering of the word. When checkAnswer is called, it forces the image to refresh.. and changes the current word. I think this is because theAnswer causes the whole component to re-render... 
+
   render() {
     const randCardId = Math.floor(Math.random() * this.props.reviewList.length);
     let animatedCheckBox = '';
@@ -35,24 +38,34 @@ class VocabReview extends React.Component {
       animatedCheckBox = <AnimatedCheckBox />;
     }
     const word = this.props.reviewList[randCardId];
+    
+    let wordBoxContent = '';
+    if (this.props.reviewList.length === 0) {
+      wordBoxContent = <Text>That is all for today!</Text>;
+    } else if (this.state.isCorrect === true) {
+      wordBoxContent = animatedCheckBox;
+    } else {
+      wordBoxContent = <WordBox word={word} />;
+    }
 
     return (
       <View style={styles.container}>
-        <View style={{ height: 100, width: 100 }}>
+        <View style={{ height: 150, width: 150 }}>
           {animatedCheckBox}
         </View>
         <View style={styles.boxContainer}>
-          {this.props.reviewList.length === 0 ? <Text>That is all for today!</Text>
-          : <WordBox word={word} />}
+          {wordBoxContent}
         </View>
-        <WordCheck
-          word={this.props.reviewList[randCardId]}
-          isCorrect={this.state.isCorrect}
-          checkAnswer={this.checkAnswer}
-          id={randCardId}
-        />
-        <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
-        <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
+        <View>
+          <WordCheck
+            word={word}
+            isCorrect={this.state.isCorrect}
+            checkAnswer={this.checkAnswer}
+            id={randCardId}
+          />
+          <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
+          <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
+        </View>
       </View>
     );
   }
