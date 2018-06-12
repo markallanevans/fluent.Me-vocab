@@ -37,7 +37,7 @@ const WordCheck = ({ word, checkAnswer, isCorrect }) => {
 // });
 
 WordCheck.propTypes = {
-  answer: PropTypes.string.isRequired,
+  word: PropTypes.object.isRequired,
   checkAnswer: PropTypes.func.isRequired,
   isCorrect: PropTypes.bool,
 };

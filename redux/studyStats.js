@@ -10,9 +10,13 @@ const studyStats = (state = initialStudyState, action) => {
     case 'GAIN_EXP_POINTS':
       // TODO: do something
       return state;
-    case 'LOSE_EXP_POINTS':
-      // TODO: do something
-      return state;
+    case 'ADD_WORD_POINTS': {
+      const { wordsStudied } = state;
+      return {
+        ...state,
+        wordsStudied: wordsStudied + 1,
+      };
+    }
     case 'ADD_REVIEW_WORD': {
       const { expPoints } = state;
       return {

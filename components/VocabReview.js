@@ -22,7 +22,10 @@ class VocabReview extends React.Component {
     this.setState({
       isCorrect: correctness,
     });
-    (correctness === true) && this.props.removeReviewWord(realAnswer);
+    if (correctness === true) {
+      this.props.removeReviewWord(realAnswer);
+      this.props.addWordPoints();
+    }
   }
 
   render() {
@@ -65,11 +68,11 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  removeReviewWord: (word) => dispatch({ type: 'REMOVE_REVIEW_WORD', word }),
+  removeReviewWord: word => dispatch({ type: 'REMOVE_REVIEW_WORD', word }),
+  addWordPoints: () => dispatch({ type: 'ADD_WORD_POINTS' }),
 });
 
 VocabReview.propTypes = {
-  vocabList: PropTypes.object.isRequired,
   reviewList: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
 };

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SentenceEmpty from './SentenceEmpty';
 import CheckButton from '../CheckButton';
 import styles from '../../styles/styles';
+import ProgressBar from '../ProgressBar';
 
 const Sentences = ({
   sentenceStore,
@@ -12,15 +13,19 @@ const Sentences = ({
   nextSentenceScreen,
 }) => (
   <View style={styles.container}>
-    <Text> {currentSentenceIndex} / {Object.keys(sentenceStore.loadedCategory).length} </Text>
+    <ProgressBar
+      progress={currentSentenceIndex} 
+      total={Object.keys(sentenceStore.loadedCategory).length}
+    />
     <SentenceEmpty />
-    <TouchableHighlight onPress={() => nextSentenceScreen()} >
+    <TouchableHighlight onPress={() => nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)} >
       <CheckButton />
     </TouchableHighlight>
   </View>
 );
 
-const nextSentenceScreen = () => (dispatch) => {
+const nextSentenceScreen = (arg1, arg2) => (dispatch) => {
+  console.log(arg1, arg2);
   dispatch({ type: 'INCREMENT_SENTENCE_COUNTER' });
   dispatch({ type: 'LOAD_SENTENCE' });
 };
@@ -36,8 +41,8 @@ const mapStateToProps = state => ({
   currentSentenceIndex: state.studyStats.currentSentenceIndex,
 });
 
-const mapDispatchToProps = dispatch => ({
-  nextSentenceScreen: () => dispatch(nextSentenceScreen()),
+const mapDispatchToProps = (dispatch) => ({
+  nextSentenceScreen: (arg1, arg2) => dispatch(nextSentenceScreen(arg1, arg2)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sentences);

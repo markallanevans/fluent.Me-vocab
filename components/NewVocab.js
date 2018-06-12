@@ -47,6 +47,8 @@ const mapStateToProps = state => ({
   reviewList: state.reviewList,
 });
 
+
+
 NewVocab.propTypes = {
   vocabList: PropTypes.object.isRequired,
   reviewList: PropTypes.array.isRequired,
