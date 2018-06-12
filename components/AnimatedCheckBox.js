@@ -2,7 +2,7 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-export default class BasicExample extends React.Component {
+export default class AnimationDone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

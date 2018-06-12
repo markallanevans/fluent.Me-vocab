@@ -2,9 +2,9 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-const animationsrc = require('../animations/checked_done_.json');
+const animationsrc = require('../animations/success_state.json');
 
-export default class Animation extends React.Component {
+export default class AnimationDone extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

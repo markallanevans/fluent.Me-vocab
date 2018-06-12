@@ -7,6 +7,7 @@ import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import TextButton from './TextButton';
 import VocabTools from './VocabTools';
+import Animation from './Animation';
 
 class NewVocab extends React.Component {
   componentWillMount() {
@@ -29,14 +30,25 @@ class NewVocab extends React.Component {
                 <VocabTools id={word.id} word={word.English} />
               </View>
           ))
-          : <Text>You are finished for today! Congrats! On to the Review!</Text>
+          :
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <View>
+                <Text style={styles.header}>That is all for now!</Text>
+              </View>
+              <View style={{ height: 150, width: 150 }}>
+                <Animation />
+              </View>
+            </View>
         }
         </View>
         <ProgressBar
           progress={Object.values(this.props.reviewList).length}
           total={Object.values(this.props.vocabList).length}
         />
-        <TextButton text="Review" navTo="VocabReview" navigation={this.props.navigation} />
+        {listToShow.length > 0 ?
+          <Text style={{ color: 'white', fontSize: 18, margin: 20, textAlign: 'center' }}>Tap pictures to see the English word. Click checkbox when you know it.</Text>
+        : <TextButton text="On to the Review!" navTo="VocabReview" navigation={this.props.navigation} />
+        }
       </View>
     );
   }
@@ -46,8 +58,6 @@ const mapStateToProps = state => ({
   vocabList: state.vocabList,
   reviewList: state.reviewList,
 });
-
-
 
 NewVocab.propTypes = {
   vocabList: PropTypes.object.isRequired,
