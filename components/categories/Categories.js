@@ -15,6 +15,7 @@ const Categories = ({ navigation, category, categories }) => (
       style={{marginTop: 10}}
       data={Object.keys(categories)}
       renderItem={({ item }) => <CategoryItem category={item} />}
+      keyExtractor={(item, index) => index.toString()}
     />
     <View style={{ marginTop: 50 }} />
   </View>

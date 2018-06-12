@@ -47,7 +47,7 @@ export class CategoryItem extends Component {
 };
 
 CategoryItem.propTypes = {
-  prop: PropTypes
+  category: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
