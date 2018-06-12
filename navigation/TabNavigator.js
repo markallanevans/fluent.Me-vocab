@@ -41,14 +41,21 @@ const otherTabConfigs = {
       return <Icon name={iconName} size={25} color={tintColor} />;
     },
   }),
-  initialRouteName: 'Profile',
+  initialRouteName: 'Points',
   tabBarOptions: {
     activeTintColor: $primaryWhite,
     inactiveTintColor: $secondaryWhite,
-    activeBackgroundColor: $primaryRed,
-    inactiveBackgroundColor: $tertiaryRed,
+    activeBackgroundColor: $tertiaryRed,
+    inactiveBackgroundColor: $secondaryRed,
     style: {
       borderTopWidth: 0,
+      shadowColor: $secondaryWhite,
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
+      shadowOpacity: 0.5,
+      shadowRadius: 5,
     },
   },
 };
