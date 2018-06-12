@@ -40,7 +40,7 @@ const otherTabConfigs = {
       return <Icon name={iconName} size={25} color={tintColor} />;
     },
   }),
-  initialRouteName: 'Categories', //TODO: remove when done fixing styling of this tab
+  initialRouteName: 'Profile',
   tabBarOptions: {
     activeTintColor: 'tomato',
     inactiveTintColor: 'gray',

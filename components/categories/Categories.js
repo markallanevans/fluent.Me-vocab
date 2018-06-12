@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import styles from '../../styles/styles';
 import CategoryItem from './CategoryItem';
 
-const Login = ({ navigation, category, categories }) => (
+const Categories = ({ navigation, category, categories }) => (
   <View style={styles.container}>
-    <View style={{padding: 5}}/>
-    <Text
-      style={styles.button}
-    >Categories</Text>
+    <View style={{ padding: 5 }}/>
+    <View style={styles.button}>
+    <Text style={styles.buttonText}>Categories</Text>
+    </View>
     <FlatList
       style={{marginTop: 10}}
       data={Object.keys(categories)}
@@ -20,7 +20,7 @@ const Login = ({ navigation, category, categories }) => (
   </View>
 );
 
-Login.propTypes = {
+Categories.propTypes = {
   navigation: PropTypes.object.isRequired,
 };
 
@@ -29,4 +29,4 @@ const mapStateToProps = state => ({
   categories: state.sentenceStore.allCategories,
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Categories);

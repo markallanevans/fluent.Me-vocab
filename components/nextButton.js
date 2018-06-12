@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from '../styles/styles';
+import styles, { $secondaryRed } from '../styles/styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { $secondaryWhite } from '../styles/styles';
 
 const nextButton = () => (
-  <View>
-    <Text style={styles.button}> -> </Text>
+  <View style={styles.buttonWithoutWidth}>
+    <Icon name="navigate-next" size={50} color={$secondaryWhite} />
   </View>
 );
 

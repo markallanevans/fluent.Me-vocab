@@ -6,7 +6,9 @@ import styles from '../styles/styles';
 const TextButton = ({ text, navTo, navigation }) => (
   <View>
     <TouchableHighlight onPress={() => navigation.push(navTo)}>
-      <Text style={styles.button}>{text}</Text>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>{text}</Text>
+      </View>
     </TouchableHighlight>
   </View>
 );

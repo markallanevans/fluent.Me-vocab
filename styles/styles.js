@@ -24,13 +24,11 @@ const styles = StyleSheet.create({
     color: $primaryWhite,
   },
   button: {
-    fontSize: $headerFont,
     marginTop: 16,
-    padding: $headerFont / 2.5,
-    width: 250,
-    textAlign: 'center',
+    padding: $headerFont / 3,
     backgroundColor: $secondaryRed,
-    color: $primaryWhite,
+    width: 250,
+    borderRadius: 50,
     shadowColor: $primaryWhite,
     shadowOffset: {
       width: 0,
@@ -38,6 +36,24 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 2,
+  },
+  buttonWithoutWidth: {
+    marginTop: 16,
+    padding: $headerFont / 3,
+    backgroundColor: $secondaryRed,
+    borderRadius: 50,
+    shadowColor: $primaryWhite,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+  },
+  buttonText: {
+    fontSize: $headerFont,
+    textAlign: 'center',
+    color: $primaryWhite,
   },
   boxContainer: {
     flexDirection: 'row',
