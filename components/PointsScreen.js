@@ -14,7 +14,6 @@ const PointsScreen = ({
 }) => (
   <View style={styles.container} >
     <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center'}}>
-      <ProgressBar />
       <View style={{height: 100}} />
       <PointDetails title="Experience Points" content={expPoints} />
       <PointDetails title="Words Studied" content={wordsStudied} />

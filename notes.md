@@ -10,3 +10,25 @@ Options for Next Sentence:
 ```
 Object.assign({}, ['a','b','c']); // {0:"a", 1:"b", 2:"c"}
 ```
+
+
+### Todo
+
+[√] Prevent Next from displaying when you haven't put in an answer.
+[√] Show Answer after three incorrect tries.
+[ ] Add styling to Selected Category.
+[ ] Sentences prevent from going to next if incorrect answer is given.
+[√] Step Indicator for First Time Review.
+[√] Leaderboard.
+[ ] Fix Sentence Review so that it resets each time just like the vocab section.
+[ ] Style Add Words Section.
+[ ] Make Add Words Section Work.
+[ ] Some Kind of Motivational Tip.
+[ ] Add Instructions Where Instructions Are Not Clear. 
+[ ] Push Notifications with word to Review.
+[ ] Redux Persist.
+[ ] Grey Out Unavailable Lists.
+[ ] Start by selecting Category.
+[ ] Welcome! What would you like to Study Today!
+[ ] Add Points in Corner
+[ ] 

@@ -31,7 +31,7 @@ const customStyles = {
 
 const getCurrentScreenName = (nav) => {
   const currentRoute = nav.routes[nav.index];
-  if(currentRoute.index) {
+  if (currentRoute.index) {
     return getCurrentScreenName(currentRoute);
   } else {
     return currentRoute.routeName;

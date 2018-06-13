@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles, { $secondaryRed } from '../styles/styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import styles from '../styles/styles';
 import { $secondaryWhite } from '../styles/styles';
 
 const nextButton = () => (

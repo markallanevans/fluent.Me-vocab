@@ -13,7 +13,7 @@ export default class AnimationDone extends React.Component {
   componentDidMount() {
     Animated.timing(this.state.progress, {
       toValue: 1,
-      duration: 4000,
+      duration: 3000,
       easing: Easing.linear,
     }).start();
   }

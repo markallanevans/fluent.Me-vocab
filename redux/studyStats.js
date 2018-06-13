@@ -24,6 +24,13 @@ const studyStats = (state = initialStudyState, action) => {
         expPoints: expPoints + 20,
       };
     }
+    case 'CORRECT_WORD': {
+      const { expPoints } = state;
+      return {
+        ...state,
+        expPoints: expPoints + 50,
+      };
+    }
     case 'LOAD_SENTENCE': {
       const { expPoints, sentencesStudied } = state;
       return {

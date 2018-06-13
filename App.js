@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { View } from 'react-native';
 import reducers from './redux/reducers';
 import StepBar from './components/StepBar';
+import ExperiencePoints from './components/ExperiencePoints';
 import TabNavigator from './navigation/TabNavigator';
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
@@ -23,7 +24,10 @@ class App extends React.Component {
     return (
     <Provider store={store}>
         <View style={{flex: 1}}>
-          <StepBar  />
+          <View style={{flexDirection: 'row'}} >
+            <StepBar  />
+            <ExperiencePoints style={{marginTop: 40}}/>
+          </View>
           <TabNavigator  />
         </View>
       </Provider>

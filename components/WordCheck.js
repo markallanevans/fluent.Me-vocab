@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { View, Text, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../styles/styles';
@@ -7,10 +8,11 @@ import styles from '../styles/styles';
 const correctIcon = (<Icon name="check-circle" size={30} color="#900" />);
 const incorrectIcon = (<Icon name="error" size={30} color="#900" />);
 
-const WordCheck = ({ word, checkAnswer, isCorrect }) => {
+const WordCheck = ({ word, checkAnswer, isCorrect, dispatch }) => {
   let answerStatusIcon = '';
   if (isCorrect === true) {
     answerStatusIcon = correctIcon;
+    dispatch({ type: 'CORRECT_WORD'});
   } else if (isCorrect === false) {
     answerStatusIcon = incorrectIcon;
   }
@@ -46,4 +48,4 @@ WordCheck.defaultProps = {
   isCorrect: null,
 };
 
-export default WordCheck;
+export default connect()(WordCheck);

@@ -8,6 +8,7 @@ import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
 import TextButton from './TextButton';
 import AnimatedCheckBox from './AnimatedCheckBox';
+import AnimationThumbUp from './AnimationThumbUp';
 import StepBar from './StepBar';
 
 class VocabReview extends React.Component {
@@ -41,7 +42,7 @@ class VocabReview extends React.Component {
 
   getErrorMessage() {
     if (this.state.incorrectTries > 0 ) {
-      if (this.state.incorrectTries === 3) {
+      if (this.state.incorrectTries === 2 ) {
         return <Text>All tries used! The correct answer was {this.state.word.word}</Text>
       }
         return <Text>Try Again!</Text>
@@ -58,7 +59,15 @@ class VocabReview extends React.Component {
     
     let wordBoxContent = '';
     if (this.props.reviewList.length === 0) {
-      wordBoxContent = <Text>That is all for today!</Text>;
+      wordBoxContent = (
+        <Text style={{
+          fontColor: 'white',
+          fontSize: 18,
+          textAlign: 'center',
+        }}
+        >You've Finished Your Review! On to the Sentences for more practice!
+        </Text>
+      );
     } else if (this.state.isCorrect === true) {
       wordBoxContent = animatedCheckBox;
     } else {
@@ -82,9 +91,8 @@ class VocabReview extends React.Component {
           />
           {this.getErrorMessage()}
           <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
-          { (this.state.isCorrect || this.state.incorrectTries === 3) &&
+          { (this.state.isCorrect || this.state.incorrectTries === 2) &&
           <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
-          
         }
         </View>
       </View>

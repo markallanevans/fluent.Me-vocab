@@ -3,16 +3,16 @@ const sentences = {
   {
     list_ID: 1,
     listCategory: 'Animals',
-    listWords: ['dog', 'cat', 'fish', 'bird', 'cow', 'pig', 'mouse', 'horse', 'wing'],
+    listWords: ['dog', 'cat', 'fish'], // 'bird', 'cow', 'pig', 'mouse', 'horse', 'wing'],
     sentences: {
       dog: 'The dog barks at the cat.',
       cat: 'The cat likes fish',
-      bird: 'The bird flies in the sky',
-      cow: 'The cow makes good milk',
-      pig: 'The pig plays in the mud',
-      mouse: 'The mouse takes the cheese',
-      horse: 'The horse gallops on the plain',
-      wing: 'The bird has big wings to help it fly',
+      // bird: 'The bird flies in the sky',
+      // cow: 'The cow makes good milk',
+      // pig: 'The pig plays in the mud',
+      // mouse: 'The mouse takes the cheese',
+      // horse: 'The horse gallops on the plain',
+      // wing: 'The bird has big wings to help it fly',
     },
   },
   Transportation:

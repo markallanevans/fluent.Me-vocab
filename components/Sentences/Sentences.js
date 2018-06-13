@@ -6,7 +6,6 @@ import SentenceEmpty from './SentenceEmpty';
 import NextButton from '../nextButton';
 import styles from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
-import StepBar from '../StepBar';
 
 const Sentences = ({
   sentenceStore,
