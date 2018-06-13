@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableHighlight } from 'react-native';
 import Image from 'react-native-image-progress';
+import ProgressPie from 'react-native-progress/Pie';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
+import styles, { $primaryRed } from '../styles/styles';
 
 class WordBox extends React.Component {
   constructor() {
@@ -30,6 +31,12 @@ class WordBox extends React.Component {
                 <Image
                   source={{ uri: `https://source.unsplash.com/150x150/?${this.props.word.English}` }} 
                   style={styles.imageSize}
+                  indicator={ProgressPie}
+                  indicatorProps={{
+                    size: 150,
+                    color: $primaryRed,
+                    borderWidth: 0,
+                  }}
                 />
               }
             </View>
