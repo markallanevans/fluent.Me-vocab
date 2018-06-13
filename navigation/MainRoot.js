@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
+import { createNavigationPropConstructor, initializeListeners } from 'react-navigation-redux-helpers';
+
 import Login from '../components/Login';
 import NewVocab from '../components/NewVocab';
 import VocabReview from '../components/VocabReview';
@@ -28,10 +31,29 @@ const otherStackConfigs = {
   initialRouteName: 'RootTab',
 };
 
-const RootStack = createStackNavigator(rootConfigs, otherStackConfigs);
+export const RootStack = createStackNavigator(rootConfigs, otherStackConfigs);
 
-const App = () => (
-  <RootStack />
-);
+class App extends React.Component {
+  constructor() {
+    super();
+    this.navigationPropConstructor = createNavigationPropConstructor('root');
+  }
 
-export default App;
+  componentDidMount() {
+    initializeListeners('root', this.props.nav);
+  }
+  
+  render() {
+    const navigation = this.navigationPropConstructor(
+      this.props.dispatch,
+      this.props.nav
+    );
+    return <RootStack navigation={navigation} />
+  }
+}
+
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
+export default connect(mapStateToProps)(App);

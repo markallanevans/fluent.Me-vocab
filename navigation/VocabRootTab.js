@@ -22,13 +22,12 @@ const rootConfigs = {
 
 const otherStackConfigs = {
   initialRouteName: 'NewVocab',
-  header: 'none',
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  },
 };
 
 const VocabRootStack = createStackNavigator(rootConfigs, otherStackConfigs);
 
-const VocabRootTab = () => (
-  <VocabRootStack />
-);
-
-export default VocabRootTab;
+export default VocabRootStack;

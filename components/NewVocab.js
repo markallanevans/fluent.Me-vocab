@@ -7,6 +7,7 @@ import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import TextButton from './TextButton';
 import VocabTools from './VocabTools';
+import StepBar from './StepBar';
 import AnimationThumbsUp from './AnimationThumbUp';
 
 class NewVocab extends React.Component {

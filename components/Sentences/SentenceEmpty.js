@@ -55,7 +55,7 @@ class SentenceEmpty extends Component {
         </View>
         {
           this.state.isCorrect === true ? 
-          <Animation />
+          <Animation onDone={() => this.setState({ isCorrect: false })} />
           :
           <View></View>
         }

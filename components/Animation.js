@@ -17,7 +17,7 @@ export default class Animation extends React.Component {
       toValue: 2,
       duration: 5000,
       easing: Easing.linear,
-    }).start();
+    }).start(this.props.onDone);
   }
 
   render() {

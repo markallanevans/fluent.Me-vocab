@@ -1,9 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createNavigationPropConstructor, initializeListeners } from 'react-navigation-redux-helpers';
+
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Sentences from '../components/Sentences/Sentences';
 import VocabRootTab from '../navigation/VocabRootTab';
-import NewVocab from '../components/NewVocab';
 import PointsScreen from '../components/PointsScreen';
 import AddNewWords from '../components/AddNewWords';
 import Login from '../components/Login';
@@ -75,7 +77,30 @@ allowFontScaling - Whether label font should scale to respect Text Size accessib
 */
 
 
-const RootTab = createBottomTabNavigator(tabScreenConfigs, otherTabConfigs);
+export const RootTab = createBottomTabNavigator(tabScreenConfigs, otherTabConfigs);
 
-export default RootTab;
+class App extends React.Component {
+  constructor() {
+    super();
+    this.navigationPropConstructor = createNavigationPropConstructor('root');
+  }
+
+  componentDidMount() {
+    initializeListeners('root', this.props.nav);
+  }
+  
+  render() {
+    const navigation = this.navigationPropConstructor(
+      this.props.dispatch,
+      this.props.nav
+    );
+    return <RootTab navigation={navigation} />
+  }
+}
+
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
+export default connect(mapStateToProps)(App);
 

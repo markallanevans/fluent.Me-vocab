@@ -8,36 +8,53 @@ import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
 import TextButton from './TextButton';
 import AnimatedCheckBox from './AnimatedCheckBox';
+import StepBar from './StepBar';
 
 class VocabReview extends React.Component {
   constructor(props) {
     super(props);
+    const randCardId = Math.floor(Math.random() * props.reviewList.length);
+    const word = props.reviewList[randCardId];
     this.state = {
       currentWord: '',
       isCorrect: null,
+      incorrectTries: 0,
+      word,
     };
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.getErrorMessage = this.getErrorMessage.bind(this);
   }
   checkAnswer(userAnswer, realAnswer) {
     const correctness = (userAnswer.toLowerCase().trim() === realAnswer);
     this.setState({
       isCorrect: correctness,
     });
-    if (correctness === true) {
+    if (correctness) {
       this.props.removeReviewWord(realAnswer);
       this.props.addWordPoints();
+    } else {
+      this.setState({
+        incorrectTries: this.state.incorrectTries + 1,
+      })
+    }
+  }
+
+  getErrorMessage() {
+    if (this.state.incorrectTries > 0 ) {
+      if (this.state.incorrectTries === 3) {
+        return <Text>All tries used! The correct answer was {this.state.word.word}</Text>
+      }
+        return <Text>Try Again!</Text>
     }
   }
 
   //FIXME: problem with the rendering of the word. When checkAnswer is called, it forces the image to refresh.. and changes the current word. I think this is because theAnswer causes the whole component to re-render... 
 
   render() {
-    const randCardId = Math.floor(Math.random() * this.props.reviewList.length);
     let animatedCheckBox = '';
     if (this.state.isCorrect === true) {
       animatedCheckBox = <AnimatedCheckBox />;
     }
-    const word = this.props.reviewList[randCardId];
     
     let wordBoxContent = '';
     if (this.props.reviewList.length === 0) {
@@ -45,7 +62,7 @@ class VocabReview extends React.Component {
     } else if (this.state.isCorrect === true) {
       wordBoxContent = animatedCheckBox;
     } else {
-      wordBoxContent = <WordBox word={word} />;
+      wordBoxContent = <WordBox word={this.state.word} />;
     }
 
     return (
@@ -58,13 +75,17 @@ class VocabReview extends React.Component {
         </View>
         <View>
           <WordCheck
-            word={word}
+            word={this.state.word}
             isCorrect={this.state.isCorrect}
             checkAnswer={this.checkAnswer}
-            id={randCardId}
+            id={this.state.word.id}
           />
+          {this.getErrorMessage()}
           <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
+          { (this.state.isCorrect || this.state.incorrectTries === 3) &&
           <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
+          
+        }
         </View>
       </View>
     );
