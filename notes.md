@@ -31,4 +31,5 @@ Object.assign({}, ['a','b','c']); // {0:"a", 1:"b", 2:"c"}
 [ ] Start by selecting Category.
 [ ] Welcome! What would you like to Study Today!
 [ ] Add Points in Corner
-[ ] 
+[ ] can add styles easily by seeing if the style name matches the selected style name (and having two style props or just using an if in the style creator
+[ ] can easily default navigate to a separate CONGRATS screen (inside a stack navigator in the sentences if the stentence list is exausted... this can be done with a very simply ternary operator in the navTo function)
