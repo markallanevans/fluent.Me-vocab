@@ -16,7 +16,7 @@ class NewVocab extends React.Component {
 
   render() {
     const newWordsOnlyList = Object.values(this.props.vocabList).filter(w => w.toReview === false);
-    const listToShow = newWordsOnlyList.slice(0, 4);
+    const listToShow = newWordsOnlyList.slice(0, 3);
 
     return (
       <View style={styles.container}>
@@ -35,19 +35,22 @@ class NewVocab extends React.Component {
               <View>
                 <Text style={styles.header}>That is all for now!</Text>
               </View>
-              <View style={{ height: 150, width: 150 }}>
+              <View style={{ height: 350, width: 350 }}>
                 <AnimationThumbsUp />
               </View>
             </View>
         }
         </View>
+        {
+          listToShow.length > 0 &&
         <ProgressBar
           progress={Object.values(this.props.reviewList).length}
-          total={Object.values(this.props.vocabList).length}
+          total={Object.values(this.props.vocabList).length} 
         />
+        }
         {listToShow.length > 0 ?
           <Text style={{ color: 'white', fontSize: 18, margin: 20, textAlign: 'center' }}>Tap pictures to see the English word. Click checkbox when you know it.</Text>
-        : <TextButton text="On to the Review!" navTo="VocabReview" navigation={this.props.navigation} />
+        : <TextButton text="Review Time!" navTo="VocabReview" navigation={this.props.navigation} />
         }
       </View>
     );

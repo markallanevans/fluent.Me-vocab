@@ -79,7 +79,7 @@ class VocabReview extends React.Component {
         <View style={{ height: 150, width: 150 }}>
           {animatedCheckBox}
         </View>
-        <View style={styles.boxContainer}>
+        <View style={styles.reviewContainer}>
           {wordBoxContent}
         </View>
         <View>

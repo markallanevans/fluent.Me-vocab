@@ -56,9 +56,18 @@ const styles = StyleSheet.create({
     color: $primaryWhite,
   },
   boxContainer: {
+    marginTop: 25,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    alignItems: 'center',
+    height: 375,
+  },
+  reviewContainer: {
+    flexDirection: 'row',
+    // flexWrap: 'wrap',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   imageSize: {
     width: 150,
