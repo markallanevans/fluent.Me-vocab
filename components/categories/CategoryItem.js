@@ -3,10 +3,11 @@ import { View, Text } from 'react-native';
 import Image from 'react-native-image-progress';
 import ProgressPie from 'react-native-progress/Pie';
 import PropTypes from 'prop-types';
-import { $secondaryWhite, $primaryRed, $secondaryRed, $primaryWhite } from '../../styles/styles'
+import { $secondaryWhite, $primaryRed, $secondaryRed, $primaryWhite, $tertiaryRed, $tertiaryWhite } from '../../styles/styles'
 import { connect } from 'react-redux';
 
 export class CategoryItem extends Component {
+  
   render() {
     return (
       <View style={{ 
@@ -15,7 +16,9 @@ export class CategoryItem extends Component {
         margin: 5, 
         justifyContent: 'space-between',
         borderRadius: 50,
-        backgroundColor: $secondaryWhite }}>
+        borderColor: $secondaryRed,
+        borderWidth: this.props.currentCategoryTitle === this.props.category && 2,
+        backgroundColor: this.props.currentCategoryTitle === this.props.category ? $primaryWhite : $secondaryWhite }}>
          <View 
           style={{
             height: 50,
@@ -46,7 +49,7 @@ export class CategoryItem extends Component {
           marginRight: 40,
           alignSelf: 'center',
           color: $secondaryRed,
-          fontSize: 18,
+          fontSize: this.props.currentCategoryTitle === this.props.category ? 24 : 18, 
           }} >{this.props.category}</Text>
         <Text style={{
           fontSize: 25,
@@ -66,7 +69,7 @@ CategoryItem.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  
+  currentCategoryTitle: state.sentenceStore.currentCategoryTitle
 })
 
 const mapDispatchToProps = {

@@ -33,7 +33,7 @@ class NewVocab extends React.Component {
           :
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <View>
-                <Text style={styles.header}>That is all for now!</Text>
+                <Text style={styles.header}>That's all for now!</Text>
               </View>
               <View style={{ height: 350, width: 350 }}>
                 <AnimationThumbsUp />
