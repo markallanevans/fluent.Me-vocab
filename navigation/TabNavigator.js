@@ -43,7 +43,7 @@ const otherTabConfigs = {
       return <Icon name={iconName} size={25} color={tintColor} />;
     },
   }),
-  initialRouteName: 'Vocab',
+  initialRouteName: 'Add Words',
   tabBarOptions: {
     activeTintColor: $primaryWhite,
     inactiveTintColor: $secondaryWhite,
