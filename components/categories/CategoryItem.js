@@ -7,6 +7,15 @@ import { $secondaryWhite, $primaryRed, $secondaryRed, $primaryWhite, $tertiaryRe
 import { connect } from 'react-redux';
 
 export class CategoryItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      thisItemCategoryTitle: props.category,
+      allCategories: props.allCategories,
+      thisCategoryLength: props.allCategories[props.category].listWords.length,
+      // thisCategoryLength: 5,
+    }
+  }
   
   render() {
     return (
@@ -57,7 +66,8 @@ export class CategoryItem extends Component {
           alignSelf: 'center',
           marginRight: 10,
         }}>
-          {Math.floor(Math.random()*1000)}
+          {/* {Math.floor(Math.random()*1000)} */}
+          {this.state.thisCategoryLength}
         </Text>
       </View>
     )
@@ -69,7 +79,8 @@ CategoryItem.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentCategoryTitle: state.sentenceStore.currentCategoryTitle
+  currentCategoryTitle: state.sentenceStore.currentCategoryTitle,
+  allCategories: state.sentenceStore.allCategories,
 })
 
 const mapDispatchToProps = {
