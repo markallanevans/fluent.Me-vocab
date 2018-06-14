@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SentenceEmpty from './SentenceEmpty';
 import NextButton from '../nextButton';
-import styles from '../../styles/styles';
+import styles, { $primaryWhite } from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
+import { sequenceEqual } from 'rxjs/operator/sequenceEqual';
 
 const Sentences = ({
   sentenceStore,
@@ -19,9 +20,14 @@ const Sentences = ({
     />
     <View style={{ height: 40 }}/>
     <SentenceEmpty />
-    <TouchableHighlight onPress={() => nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)} >
-      <NextButton />
+    { currentSentenceIndex + 1 < Object.keys(sentenceStore.loadedCategory).length ?
+    <TouchableHighlight onPress={() => 
+      nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)} >
+      <NextButton /> 
     </TouchableHighlight>
+    :
+    <Text style={{color: $primaryWhite, fontSize: 18, textAlign: 'center', marginTop: 50 }}>Last Sentence of the day! Good Luck! See you next time!</Text>
+    }
   </View>
 );
 

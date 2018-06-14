@@ -63,7 +63,7 @@ class VocabReview extends React.Component {
     if (this.props.reviewList.length === 0) {
       wordBoxContent = (
         <View>
-        <View style={{ height: 150, width: 150, alignItems: 'center' }}>
+        <View style={{ height: 150, width: 150, alignSelf: 'center' }}>
           <AnimatedThumbsUp />
         </View>
         <Text style={{
