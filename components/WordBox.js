@@ -21,8 +21,9 @@ class WordBox extends React.Component {
           <TouchableHighlight
             // onPress={() => dispatch({ type: 'FLIP_CARD', id: word.id })}
             onPress={() => this.props.flipCard(this.props.word.id)}
-            onLongPress={() => this.props.addReviewWord(this.props.word.id, this.props.word.word, this.props.reviewList)}
-          >
+            onLongPress={() => this.props.addReviewWord(this.props.word.id, this.props.word.English, this.props.reviewList)}
+            // onLongPress={() => console.log(this.props.word)}
+>
             <View style={styles.flashBox}>
               {
               !this.props.word.showImage ?
