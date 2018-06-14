@@ -5,21 +5,32 @@ import PropTypes from 'prop-types';
 import styles from '../../styles/styles';
 import CategoryItem from './CategoryItem';
 
-const Categories = ({ navigation, category, categories }) => (
-  <View style={styles.container}>
-    <View style={{ padding: 5 }}/>
-    <View style={styles.button}>
-    <Text style={styles.buttonText}>Categories</Text>
-    </View>
-    <FlatList
-      style={{marginTop: 10}}
-      data={Object.keys(categories)}
-      renderItem={({ item }) => <CategoryItem category={item} />}
-      keyExtractor={(item, index) => index.toString()}
-    />
-    <View style={{ marginTop: 50 }} />
-  </View>
-);
+const category = 'Animals';
+
+// const Categories = ({ navigation, category, categories }) => (
+class Categories extends React.Component {
+  componentWillMount() {
+    this.props.loadCategory(category);
+  }
+
+  render() {
+     return(
+       <View style={styles.container}>
+         <View style={{ padding: 5 }}/>
+         <View style={styles.button}>
+         <Text style={styles.buttonText}>Categories</Text>
+         </View>
+         <FlatList
+           style={{marginTop: 10}}
+           data={Object.keys(this.props.categories)}
+           renderItem={({ item }) => <CategoryItem category={item} />}
+           keyExtractor={(item, index) => index.toString()}
+         />
+         <View style={{ marginTop: 50 }} />
+       </View>
+     );
+  }
+}
 
 Categories.propTypes = {
   navigation: PropTypes.object.isRequired,
@@ -30,4 +41,9 @@ const mapStateToProps = state => ({
   categories: state.sentenceStore.allCategories,
 });
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = dispatch => ({
+  loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
+  loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);
