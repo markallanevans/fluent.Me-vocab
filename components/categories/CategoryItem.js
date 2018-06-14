@@ -17,7 +17,7 @@ export class CategoryItem extends Component {
         justifyContent: 'space-between',
         borderRadius: 50,
         borderColor: $secondaryRed,
-        borderWidth: this.props.currentCategoryTitle === this.props.category && 2,
+        borderWidth: this.props.currentCategoryTitle === this.props.category ? 2 : 0,
         backgroundColor: this.props.currentCategoryTitle === this.props.category ? $primaryWhite : $secondaryWhite }}>
          <View 
           style={{

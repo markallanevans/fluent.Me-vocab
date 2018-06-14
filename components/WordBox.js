@@ -24,7 +24,7 @@ class WordBox extends React.Component {
           >
             <View style={styles.flashBox}>
               {
-              !this.props.word.showImage && this.state.loading ?
+              !this.props.word.showImage ?
                 <Text style={styles.vocabText}>{this.props.word.showFront ? this.props.word.English : this.props.word.Spanish}
                 </Text>
               :

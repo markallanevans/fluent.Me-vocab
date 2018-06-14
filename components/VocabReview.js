@@ -2,14 +2,13 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
+import styles, {$primaryWhite} from '../styles/styles';
 import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
 import TextButton from './TextButton';
 import AnimatedCheckBox from './AnimatedCheckBox';
-import AnimationThumbUp from './AnimationThumbUp';
-import StepBar from './StepBar';
+import AnimatedThumbsUp from './AnimationThumbUp';
 
 class VocabReview extends React.Component {
   constructor(props) {
@@ -43,9 +42,9 @@ class VocabReview extends React.Component {
   getErrorMessage() {
     if (this.state.incorrectTries > 0 ) {
       if (this.state.incorrectTries === 2 ) {
-        return <Text>All tries used! The correct answer was {this.state.word.word}</Text>
+        return <Text style={{color: $primaryWhite, fontSize: 18, textAlign: 'center'}}>Oops! It's: {this.state.word.word}. Better Luck Next Time!</Text>
       }
-        return <Text>Try Again!</Text>
+        return <Text style={{color: $primaryWhite, fontSize: 18, textAlign: 'center'}}>Try Again!</Text>
     }
   }
 
@@ -54,31 +53,43 @@ class VocabReview extends React.Component {
   render() {
     let animatedCheckBox = '';
     if (this.state.isCorrect === true) {
-      animatedCheckBox = <AnimatedCheckBox />;
+      animatedCheckBox = (
+        <View style={{ height: 150, width: 150 }}>
+        <AnimatedCheckBox />
+      </View>);
     }
     
     let wordBoxContent = '';
     if (this.props.reviewList.length === 0) {
       wordBoxContent = (
+        <View>
+        <View style={{ height: 150, width: 150, alignItems: 'center' }}>
+          <AnimatedThumbsUp />
+        </View>
         <Text style={{
-          fontColor: 'white',
+          color: 'white',
           fontSize: 18,
           textAlign: 'center',
+          marginBottom: 24,
         }}
         >You've Finished Your Review! On to the Sentences for more practice!
         </Text>
+        </View>
       );
     } else if (this.state.isCorrect === true) {
       wordBoxContent = animatedCheckBox;
     } else {
-      wordBoxContent = <WordBox word={this.state.word} />;
+      wordBoxContent = (
+        <View style={{marginBottom: 40 }}>
+          <WordBox word={this.state.word} />
+        </View>);
     }
+
+    const nextScreen = this.props.reviewList.length > 0 ? 'VocabReview' : 'Sentences';
 
     return (
       <View style={styles.container}>
-        <View style={{ height: 150, width: 150 }}>
-          {animatedCheckBox}
-        </View>
+          {/* {animatedCheckBox} */}
         <View style={styles.reviewContainer}>
           {wordBoxContent}
         </View>
@@ -91,9 +102,14 @@ class VocabReview extends React.Component {
           />
           {this.getErrorMessage()}
           <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
-          { (this.state.isCorrect || this.state.incorrectTries === 2) &&
+          {/* { (this.state.isCorrect || this.state.incorrectTries === 2) &&
           <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
+        } */}
+          { 
+            (this.state.isCorrect || this.state.incorrectTries === 2) &&
+          <TextButton text="next" navTo={nextScreen} navigation={this.props.navigation} action={nextScreen === 'VocabReview' ? "push" : "navigate" } />
         }
+        
         </View>
       </View>
     );

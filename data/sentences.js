@@ -19,7 +19,12 @@ const sentences = {
   {
     list_ID: 2,
     listCategory: 'Transportation',
-    listContents: ['train', 'plane', 'car', 'truck', 'bicycle', 'bus', 'boat', 'ship', 'tire', 'gasoline', 'engine', '(train) ticket'],
+    listWords: ['train', 'plane', 'car', 'truck', 'bicycle', 'bus', 'boat', 'ship', 'tire', 'gasoline', 'engine', '(train) ticket'],
+    sentences: {
+      train: 'The train has many cabins.',
+      plane: 'There\'s a plane in the sky',
+      car: 'You want a good car you should buy a Volvo.'
+    }
   },
   Location:
   {

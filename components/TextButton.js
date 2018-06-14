@@ -3,9 +3,9 @@ import { View, Text, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from '../styles/styles';
 
-const TextButton = ({ text, navTo, navigation }) => (
+const TextButton = ({ text, navTo, navigation, action }) => (
   <View>
-    <TouchableHighlight onPress={() => navigation.push(navTo)}>
+    <TouchableHighlight onPress={() => action === 'navigate' ? navigation.navigate(navTo) : navigation.push(navTo)}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>{text}</Text>
       </View>
