@@ -6,7 +6,6 @@ import SentenceEmpty from './SentenceEmpty';
 import NextButton from '../nextButton';
 import styles, { $primaryWhite } from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
-import { sequenceEqual } from 'rxjs/operator/sequenceEqual';
 
 const Sentences = ({
   sentenceStore,
@@ -15,7 +14,7 @@ const Sentences = ({
 }) => (
   <View style={styles.container}>
     <ProgressBar
-      progress={currentSentenceIndex} 
+      progress={currentSentenceIndex + 1} 
       total={Object.keys(sentenceStore.loadedCategory).length}
     />
     <View style={{ height: 40 }}/>

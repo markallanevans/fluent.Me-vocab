@@ -20,7 +20,8 @@ class WordBox extends React.Component {
         <View style={this.props.word.showFront ? styles.wordBoxEng : styles.wordBoxEsp}>
           <TouchableHighlight
             // onPress={() => dispatch({ type: 'FLIP_CARD', id: word.id })}
-            onPress={() => this.props.dispatch({ type: 'TOGGLE_IMAGE', id: this.props.word.id })}
+            onPress={() => this.props.flipCard(this.props.word.id)}
+            onLongPress={() => this.props.addReviewWord(this.props.word.id, this.props.word.word, this.props.reviewList)}
           >
             <View style={styles.flashBox}>
               {
@@ -52,4 +53,29 @@ WordBox.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect()(WordBox);
+const addReviewWord = (id, word, reviewList) => dispatch => {
+
+  //FIXME: why doesn't this work?
+  console.log(reviewList.indexOf(reviewList.id));
+  if (reviewList.indexOf(id) === -1) {
+   dispatch({ type: 'ADD_REVIEW_WORD', id, word });
+  }
+  return;
+}
+
+const flipCard = (id) => dispatch => {
+  dispatch({ type: 'TOGGLE_IMAGE', id})
+}
+
+const mapStateToProps = state => ({
+  reviewList: state.reviewList,
+  dispatch: state.dispatch,
+})
+
+const mapDispatchToProps = dispatch => ({
+  // addReviewWord: (id, word) => dispatch({ type: 'ADD_REVIEW_WORD', id, word }),
+  addReviewWord: (id, word, reviewList) => dispatch(addReviewWord(id, word, reviewList)),
+  flipCard: id => dispatch(flipCard(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(WordBox);
