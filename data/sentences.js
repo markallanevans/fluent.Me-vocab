@@ -3,11 +3,11 @@ const sentences = {
   {
     list_ID: 1,
     listCategory: 'Animals',
-    listWords: ['dog', 'cat', 'fish'], // 'bird', 'cow', 'pig', 'mouse', 'horse', 'wing'],
+    listWords: ['dog', 'cat', 'fish'], // , 'bird', 'cow', 'pig', 'mouse', 'horse', 'wing'],
     sentences: {
       dog: 'The dog barks at the cat.',
       cat: 'The cat likes fish',
-      // bird: 'The bird flies in the sky',
+      bird: 'The bird flies in the sky',
       // cow: 'The cow makes good milk',
       // pig: 'The pig plays in the mud',
       // mouse: 'The mouse takes the cheese',
@@ -23,8 +23,8 @@ const sentences = {
     sentences: {
       train: 'The train has many cabins.',
       plane: 'There\'s a plane in the sky',
-      car: 'You want a good car you should buy a Volvo.'
-    }
+      car: 'You want a good car you should buy a Volvo.',
+    },
   },
   Location:
   {

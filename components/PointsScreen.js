@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from '../styles/styles';
 import PointDetails from './PointDetails';
-import ProgressBar from './ProgressBar';
 
 const PointsScreen = ({
   expPoints,
@@ -13,8 +12,8 @@ const PointsScreen = ({
   sentencesReviewed,
 }) => (
   <View style={styles.container} >
-    <View style={{flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center'}}>
-      <View style={{height: 100}} />
+    <View style={{ flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ height: 100 }} />
       <PointDetails title="Experience Points" content={expPoints} />
       <PointDetails title="Words Studied" content={wordsStudied} />
       <PointDetails title="Sentences Studied" content={sentencesStudied} />

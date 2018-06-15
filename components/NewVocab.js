@@ -33,7 +33,7 @@ class NewVocab extends React.Component {
           :
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <View>
-                <Text style={styles.header}>That's all for now!</Text>
+                <Text style={styles.header}>That&apos;s all for now!</Text>
               </View>
               <View style={{ height: 350, width: 350 }}>
                 <AnimationThumbsUp />
@@ -43,13 +43,21 @@ class NewVocab extends React.Component {
         </View>
         {
           listToShow.length > 0 &&
-        <ProgressBar
-          progress={Object.values(this.props.reviewList).length}
-          total={Object.values(this.props.vocabList).length} 
-        />
+          <ProgressBar
+            progress={Object.values(this.props.reviewList).length}
+            total={Object.values(this.props.vocabList).length}
+          />
         }
         {listToShow.length > 0 ?
-          <Text style={{ color: 'white', fontSize: 18, margin: 20, textAlign: 'center' }}>Tap pictures to see the English word. Click checkbox when you know it.</Text>
+          <Text style={{
+            color: 'white',
+            fontSize: 18,
+            margin: 20,
+            textAlign: 'center',
+          }}
+          >
+          Tap pictures to see the English word. Click checkbox when you know it.
+          </Text>
         : <TextButton text="Review Time!" navTo="VocabReview" navigation={this.props.navigation} />
         }
       </View>

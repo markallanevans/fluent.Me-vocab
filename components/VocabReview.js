@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles, {$primaryWhite} from '../styles/styles';
+import styles, { $primaryWhite } from '../styles/styles';
 import WordBox from './WordBox';
 import ProgressBar from './ProgressBar';
 import WordCheck from './WordCheck';
@@ -16,7 +16,6 @@ class VocabReview extends React.Component {
     const randCardId = Math.floor(Math.random() * props.reviewList.length);
     const word = props.reviewList[randCardId];
     this.state = {
-      currentWord: '',
       isCorrect: null,
       incorrectTries: 0,
       word,
@@ -24,6 +23,35 @@ class VocabReview extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.getErrorMessage = this.getErrorMessage.bind(this);
   }
+
+  getErrorMessage() {
+    if (this.state.incorrectTries > 0) {
+      if (this.state.incorrectTries === 2) {
+        return (
+          <Text
+            style={{
+              color: $primaryWhite,
+              fontSize: 18,
+              textAlign: 'center',
+            }}
+          >
+            Oops! It&apos;s: {this.state.word.word}. Better Luck Next Time!
+          </Text>);
+      }
+      return (
+        <Text
+          style={{
+            color: $primaryWhite,
+            fontSize: 18,
+            textAlign: 'center',
+        }}
+        >
+          Try Again!
+        </Text>);
+    }
+    return null;
+  }
+
   checkAnswer(userAnswer, realAnswer) {
     const correctness = (userAnswer.toLowerCase().trim() === realAnswer);
     this.setState({
@@ -35,52 +63,46 @@ class VocabReview extends React.Component {
     } else {
       this.setState({
         incorrectTries: this.state.incorrectTries + 1,
-      })
+      });
     }
   }
-
-  getErrorMessage() {
-    if (this.state.incorrectTries > 0 ) {
-      if (this.state.incorrectTries === 2 ) {
-        return <Text style={{color: $primaryWhite, fontSize: 18, textAlign: 'center'}}>Oops! It's: {this.state.word.word}. Better Luck Next Time!</Text>
-      }
-        return <Text style={{color: $primaryWhite, fontSize: 18, textAlign: 'center'}}>Try Again!</Text>
-    }
-  }
-
-  //FIXME: problem with the rendering of the word. When checkAnswer is called, it forces the image to refresh.. and changes the current word. I think this is because theAnswer causes the whole component to re-render... 
+  /* FIXME: problem with the rendering of the word.
+  * When checkAnswer is called, it forces the image to refresh..
+  * and changes the current word. I think this is because theAnswer
+  * causes the whole component to re-render...
+  */
 
   render() {
     let animatedCheckBox = '';
     if (this.state.isCorrect === true) {
       animatedCheckBox = (
         <View style={{ height: 150, width: 150 }}>
-        <AnimatedCheckBox />
-      </View>);
+          <AnimatedCheckBox />
+        </View>);
     }
-    
+
     let wordBoxContent = '';
     if (this.props.reviewList.length === 0) {
       wordBoxContent = (
         <View>
-        <View style={{ height: 150, width: 150, alignSelf: 'center' }}>
-          <AnimatedThumbsUp />
-        </View>
-        <Text style={{
-          color: 'white',
-          fontSize: 18,
-          textAlign: 'center',
-          marginBottom: 24,
-        }}
-        >You've Finished Your Review! On to the Sentences for more practice!
-        </Text>
+          <View style={{ height: 150, width: 150, alignSelf: 'center' }}>
+            <AnimatedThumbsUp />
+          </View>
+          <Text style={{
+            color: 'white',
+            fontSize: 18,
+            textAlign: 'center',
+            marginBottom: 24,
+          }}
+          >You&apos;ve Finished Your Review! On to the Sentences for more practice!
+          </Text>
         </View>
       );
     } else if (this.state.isCorrect === true) {
       wordBoxContent = animatedCheckBox;
     } else {
       wordBoxContent = (
-        <View style={{marginBottom: 40 }}>
+        <View style={{ marginBottom: 40 }}>
           <WordBox word={this.state.word} />
         </View>);
     }
@@ -89,7 +111,6 @@ class VocabReview extends React.Component {
 
     return (
       <View style={styles.container}>
-          {/* {animatedCheckBox} */}
         <View style={styles.reviewContainer}>
           {wordBoxContent}
         </View>
@@ -102,14 +123,15 @@ class VocabReview extends React.Component {
           />
           {this.getErrorMessage()}
           <ProgressBar progress={1 - (this.props.reviewList.length / 10)} total={1} />
-          {/* { (this.state.isCorrect || this.state.incorrectTries === 2) &&
-          <TextButton text="next" navTo="VocabReview" navigation={this.props.navigation} />
-        } */}
-          { 
+          {
             (this.state.isCorrect || this.state.incorrectTries === 2) &&
-          <TextButton text="next" navTo={nextScreen} navigation={this.props.navigation} action={nextScreen === 'VocabReview' ? "push" : "navigate" } />
+            <TextButton
+              text="next"
+              navTo={nextScreen}
+              navigation={this.props.navigation}
+              action={nextScreen === 'VocabReview' ? 'push' : 'navigate'}
+            />
         }
-        
         </View>
       </View>
     );
@@ -133,6 +155,8 @@ const mapDispatchToProps = dispatch => ({
 VocabReview.propTypes = {
   reviewList: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
+  removeReviewWord: PropTypes.func.isRequired,
+  addWordPoints: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VocabReview);

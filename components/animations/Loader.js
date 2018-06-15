@@ -20,7 +20,7 @@ export default class Loader extends React.Component {
 
   render() {
     return (
-      <LottieView source={require('../animations/like.json')} progress={this.state.progress} />
+      <LottieView source={require('../../animations/like.json')} progress={this.state.progress} />
     );
   }
 }

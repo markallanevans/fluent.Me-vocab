@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet, ScrollView } from 'react-native';
-import { $secondaryWhite, $secondaryRed, $primaryRed, $primaryWhite } from '../styles/styles';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
+import styles, { $secondaryWhite, $secondaryRed, $primaryWhite } from '../styles/styles';
 
-const searchWord= 'animal';
-const $placeHolderBlue = "#014ea5";
+const $placeHolderBlue = '#014ea5';
 
 const boxStyles = StyleSheet.create({
   newWordBox: {
@@ -43,22 +41,25 @@ class AddWords extends React.Component {
       category: this.props.currentCategory,
     };
   }
-  
+
   render() {
-    console.log(JSON.stringify(this.state));
+    const { addNewWordToStore } = this.props;
+    const { wordToAdd, sentenceToAdd, category } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
           <View style={{ height: 50 }} />
           <Text style={styles.header}>Add new Words</Text>
-          <Text style={{ color: $primaryWhite, fontSize: 18, padding: 10 }}>Add your own vocabulary to any category, or create a new category.</Text>
+          <Text style={{ color: $primaryWhite, fontSize: 18, padding: 10 }}>
+            Add your own vocabulary to any category, or create a new category.
+          </Text>
           <View style={{ margin: 10 }}>
             <TextInput
               placeholder="your word..."
               placeholderTextColor={$placeHolderBlue}
               style={boxStyles.newWordBox}
               onEndEditing={e => this.setState({ wordToAdd: e.nativeEvent.text.toLowerCase() })}
-              />
+            />
           </View>
           <View style={{ margin: 10 }}>
             <TextInput
@@ -66,7 +67,7 @@ class AddWords extends React.Component {
               placeholderTextColor={$placeHolderBlue}
               style={boxStyles.newSentenceBox}
               onEndEditing={e => this.setState({ sentenceToAdd: e.nativeEvent.text })}
-              />
+            />
           </View>
           <Text style={{ margin: 10, color: 'white', fontSize: 18 }} >Suggested Image:</Text>
 
@@ -86,7 +87,7 @@ class AddWords extends React.Component {
           <View style={styles.button}>
             <Text
               style={styles.buttonText}
-              onPress={() => this.props.addNewWordToStore(this.state.wordToAdd, this.state.sentenceToAdd, this.state.category)}
+              onPress={() => addNewWordToStore(wordToAdd, sentenceToAdd, category)}
             >Add!
             </Text>
           </View>
@@ -98,7 +99,8 @@ class AddWords extends React.Component {
 }
 
 AddWords.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  currentCategory: PropTypes.string.isRequired,
+  addNewWordToStore: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -7,33 +7,34 @@ import CategoryItem from './CategoryItem';
 
 const category = 'Animals';
 
-// const Categories = ({ navigation, category, categories }) => (
 class Categories extends React.Component {
   componentWillMount() {
     this.props.loadCategory(category);
   }
 
   render() {
-     return(
-       <View style={styles.container}>
-         <View style={{ padding: 5 }}/>
-         <View style={styles.button}>
-         <Text style={styles.buttonText}>Categories</Text>
-         </View>
-         <FlatList
-           style={{marginTop: 10}}
-           data={Object.keys(this.props.categories)}
-           renderItem={({ item }) => <CategoryItem category={item} />}
-           keyExtractor={(item, index) => index.toString()}
-         />
-         <View style={{ marginTop: 50 }} />
-       </View>
-     );
+    return (
+      <View style={styles.container}>
+        <View style={{ padding: 5 }} />
+        <View style={styles.button}>
+          <Text style={styles.buttonText}>
+          Categories
+          </Text>
+        </View>
+        <FlatList
+          style={{ marginTop: 10 }}
+          data={Object.keys(this.props.categories)}
+          renderItem={({ item }) => <CategoryItem category={item} />}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
+    );
   }
 }
 
 Categories.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  categories: PropTypes.object.isRequired,
+  loadCategory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

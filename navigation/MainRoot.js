@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 import { createNavigationPropConstructor, initializeListeners } from 'react-navigation-redux-helpers';
-
 import Login from '../components/Login';
 import NewVocab from '../components/NewVocab';
 import VocabReview from '../components/VocabReview';
-import RootTab from '../navigation/TabNavigator';
+import TabNavigatorWithNaviationState from '../navigation/TabNavigator';
 
 const rootConfigs = {
   Home: { screen: Login },
-  RootTab: { screen: RootTab },
+  TabNavigator: { screen: TabNavigatorWithNaviationState },
   NewVocab:
     {
       screen: NewVocab,
@@ -28,7 +27,7 @@ const rootConfigs = {
 };
 
 const otherStackConfigs = {
-  initialRouteName: 'RootTab',
+  initialRouteName: 'TabNavigator',
 };
 
 export const RootStack = createStackNavigator(rootConfigs, otherStackConfigs);
@@ -48,7 +47,7 @@ class App extends React.Component {
       this.props.dispatch,
       this.props.nav
     );
-    return <RootStack navigation={navigation} />
+    return <RootStack navigation={navigation} />;
   }
 }
 
