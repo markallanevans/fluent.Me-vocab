@@ -10,7 +10,11 @@ const VocabTools = ({
   addReviewWord,
   reviewList,
 }) => (
-  <View style={{ justifyContent: 'center', flexDirection: 'row' }}>
+  <View style={{
+    justifyContent: 'center',
+    flexDirection: 'row',
+  }}
+  >
     <TouchableHighlight
       onPress={() => addReviewWord(id, word, reviewList)}
     >

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
+import styles from '../../styles/styles';
 import PointDetails from './PointDetails';
 
 const PointsScreen = ({

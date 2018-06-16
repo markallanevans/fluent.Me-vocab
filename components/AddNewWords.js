@@ -1,8 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput, Image, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableHighlight,
+} from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles, { $secondaryWhite, $secondaryRed, $primaryWhite } from '../styles/styles';
+import styles, { $secondaryWhite, $tertiaryRed, $secondaryRed, $primaryWhite } from '../styles/styles';
 
 const $placeHolderBlue = '#014ea5';
 
@@ -39,11 +47,18 @@ class AddWords extends React.Component {
       wordToAdd: 'empty',
       sentenceToAdd: '',
       category: this.props.currentCategory,
+      wordsAdded: 0,
     };
   }
 
+  clickHandler(wordToAdd, sentenceToAdd, category) {
+    this.props.addNewWordToStore(wordToAdd, sentenceToAdd, category);
+    this.setState({
+      wordsAdded: this.state.wordsAdded + 1,
+    });
+  }
+
   render() {
-    const { addNewWordToStore } = this.props;
     const { wordToAdd, sentenceToAdd, category } = this.state;
     return (
       <ScrollView>
@@ -84,13 +99,17 @@ class AddWords extends React.Component {
               style={styles.answerBox}
             />
           </View>
-          <View style={styles.button}>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor={$tertiaryRed}
+            onPress={() => 
+            this.clickHandler(wordToAdd, sentenceToAdd, category)}
+          >
             <Text
               style={styles.buttonText}
-              onPress={() => addNewWordToStore(wordToAdd, sentenceToAdd, category)}
-            >Add!
+            >Add! { this.state.wordsAdded > 0 && <Text>+{this.state.wordsAdded}</Text> }
             </Text>
-          </View>
+          </TouchableHighlight>
           <View style={{ height: 50 }} />
         </View>
       </ScrollView>

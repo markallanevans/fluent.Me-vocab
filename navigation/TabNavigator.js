@@ -4,9 +4,9 @@ import { createNavigationPropConstructor, initializeListeners } from 'react-navi
 import { createBottomTabNavigator } from 'react-navigation';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import SentenceReview from '../components/Sentences/SentenceReview';
+import SentenceReview from '../components/sentenceScreen/SentenceReview';
 import VocabRootTab from '../navigation/VocabRootTab';
-import PointsScreen from '../components/PointsScreen';
+import PointsScreen from '../components/points/PointsScreen';
 import AddNewWords from '../components/AddNewWords';
 import Login from '../components/Login';
 import Categories from '../components/categories/Categories';

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, TouchableHighlight, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import SentenceWithBlank from './SentenceWithBlank';
-import NextButton from '../nextButton';
-import styles, { $primaryWhite } from '../../styles/styles';
+import styles, { $primaryWhite, $secondaryWhite } from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
 
 const SentenceReview = ({
@@ -20,10 +20,12 @@ const SentenceReview = ({
     <View style={{ height: 40 }} />
     <SentenceWithBlank />
     { currentSentenceIndex + 1 < Object.keys(sentenceStore.loadedCategory).length ?
-      <TouchableHighlight onPress={() =>
+      <TouchableHighlight
+        style={styles.buttonWithoutWidth}
+        onPress={() =>
         nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)}
       >
-        <NextButton />
+        <Icon name="navigate-next" size={50} color={$secondaryWhite} />
       </TouchableHighlight>
     :
       <Text style={{

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { createStackNavigator } from 'react-navigation';
 import { createNavigationPropConstructor, initializeListeners } from 'react-navigation-redux-helpers';
 import Login from '../components/Login';
-import NewVocab from '../components/NewVocab';
-import VocabReview from '../components/VocabReview';
+import NewVocab from '../components/vocabScreen/NewVocab';
+import VocabReview from '../components/vocabScreen/VocabReview';
 import TabNavigatorWithNaviationState from '../navigation/TabNavigator';
 
 const rootConfigs = {

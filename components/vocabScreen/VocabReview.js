@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles, { $primaryWhite } from '../styles/styles';
-import WordBox from './WordBox';
-import ProgressBar from './ProgressBar';
-import WordCheck from './WordCheck';
-import TextButton from './TextButton';
-import AnimatedCheckBox from './AnimatedCheckBox';
-import AnimatedThumbsUp from './AnimationThumbUp';
+import styles, { $primaryWhite } from '../../styles/styles';
+import WordBox from '../WordBox';
+import ProgressBar from '../ProgressBar';
+import WordCheck from '../WordCheck';
+import TextButton from '../buttons/TextButton';
+import AnimatedCheckBox from '../animations/AnimatedCheckBox';
+import AnimatedThumbsUp from '../animations/AnimationThumbUp';
 
 class VocabReview extends React.Component {
   constructor(props) {

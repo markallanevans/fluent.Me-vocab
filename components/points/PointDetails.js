@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import { $primaryWhite, $secondaryRed } from '../styles/styles';
+import { $primaryWhite, $secondaryRed } from '../../styles/styles';
 
 const PointDetails = ({ content, title }) => (
   <View style={{
@@ -34,7 +34,7 @@ const PointDetails = ({ content, title }) => (
           textAlign: 'center',
         }}
       >
-        {content} 
+        {content}
       </Text>
     </View>
     <View style={{

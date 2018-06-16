@@ -1,10 +1,11 @@
 import React from 'react';
 import { Animated, Easing } from 'react-native';
+import PropTypes from 'prop-types';
 import LottieView from 'lottie-react-native';
 
-const animationsrc = require('../animations/success_state.json');
+const animationSource = require('../../animations/checked_done_.json');
 
-export default class AnimationDone extends React.Component {
+export default class Animation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,12 +18,16 @@ export default class AnimationDone extends React.Component {
       toValue: 2,
       duration: 5000,
       easing: Easing.linear,
-    }).start();
+    }).start(this.props.onDone);
   }
 
   render() {
     return (
-      <LottieView source={animationsrc} progress={this.state.progress} />
+      <LottieView source={animationSource} progress={this.state.progress} />
     );
   }
 }
+
+Animation.propTypes = {
+  onDone: PropTypes.func.isRequired,
+};

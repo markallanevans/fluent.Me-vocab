@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-// import s from './styles/progressBarStyles';
-import { $secondaryRed, $tertiaryRed, $secondaryWhite } from '../styles/styles';
 import { connect } from 'react-redux';
+import { $secondaryRed, $tertiaryRed, $secondaryWhite } from '../styles/styles';
 
 
 //Okay, so the property needs to be injected independently... is there a way to 

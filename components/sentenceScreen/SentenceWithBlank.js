@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
 import WordBox from '../WordBox';
-import Animation from '../Animation';
+import Animation from '../animations/Animation';
 import styles from '../../styles/styles';
 
 const category = 'Animals';
@@ -24,10 +24,12 @@ class SentenceWithBlank extends Component {
   }
 
   checkAnswer(userAnswer, realAnswer) {
-    const result = (userAnswer.trim().toLowerCase() === realAnswer);
-    this.setState({
-      isCorrect: result,
-    });
+    const result = userAnswer.trim().toLowerCase() === realAnswer.toString();
+    if (result) {
+      this.setState({
+        isCorrect: result,
+      });
+    }
   }
 
   render() {
@@ -66,6 +68,7 @@ class SentenceWithBlank extends Component {
         <TextInput
           placeholder="..."
           style={styles.answerBox}
+          clearButtonMode="always"
           onSubmitEditing={e => this.checkAnswer(e.nativeEvent.text, newWord)}
           // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
           // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}

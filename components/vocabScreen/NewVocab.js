@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from '../styles/styles';
-import WordBox from './WordBox';
-import ProgressBar from './ProgressBar';
-import TextButton from './TextButton';
+import styles from '../../styles/styles';
+import WordBox from '../WordBox';
+import ProgressBar from '../ProgressBar';
+import TextButton from '../buttons/TextButton';
 import VocabTools from './VocabTools';
-import AnimationThumbsUp from './AnimationThumbUp';
+import AnimationThumbsUp from '../animations/AnimationThumbUp';
 
 class NewVocab extends React.Component {
   componentWillMount() {

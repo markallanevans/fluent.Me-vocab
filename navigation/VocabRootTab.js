@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
-import NewVocab from '../components/NewVocab';
-import VocabReview from '../components/VocabReview';
+import NewVocab from '../components/vocabScreen/NewVocab';
+import VocabReview from '../components/vocabScreen/VocabReview';
 
 const rootConfigs = {
   NewVocab:

@@ -2,6 +2,8 @@ import React from 'react';
 import { Animated, Easing } from 'react-native';
 import LottieView from 'lottie-react-native';
 
+const animationSource = require('../../animations/like.json');
+
 export default class Loader extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ export default class Loader extends React.Component {
 
   render() {
     return (
-      <LottieView source={require('../../animations/like.json')} progress={this.state.progress} />
+      <LottieView source={animationSource} progress={this.state.progress} />
     );
   }
 }

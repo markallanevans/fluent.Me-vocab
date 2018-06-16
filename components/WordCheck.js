@@ -8,11 +8,16 @@ import styles from '../styles/styles';
 const correctIcon = (<Icon name="check-circle" size={30} color="#900" />);
 const incorrectIcon = (<Icon name="error" size={30} color="#900" />);
 
-const WordCheck = ({ word, checkAnswer, isCorrect, dispatch }) => {
+const WordCheck = ({
+  word,
+  checkAnswer,
+  isCorrect,
+  dispatch,
+}) => {
   let answerStatusIcon = '';
   if (isCorrect === true) {
     answerStatusIcon = correctIcon;
-    dispatch({ type: 'CORRECT_WORD'});
+    dispatch({ type: 'CORRECT_WORD' });
   } else if (isCorrect === false) {
     answerStatusIcon = incorrectIcon;
   }
@@ -34,14 +39,11 @@ const WordCheck = ({ word, checkAnswer, isCorrect, dispatch }) => {
   );
 };
 
-// const mapStateToProps = state => ({
-//   isCorrect: state.checkAnswer,
-// });
-
 WordCheck.propTypes = {
   word: PropTypes.object.isRequired,
   checkAnswer: PropTypes.func.isRequired,
   isCorrect: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
 };
 
 WordCheck.defaultProps = {

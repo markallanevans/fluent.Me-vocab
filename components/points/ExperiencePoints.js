@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { $primaryRed, $primaryWhite } from '../styles/styles';
+import { $primaryRed, $primaryWhite } from '../../styles/styles';
 
 // TODO: add animation to make the border flash or glow when points,
 // TODO: add a fillup so that it fills up
