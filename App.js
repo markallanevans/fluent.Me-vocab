@@ -9,7 +9,7 @@ import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-hel
 import reducers from './redux/reducers';
 import StepBar from './components/StepBar';
 import ExperiencePoints from './components/points/ExperiencePoints';
-import { TabNavigator } from './navigation/TabNavigator';
+import TabNavigator from './navigation/TabNavigator';
 import { $secondaryRed, $primaryRed } from './styles/styles';
 // import persistor from './redux/configureStore';
 

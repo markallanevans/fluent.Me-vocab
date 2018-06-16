@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import SentenceWithBlank from './SentenceWithBlank';
 import styles, { $primaryWhite, $secondaryWhite } from '../../styles/styles';
 import ProgressBar from '../ProgressBar';
+import AnimationSearch from '../animations/AnimationSearch';
 
 const SentenceReview = ({
   sentenceStore,
@@ -61,4 +62,33 @@ const mapDispatchToProps = dispatch => ({
   nextSentenceScreen: () => dispatch(nextSentenceScreen()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SentenceReview);
+const SentenceReviewWithCheck = ({ sentenceStore, currentSentenceIndex, nextSentenceScreen }) => {
+  if (typeof sentenceStore.loadedCategory === 'undefined') {
+    return (
+      <View style={styles.container}>
+        <View style={{ flex: 2, height: 300, width: 300 }}>
+          <AnimationSearch />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={{
+            color: $primaryWhite,
+            fontSize: 24,
+            textAlign: 'center',
+            padding: 20,
+          }}
+          >
+            No sentences found in this category.
+          </Text>
+        </View>
+      </View>
+    );
+  }
+  return (
+    <SentenceReview
+      sentenceStore={sentenceStore}
+      currentSentenceIndex={currentSentenceIndex}
+      nextSentenceScreen={nextSentenceScreen} 
+    />);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SentenceReviewWithCheck);

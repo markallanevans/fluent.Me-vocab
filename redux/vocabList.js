@@ -8,7 +8,7 @@ const vocabList = (state = {}, action) => {
   switch (action.type) {
     // TODO: move logic below to transformer that is called when app/component is loaded
     case 'LOAD_WORDS': {
-      const { Animals: { listWords } } = data;
+      const { [action.category]: { listWords } } = data;
       const wordListArray = listWords.map((word, index) => ({
         id: index,
         English: word,

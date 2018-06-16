@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Blank from './Blank';
 import WordBox from '../WordBox';
 import Animation from '../animations/Animation';
-import styles from '../../styles/styles';
-
-const category = 'Animals';
+import styles, { $primaryWhite } from '../../styles/styles';
 
 class SentenceWithBlank extends Component {
   constructor() {
@@ -19,7 +17,7 @@ class SentenceWithBlank extends Component {
   }
 
   componentWillMount() {
-    this.props.loadCategory(category);
+    // this.props.loadCategory(category);
     this.props.loadSentence(this.props.currentSentenceIndex);
   }
 
@@ -34,10 +32,14 @@ class SentenceWithBlank extends Component {
 
   render() {
     const { words, currentCategoryWords } = this.props;
+    console.log('words: ' + words);
     const newWord = words.filter(w => currentCategoryWords.indexOf(w) !== -1);
+    console.log('new word: ' + newWord);
     const wordsWithBlank = [...words];
+    console.log('words with blank' + wordsWithBlank);
     wordsWithBlank[words.indexOf(newWord.toString())] = '                   ';
     // FIXME: above needs to be made more elegant
+    console.log('words with bank after change' + wordsWithBlank);
     const blanks = wordsWithBlank.map((word, index) =>
       (<Blank
         word={word}
@@ -92,12 +94,13 @@ const mapStateToProps = state => ({
   sentenceStore: state.sentenceStore,
   currentSentenceIndex: state.studyStats.currentSentenceIndex,
   currentCategoryWords: state.sentenceStore.categoryWords,
+  loadedCategory: state.sentenceStore.loadedCategory,
   words: state.sentenceStore.words,
   reviewList: state.sentenceStore.reviewList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
+  // loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
   loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' }),
 });
 

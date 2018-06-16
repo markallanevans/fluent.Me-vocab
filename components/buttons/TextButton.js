@@ -20,11 +20,15 @@ const TextButton = ({
   </View>
 );
 
+TextButton.defaultProps = {
+  action: 'navigate',
+};
+
 TextButton.propTypes = {
   text: PropTypes.string.isRequired,
   navTo: PropTypes.string.isRequired,
   navigation: PropTypes.object.isRequired,
-  action: PropTypes.string.isRequired,
+  action: PropTypes.string,
 };
 
 export default TextButton;

@@ -11,7 +11,7 @@ import AnimationThumbsUp from '../animations/AnimationThumbUp';
 
 class NewVocab extends React.Component {
   componentWillMount() {
-    this.props.dispatch({ type: 'LOAD_WORDS' });
+    this.props.loadWords(this.props.category);
   }
 
   render() {
@@ -68,6 +68,11 @@ class NewVocab extends React.Component {
 const mapStateToProps = state => ({
   vocabList: state.vocabList,
   reviewList: state.reviewList,
+  category: state.sentenceStore.currentCategoryTitle,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadWords: category => dispatch({ type: 'LOAD_WORDS', category }),
 });
 
 NewVocab.propTypes = {
@@ -77,5 +82,5 @@ NewVocab.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(NewVocab);
+export default connect(mapStateToProps, mapDispatchToProps)(NewVocab);
 

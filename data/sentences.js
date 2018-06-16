@@ -8,11 +8,11 @@ const sentences = {
       dog: 'The dog barks at the cat.',
       cat: 'The cat likes fish',
       bird: 'The bird flies in the sky',
-      // cow: 'The cow makes good milk',
-      // pig: 'The pig plays in the mud',
-      // mouse: 'The mouse takes the cheese',
-      // horse: 'The horse gallops on the plain',
-      // wing: 'The bird has big wings to help it fly',
+      cow: 'The cow makes good milk',
+      pig: 'The pig plays in the mud',
+      mouse: 'The mouse takes the cheese',
+      horse: 'The horse gallops on the plain',
+      wing: 'The bird has big wings to help it fly',
     },
   },
   Transportation:
@@ -31,12 +31,23 @@ const sentences = {
     list_ID: 3,
     listCategory: 'Location',
     listWords: ['city', 'house', 'apartment', 'street/road', 'airport', 'train station', 'bridge', 'hotel', 'restaurant', 'farm', 'court', 'school', 'office', 'room', 'town', 'university', 'club', 'bar', 'park', 'camp', 'store/shop', 'theater', 'library', 'hospital', 'church', 'market', 'country (USA', 'France', 'etc.)', 'building', 'ground', 'space (outer space)', 'bank'],
+    sentences: {
+      city: 'Ho Chi Minh is a very big city in Vietnam.',
+      house: 'The rich family lives in a big house',
+      apartment: 'My apartment is small but I like it',
+    },
   },
   Clothing:
   {
     list_ID: 4,
     listCategory: 'Clothing',
     listWords: ['hat', 'dress', 'suit', 'skirt', 'shirt', 'T-shirt', 'pants', 'shoes', 'pocket', 'coat', 'stain'],
+    sentences: {
+      hat: 'Wearing a hat in church is rude.',
+      dress: 'Her red dress is beautiful',
+      skirt: 'She wore a long skirt to the wedding',
+      'T-shirt': 'He always wears a white T-shirt',
+    },
   },
   People:
   {
