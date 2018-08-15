@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   View,
   Text,
@@ -6,13 +6,18 @@ import {
   Image,
   StyleSheet,
   ScrollView,
-  TouchableHighlight,
-} from 'react-native';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import styles, { $secondaryWhite, $tertiaryRed, $secondaryRed, $primaryWhite } from '../styles/styles';
+  TouchableHighlight
+} from 'react-native'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import styles, {
+  $secondaryWhite,
+  $tertiaryRed,
+  $secondaryRed,
+  $primaryWhite
+} from '../styles/styles'
 
-const $placeHolderBlue = '#014ea5';
+const $placeHolderBlue = '#014ea5'
 
 const boxStyles = StyleSheet.create({
   newWordBox: {
@@ -24,7 +29,7 @@ const boxStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
-    fontSize: 24,
+    fontSize: 24
   },
   newSentenceBox: {
     width: 300,
@@ -36,30 +41,30 @@ const boxStyles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     fontSize: 24,
-    flexWrap: 'wrap',
-  },
-});
+    flexWrap: 'wrap'
+  }
+})
 
 class AddWords extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       wordToAdd: 'empty',
       sentenceToAdd: '',
       category: this.props.currentCategory,
-      wordsAdded: 0,
-    };
+      wordsAdded: 0
+    }
   }
 
   clickHandler(wordToAdd, sentenceToAdd, category) {
-    this.props.addNewWordToStore(wordToAdd, sentenceToAdd, category);
+    this.props.addNewWordToStore(wordToAdd, sentenceToAdd, category)
     this.setState({
-      wordsAdded: this.state.wordsAdded + 1,
-    });
+      wordsAdded: this.state.wordsAdded + 1
+    })
   }
 
   render() {
-    const { wordToAdd, sentenceToAdd, category } = this.state;
+    const { wordToAdd, sentenceToAdd, category } = this.state
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -73,7 +78,9 @@ class AddWords extends React.Component {
               placeholder="your word..."
               placeholderTextColor={$placeHolderBlue}
               style={boxStyles.newWordBox}
-              onEndEditing={e => this.setState({ wordToAdd: e.nativeEvent.text.toLowerCase() })}
+              onEndEditing={e =>
+                this.setState({ wordToAdd: e.nativeEvent.text.toLowerCase() })
+              }
             />
           </View>
           <View style={{ margin: 10 }}>
@@ -81,14 +88,21 @@ class AddWords extends React.Component {
               placeholder="your sentence..."
               placeholderTextColor={$placeHolderBlue}
               style={boxStyles.newSentenceBox}
-              onEndEditing={e => this.setState({ sentenceToAdd: e.nativeEvent.text })}
+              onEndEditing={e =>
+                this.setState({ sentenceToAdd: e.nativeEvent.text })
+              }
             />
           </View>
-          <Text style={{ margin: 10, color: 'white', fontSize: 18 }} >Suggested Image:</Text>
+          <Text style={{ margin: 10, color: 'white', fontSize: 18 }}>
+            Suggested Image:
+          </Text>
 
           <View style={styles.wordBoxEng}>
             <Image
-              source={{ uri: `https://source.unsplash.com/150x150/?${this.state.wordToAdd && this.state.wordToAdd}` }}
+              source={{
+                uri: `https://source.unsplash.com/150x150/?${this.state
+                  .wordToAdd && this.state.wordToAdd}`
+              }}
               style={styles.imageSize}
             />
           </View>
@@ -102,38 +116,43 @@ class AddWords extends React.Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor={$tertiaryRed}
-            onPress={() => 
-            this.clickHandler(wordToAdd, sentenceToAdd, category)}
-          >
-            <Text
-              style={styles.buttonText}
-            >Add! { this.state.wordsAdded > 0 && <Text>+{this.state.wordsAdded}</Text> }
+            onPress={() =>
+              this.clickHandler(wordToAdd, sentenceToAdd, category)
+            }>
+            <Text style={styles.buttonText}>
+              Add!{' '}
+              {this.state.wordsAdded > 0 && (
+                <Text>+{this.state.wordsAdded}</Text>
+              )}
             </Text>
           </TouchableHighlight>
           <View style={{ height: 50 }} />
         </View>
       </ScrollView>
-    );
+    )
   }
 }
 
 AddWords.propTypes = {
   currentCategory: PropTypes.string.isRequired,
-  addNewWordToStore: PropTypes.func.isRequired,
-};
+  addNewWordToStore: PropTypes.func.isRequired
+}
 
 const mapDispatchToProps = dispatch => ({
-  addNewWordToStore: (word, sentence, category) => dispatch({
-    type: 'ADD_NEW_WORD_TO_STORE',
-    word,
-    sentence,
-    category,
-  }),
-});
-
+  addNewWordToStore: (word, sentence, category) =>
+    dispatch({
+      type: 'ADD_NEW_WORD_TO_STORE',
+      word,
+      sentence,
+      category
+    })
+})
 
 const mapStateToProps = state => ({
-  currentCategory: state.sentenceStore.currentCategoryTitle,
-});
+  currentCategory: state.sentenceStore.currentCategoryTitle
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddWords);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddWords)

@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { View } from 'react-native';
-import { connect } from 'react-redux';
-import StepIndicator from 'react-native-step-indicator';
-import { $secondaryRed, $primaryRed, $primaryWhite } from '../styles/styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { View } from 'react-native'
+import { connect } from 'react-redux'
+import StepIndicator from 'react-native-step-indicator'
+import { $secondaryRed, $primaryRed, $primaryWhite } from '../styles/styles'
 
-const labels = ['Vocab', 'VocabReview', 'Sentences'];
+const labels = ['Vocab', 'VocabReview', 'Sentences']
 const customStyles = {
   stepIndicatorSize: 20,
   currentStepIndicatorSize: 30,
@@ -27,19 +27,19 @@ const customStyles = {
   stepIndicatorLabelUnFinishedColor: $primaryRed,
   labelColor: '#999999',
   labelSize: 13,
-  currentStepLabelColor: $secondaryRed,
-};
+  currentStepLabelColor: $secondaryRed
+}
 
-const getCurrentScreenName = (nav) => {
-  const currentRoute = nav.routes[nav.index];
+const getCurrentScreenName = nav => {
+  const currentRoute = nav.routes[nav.index]
   if (currentRoute.index) {
-    return getCurrentScreenName(currentRoute);
+    return getCurrentScreenName(currentRoute)
   }
-  return currentRoute.routeName;
-};
+  return currentRoute.routeName
+}
 
 const StepBar = ({ currentScreenName }) => (
-  <View style={{ width: 300, marginTop: 40 }} >
+  <View style={{ width: 300, marginTop: 40 }}>
     <StepIndicator
       customStyles={customStyles}
       stepCount={3}
@@ -47,15 +47,15 @@ const StepBar = ({ currentScreenName }) => (
       labels={labels}
     />
   </View>
-);
+)
 
 const mapStateToProps = state => ({
   currentScreenName: getCurrentScreenName(state.nav),
-  currentScreenIndex: state.nav.index,
-});
+  currentScreenIndex: state.nav.index
+})
 
 StepBar.propTypes = {
-  currentScreenName: PropTypes.string.isRequired,
-};
+  currentScreenName: PropTypes.string.isRequired
+}
 
-export default connect(mapStateToProps)(StepBar);
+export default connect(mapStateToProps)(StepBar)

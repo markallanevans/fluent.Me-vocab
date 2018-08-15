@@ -1,52 +1,44 @@
-import React, { Component } from 'react';
-import { View, TextInput, Text } from 'react-native';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Blank from './Blank';
-import WordBox from '../WordBox';
-import Animation from '../animations/Animation';
-import styles, { $primaryWhite } from '../../styles/styles';
+import React, { Component } from 'react'
+import { View, TextInput, Text } from 'react-native'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import Blank from './Blank'
+import WordBox from '../WordBox'
+import Animation from '../animations/Animation'
+import styles, { $primaryWhite } from '../../styles/styles'
 
 class SentenceWithBlank extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      isCorrect: null,
-    };
-    this.checkAnswer = this.checkAnswer.bind(this);
+      isCorrect: null
+    }
+    this.checkAnswer = this.checkAnswer.bind(this)
   }
 
   componentWillMount() {
-    // this.props.loadCategory(category);
-    this.props.loadSentence(this.props.currentSentenceIndex);
+    this.props.loadSentence(this.props.currentSentenceIndex)
   }
 
   checkAnswer(userAnswer, realAnswer) {
-    const result = userAnswer.trim().toLowerCase() === realAnswer.toString();
+    const result = userAnswer.trim().toLowerCase() === realAnswer.toString()
     if (result) {
       this.setState({
-        isCorrect: result,
-      });
+        isCorrect: result
+      })
     }
   }
 
   render() {
-    const { words, currentCategoryWords } = this.props;
-    console.log('words: ' + words);
-    const newWord = words.filter(w => currentCategoryWords.indexOf(w) !== -1);
-    console.log('new word: ' + newWord);
-    const wordsWithBlank = [...words];
-    console.log('words with blank' + wordsWithBlank);
-    wordsWithBlank[words.indexOf(newWord.toString())] = '                   ';
-    // FIXME: above needs to be made more elegant
-    console.log('words with bank after change' + wordsWithBlank);
-    const blanks = wordsWithBlank.map((word, index) =>
-      (<Blank
-        word={word}
-        key={index.toString()}
-      />));
+    const { words, currentCategoryWords } = this.props
+    const newWord = words.filter(w => currentCategoryWords.indexOf(w) !== -1)
+    const wordsWithBlank = [...words]
+    wordsWithBlank[words.indexOf(newWord.toString())] = '                   '
+    const blanks = wordsWithBlank.map((word, index) => (
+      <Blank word={word} key={index.toString()} />
+    ))
     return (
-      <View style={styles.centered} >
+      <View style={styles.centered}>
         <View>
           <WordBox
             word={{
@@ -54,41 +46,41 @@ class SentenceWithBlank extends Component {
               English: newWord,
               showFront: true,
               showImage: true,
-              word: newWord,
+              word: newWord
             }}
           />
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
+          }}>
           {blanks}
         </View>
-        {
-          this.state.isCorrect === true ?
-            <Animation onDone={() => this.setState({ isCorrect: false })} />
-          :
-            <View />
-        }
+        {this.state.isCorrect === true ? (
+          <Animation onDone={() => this.setState({ isCorrect: false })} />
+        ) : (
+          <View />
+        )}
         <TextInput
           placeholder="..."
           style={styles.answerBox}
           clearButtonMode="always"
           onSubmitEditing={e => this.checkAnswer(e.nativeEvent.text, newWord)}
-          // TODO: add Redux Thunk and set this action up to 'CHECK_ANSWER' and also 'REMOVE_WORD'
-          // onSubmitEditing={() => dispatch({ type: 'REMOVE_REVIEW_WORD', id})}
         />
       </View>
-    );
+    )
   }
 }
-
-// TODO: add property to WordBox to determine if it is 'pressable';
 
 SentenceWithBlank.propTypes = {
   loadCategory: PropTypes.func.isRequired,
   loadSentence: PropTypes.func.isRequired,
   currentSentenceIndex: PropTypes.number.isRequired,
   currentCategoryWords: PropTypes.array.isRequired,
-  words: PropTypes.array.isRequired,
-};
+  words: PropTypes.array.isRequired
+}
 
 const mapStateToProps = state => ({
   sentenceStore: state.sentenceStore,
@@ -96,13 +88,14 @@ const mapStateToProps = state => ({
   currentCategoryWords: state.sentenceStore.categoryWords,
   loadedCategory: state.sentenceStore.loadedCategory,
   words: state.sentenceStore.words,
-  reviewList: state.sentenceStore.reviewList,
-});
+  reviewList: state.sentenceStore.reviewList
+})
 
 const mapDispatchToProps = dispatch => ({
-  // loadCategory: () => dispatch({ type: 'LOAD_CATEGORY', category }),
-  loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' }),
-});
+  loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' })
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(SentenceWithBlank);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SentenceWithBlank)

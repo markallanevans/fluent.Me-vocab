@@ -1,33 +1,36 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableHighlight } from 'react-native';
-import { connect } from 'react-redux';
-import Image from 'react-native-image-progress';
-import ProgressPie from 'react-native-progress/Pie';
-import PropTypes from 'prop-types';
-import { $secondaryWhite, $primaryRed, $secondaryRed, $primaryWhite } from '../../styles/styles';
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
+import Image from 'react-native-image-progress'
+import ProgressPie from 'react-native-progress/Pie'
+import PropTypes from 'prop-types'
+import {
+  $secondaryWhite,
+  $primaryRed,
+  $secondaryRed,
+  $primaryWhite
+} from '../../styles/styles'
+
+const styles = StyleSheet.create({})
 
 class CategoryItem extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      thisCategoryLength: props.allCategories[props.category].listWords.length,
-    };
+      thisCategoryLength: props.allCategories[props.category].listWords.length
+    }
   }
 
   handlePress() {
-    this.props.loadCategory(this.props.category);
-    this.props.loadWords(this.props.category);
+    this.props.loadCategory(this.props.category)
+    this.props.loadWords(this.props.category)
   }
 
   render() {
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         onPress={() => this.handlePress()}
-        underlayColor={$primaryWhite}
-        style={{
-          borderRadius: 50,
-        }}
-      >
+        underlayColor={$primaryWhite}>
         <View
           style={{
             flex: 1,
@@ -36,11 +39,13 @@ class CategoryItem extends Component {
             justifyContent: 'space-between',
             borderRadius: 50,
             borderColor: $secondaryWhite,
-            borderWidth: this.props.currentCategoryTitle === this.props.category ? 2 : 0,
-            backgroundColor: this.props.currentCategoryTitle === this.props.category ?
-              $primaryWhite : $secondaryWhite,
-            }}
-        >
+            borderWidth:
+              this.props.currentCategoryTitle === this.props.category ? 2 : 0,
+            backgroundColor:
+              this.props.currentCategoryTitle === this.props.category
+                ? $primaryWhite
+                : $secondaryWhite
+          }}>
           <View
             style={{
               height: 50,
@@ -49,65 +54,70 @@ class CategoryItem extends Component {
               borderRadius: 25,
               marginLeft: 2.5,
               marginTop: 2.5,
-              marginBottom: 2.5,
-            }}
-          >
+              marginBottom: 2.5
+            }}>
             <Image
-              source={{ uri: `https://source.unsplash.com/50x50/?${this.props.category}` }}
+              source={{
+                uri: `https://source.unsplash.com/50x50/?${this.props.category}`
+              }}
               indicator={ProgressPie}
               indicatorProps={{
                 size: 50,
                 borderWidth: 0,
                 color: $secondaryRed,
-                unfilledColor: $primaryWhite,
+                unfilledColor: $primaryWhite
               }}
               style={{
                 height: 50,
-                width: 50,
-                }}
+                width: 50
+              }}
             />
           </View>
-          <Text style={{
-            marginLeft: 40,
-            marginRight: 40,
-            alignSelf: 'center',
-            color: $secondaryRed,
-            fontSize: this.props.currentCategoryTitle === this.props.category ? 24 : 18,
-            }}
-          >
+          <Text
+            style={{
+              marginLeft: 40,
+              marginRight: 40,
+              alignSelf: 'center',
+              color: $secondaryRed,
+              fontSize:
+                this.props.currentCategoryTitle === this.props.category
+                  ? 24
+                  : 18
+            }}>
             {this.props.category}
           </Text>
-          <Text style={{
-            fontSize: 25,
-            color: $primaryRed,
-            alignSelf: 'center',
-            marginRight: 10,
-          }}
-          >
+          <Text
+            style={{
+              fontSize: 25,
+              color: $primaryRed,
+              alignSelf: 'center',
+              marginRight: 10
+            }}>
             {this.state.thisCategoryLength}
           </Text>
         </View>
-      </TouchableHighlight>
-    );
+      </TouchableOpacity>
+    )
   }
 }
 
 CategoryItem.propTypes = {
   category: PropTypes.string.isRequired,
   currentCategoryTitle: PropTypes.string.isRequired,
-  allCategories: PropTypes.object.isRequired,
-};
+  allCategories: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
   currentCategoryTitle: state.sentenceStore.currentCategoryTitle,
-  allCategories: state.sentenceStore.allCategories,
-});
+  allCategories: state.sentenceStore.allCategories
+})
 
 const mapDispatchToProps = dispatch => ({
   loadCategory: category => dispatch({ type: 'LOAD_CATEGORY', category }),
-  loadWords: category => dispatch({ type: 'LOAD_WORDS', category }),
-  // loadSentence: () => dispatch({ type: 'LOAD_SENTENCE' }),
-});
+  loadWords: category => dispatch({ type: 'LOAD_WORDS', category })
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategoryItem)
