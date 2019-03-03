@@ -1,9 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { $primaryRed, $primaryWhite } from '../../styles/styles'
 
+//@flow
 // TODO: add animation to make the border flash or glow when points,
 // TODO: add a fillup so that it fills up
 
@@ -27,12 +28,14 @@ const styles = StyleSheet.create({
   }
 })
 
-const ExperiencePoints = ({ experiencePoints }) => (
-  <View style={styles.container}>
-    <Text style={styles.pointsText}>{experiencePoints}</Text>
-    <Text style={styles.description}>pts</Text>
-  </View>
-)
+function ExperiencePoints({ experiencePoints }: { experiencePoints: string }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.pointsText}>{experiencePoints}</Text>
+      <Text style={styles.description}>pts</Text>
+    </View>
+  )
+}
 
 ExperiencePoints.propTypes = {
   experiencePoints: PropTypes.number.isRequired

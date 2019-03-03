@@ -12,9 +12,6 @@ import ExperiencePoints from './components/points/ExperiencePoints'
 import TabNavigator from './navigation/TabNavigator'
 import { $secondaryRed, $primaryRed } from './styles/styles'
 
-/* eslint-disable no-console */
-console.disableYellowBox = true
-
 const logger = createLogger()
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
