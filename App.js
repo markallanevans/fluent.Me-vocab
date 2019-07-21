@@ -6,17 +6,15 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { View, StyleSheet } from 'react-native'
 import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers'
-import reducers from './redux/reducers'
-import StepBar from './components/StepBar'
-import ExperiencePoints from './components/points/ExperiencePoints'
-import TabNavigator from './navigation/TabNavigator'
-import { $secondaryRed, $primaryRed } from './styles/styles'
+import reducers from './src/redux/reducers'
+import StepBar from './src/components/StepBar'
+import ExperiencePoints from './src/components/points/ExperiencePoints'
+
+import { $secondaryRed, $primaryRed } from './src/styles/styles'
+import AppWithNavigationState from './src/navigation/AppNavigator'
 
 const logger = createLogger()
-const navMiddleware = createReactNavigationReduxMiddleware(
-  'root',
-  state => state.nav
-)
+const navMiddleware = createReactNavigationReduxMiddleware(state => state.nav)
 const middleware = applyMiddleware(thunk, navMiddleware, logger)
 const store = createStore(reducers, middleware)
 
@@ -28,7 +26,7 @@ const App = () => (
         <ExperiencePoints />
       </View>
       <View style={styles.contentView} />
-      <TabNavigator />
+      <AppWithNavigationState />
     </View>
   </Provider>
 )

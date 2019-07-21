@@ -5,9 +5,9 @@ import sentenceStore from './sentenceStore'
 import checkAnswer from './checkAnswer'
 import reviewList from './reviewList'
 import vocabList from './vocabList'
-import { TabNavigator } from '../navigation/TabNavigator'
+import { AppNavigator } from '../navigation/AppNavigator'
 
-const navReducer = createNavigationReducer(TabNavigator)
+const navReducer = createNavigationReducer(AppNavigator)
 
 const reducers = combineReducers({
   vocabList,

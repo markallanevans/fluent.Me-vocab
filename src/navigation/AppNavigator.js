@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  createNavigationPropConstructor,
+  createReduxContainer,
   initializeListeners
 } from 'react-navigation-redux-helpers'
 import { createBottomTabNavigator } from 'react-navigation'
 import PropTypes from 'prop-types'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import SentenceReview from '../components/sentenceScreen/SentenceReview'
-import VocabRootTab from '../navigation/VocabRootTab'
+import VocabRootTab from './VocabRootTab'
 import PointsScreen from '../components/points/PointsScreen'
 import AddNewWords from '../components/AddNewWords'
 import Login from '../components/Login'
@@ -70,37 +70,16 @@ const otherTabConfigs = {
   }
 }
 
-export const TabNavigator = createBottomTabNavigator(
+export const AppNavigator = createBottomTabNavigator(
   tabScreenConfigs,
   otherTabConfigs
 )
 
-class TabNavigatorWithNavigationState extends React.Component {
-  constructor() {
-    super()
-    this.navigationPropConstructor = createNavigationPropConstructor('root')
-  }
-
-  componentDidMount() {
-    initializeListeners('root', this.props.nav)
-  }
-
-  render() {
-    const navigation = this.navigationPropConstructor(
-      this.props.dispatch,
-      this.props.nav
-    )
-    return <TabNavigator navigation={navigation} />
-  }
-}
-
+const App = createReduxContainer(AppNavigator)
 const mapStateToProps = state => ({
-  nav: state.nav
+  state: state.nav
 })
 
-TabNavigatorWithNavigationState.propTypes = {
-  nav: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
-}
+const AppWithNavigationState = connect(mapStateToProps)(App)
 
-export default connect(mapStateToProps)(TabNavigatorWithNavigationState)
+export default AppWithNavigationState
