@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, TouchableHighlight, Text } from 'react-native'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
 import SentenceWithBlank from './SentenceWithBlank'
 import styles, { $primaryWhite, $secondaryWhite } from '../../styles/styles'
@@ -27,7 +27,7 @@ const SentenceReview = ({
         onPress={() =>
           nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)
         }>
-        <Icon name="navigate-next" size={50} color={$secondaryWhite} />
+        <MaterialIcons name="navigate-next" size={50} color={$secondaryWhite} />
       </TouchableHighlight>
     ) : (
       <Text

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, TouchableHighlight } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 
 const VocabTools = ({ id, word, addReviewWord, reviewList }) => (
   <View
@@ -11,7 +11,7 @@ const VocabTools = ({ id, word, addReviewWord, reviewList }) => (
       flexDirection: 'row'
     }}>
     <TouchableHighlight onPress={() => addReviewWord(id, word, reviewList)}>
-      <Icon name="check-circle" size={20} color="#900" />
+      <MaterialIcons name="check-circle" size={20} color="#900" />
     </TouchableHighlight>
   </View>
 )

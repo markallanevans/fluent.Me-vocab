@@ -6,7 +6,7 @@ import {
 } from 'react-navigation-redux-helpers'
 import { createBottomTabNavigator } from 'react-navigation'
 import PropTypes from 'prop-types'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import { MaterialIcons } from '@expo/vector-icons'
 import SentenceReview from '../components/sentenceScreen/SentenceReview'
 import VocabRootTab from './VocabRootTab'
 import PointsScreen from '../components/points/PointsScreen'
@@ -48,7 +48,7 @@ const otherTabConfigs = {
         iconName = 'add-box'
       }
 
-      return <Icon name={iconName} size={25} color={tintColor} />
+      return <MaterialIcons name={iconName} size={25} color={tintColor} />
     }
   }),
   initialRouteName: 'Categories',
