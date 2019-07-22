@@ -3,7 +3,7 @@ import { Animated, Easing } from 'react-native'
 import PropTypes from 'prop-types'
 import LottieView from 'lottie-react-native'
 
-const animationSource = require('../../animations/check.json')
+const animationSource = require('../../../assets/animations/check.json')
 
 export default class AnimationCheck extends React.Component {
   constructor(props) {

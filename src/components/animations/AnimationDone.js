@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated, Easing } from 'react-native'
 import LottieView from 'lottie-react-native'
 
-const animationSource = require('../../animations/success.json')
+const animationSource = require('../../../assets/animations/success.json')
 
 export default class AnimationDone extends React.Component {
   constructor(props) {

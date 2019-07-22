@@ -1,4 +1,4 @@
-import sentences from '../data/sentences'
+import sentences from '../../data/sentences'
 
 const sentenceStore = (
   state = {

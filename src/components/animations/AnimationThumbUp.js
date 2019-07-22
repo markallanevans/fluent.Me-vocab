@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated, Easing } from 'react-native'
 import LottieView from 'lottie-react-native'
 
-const animationSource = require('../../animations/like.json')
+const animationSource = require('../../../assets/animations/like.json')
 
 export default class AnimationThumbsUp extends React.Component {
   constructor(props) {

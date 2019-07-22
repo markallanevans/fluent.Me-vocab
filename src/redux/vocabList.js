@@ -1,5 +1,5 @@
 // import wordBank from '../data/wordbank';
-import sentences from '../data/sentences'
+import sentences from '../../data/sentences'
 
 const data = sentences
 
