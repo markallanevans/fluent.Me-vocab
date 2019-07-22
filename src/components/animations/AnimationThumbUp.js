@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native'
 
 const animationSource = require('../../animations/like.json')
 
-export default class AnimationDone extends React.Component {
+export default class AnimationThumbsUp extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

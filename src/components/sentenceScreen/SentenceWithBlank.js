@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Blank from './Blank'
 import WordBox from '../WordBox'
-import Animation from '../animations/Animation'
+import AnimationCheck from '../animations/AnimationCheck'
 import styles, { $primaryWhite } from '../../styles/styles'
 
 class SentenceWithBlank extends Component {
@@ -59,7 +59,7 @@ class SentenceWithBlank extends Component {
           {blanks}
         </View>
         {this.state.isCorrect === true ? (
-          <Animation onDone={() => this.setState({ isCorrect: false })} />
+          <AnimationCheck onDone={() => this.setState({ isCorrect: false })} />
         ) : (
           <View />
         )}

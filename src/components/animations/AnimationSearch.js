@@ -3,9 +3,9 @@ import { Animated, Easing } from 'react-native'
 import PropTypes from 'prop-types'
 import LottieView from 'lottie-react-native'
 
-const animationSource = require('../../animations/search_ask_loop.json')
+const animationSource = require('../../animations/search.json')
 
-export default class Animation extends React.Component {
+export default class AnimationSearch extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -28,6 +28,6 @@ export default class Animation extends React.Component {
   }
 }
 
-Animation.propTypes = {
+AnimationSearch.propTypes = {
   onDone: PropTypes.func.isRequired
 }

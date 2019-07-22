@@ -7,7 +7,6 @@ import WordBox from '../WordBox'
 import ProgressBar from '../ProgressBar'
 import WordCheck from '../WordCheck'
 import TextButton from '../buttons/TextButton'
-import AnimatedCheckBox from '../animations/AnimatedCheckBox'
 import AnimatedThumbsUp from '../animations/AnimationThumbUp'
 
 class VocabReview extends React.Component {
@@ -67,10 +66,10 @@ class VocabReview extends React.Component {
     }
   }
   /* FIXME: problem with the rendering of the word.
-  * When checkAnswer is called, it forces the image to refresh..
-  * and changes the current word. I think this is because theAnswer
-  * causes the whole component to re-render...
-  */
+   * When checkAnswer is called, it forces the image to refresh..
+   * and changes the current word. I think this is because theAnswer
+   * causes the whole component to re-render...
+   */
 
   render() {
     let animatedCheckBox = ''
