@@ -4,7 +4,9 @@ import PropTypes from 'prop-types'
 import { MaterialIcons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
 import SentenceWithBlank from './SentenceWithBlank'
-import styles, { $primaryWhite, $secondaryWhite } from '../../styles/styles'
+import styles from '../../styles/styles'
+import buttonStyles from '../../styles/buttonStyles'
+import { Colors } from '../../styles/theme'
 import ProgressBar from '../ProgressBar'
 import AnimationSearch from '../animations/AnimationSearch'
 
@@ -23,16 +25,20 @@ const SentenceReview = ({
     {currentSentenceIndex + 1 <
     Object.keys(sentenceStore.loadedCategory).length ? (
       <TouchableHighlight
-        style={styles.buttonWithoutWidth}
+        style={buttonStyles.buttonWithoutWidth}
         onPress={() =>
           nextSentenceScreen(currentSentenceIndex, sentenceStore.loadedCategory)
         }>
-        <MaterialIcons name="navigate-next" size={50} color={$secondaryWhite} />
+        <MaterialIcons
+          name="navigate-next"
+          size={50}
+          color={Colors.$secondaryWhite}
+        />
       </TouchableHighlight>
     ) : (
       <Text
         style={{
-          color: $primaryWhite,
+          color: Colors.$primaryWhite,
           fontSize: 18,
           textAlign: 'center',
           marginTop: 50
@@ -77,7 +83,7 @@ const SentenceReviewWithCheck = ({
         <View style={{ flex: 1 }}>
           <Text
             style={{
-              color: $primaryWhite,
+              color: Colors.$primaryWhite,
               fontSize: 24,
               textAlign: 'center',
               padding: 20

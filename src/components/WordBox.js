@@ -4,7 +4,8 @@ import Image from 'react-native-image-progress'
 import ProgressPie from 'react-native-progress/Pie'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styles, { $primaryRed } from '../styles/styles'
+import styles from '../styles/styles'
+import { Colors } from '../styles/theme/'
 
 const WordBox = ({ word, flipCard, addReviewWord, reviewList }) => (
   <View>
@@ -26,7 +27,7 @@ const WordBox = ({ word, flipCard, addReviewWord, reviewList }) => (
               indicator={ProgressPie}
               indicatorProps={{
                 size: 150,
-                color: $primaryRed,
+                color: Colors.$primaryRed,
                 borderWidth: 0
               }}
             />

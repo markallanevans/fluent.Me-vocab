@@ -1,0 +1,6 @@
+export const $primaryRed = '#d65048'
+export const $secondaryRed = '#b13a33'
+export const $tertiaryRed = '#a13003'
+export const $primaryWhite = '#ffeeee'
+export const $secondaryWhite = '#ddaaaa'
+export const $placeHolderBlue = '#014ea5'

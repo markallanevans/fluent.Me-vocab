@@ -2,26 +2,26 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styles, {
-  $primaryRed,
-  $primaryWhite,
-  $secondaryWhite
-} from '../styles/styles'
+import { Colors } from '../styles/theme/'
+import styles from '../styles/styles'
+import buttonStyles from '../styles/buttonStyles'
+
+//TODO: factor out buttons
 
 const Login = ({ navigation, category }) => (
   <View style={styles.container}>
     <Text style={styles.header}>Welcome to fluent.Me</Text>
-    <View style={styles.button}>
+    <View style={buttonStyles.button}>
       <Text
-        style={styles.buttonText}
+        style={buttonStyles.buttonText}
         // TODO: make the following button actually open a modal list with the categories
         onPress={() => navigation.navigate('Vocab')}>
         get Started!
       </Text>
     </View>
-    <View style={styles.button}>
+    <View style={buttonStyles.button}>
       <Text
-        style={styles.buttonText} // TODO: add onPress to load new category.
+        style={buttonStyles.buttonText} // TODO: add onPress to load new category.
       >
         Categories
       </Text>
@@ -30,10 +30,10 @@ const Login = ({ navigation, category }) => (
     <Text style={styles.header}>Current Category</Text>
     <View
       style={{
-        backgroundColor: $primaryWhite,
+        backgroundColor: Colors.$primaryWhite,
         padding: 10,
         marginTop: 20,
-        shadowColor: $secondaryWhite,
+        shadowColor: Colors.$secondaryWhite,
         borderRadius: 20,
         shadowOffset: {
           width: 0,
@@ -44,7 +44,7 @@ const Login = ({ navigation, category }) => (
       }}>
       <Text
         style={{
-          color: $primaryRed
+          color: Colors.$primaryRed
         }}>
         {category || 'None Loaded'}
       </Text>

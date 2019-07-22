@@ -4,14 +4,8 @@ import { connect } from 'react-redux'
 import Image from 'react-native-image-progress'
 import ProgressPie from 'react-native-progress/Pie'
 import PropTypes from 'prop-types'
-import {
-  $secondaryWhite,
-  $primaryRed,
-  $secondaryRed,
-  $primaryWhite
-} from '../../styles/styles'
-
-const styles = StyleSheet.create({})
+import { Colors } from '../../styles/theme/'
+import styles from '../../styles/categoryItemStyles'
 
 class CategoryItem extends Component {
   constructor(props) {
@@ -26,73 +20,54 @@ class CategoryItem extends Component {
     this.props.loadWords(this.props.category)
   }
 
+  getImageSrc() {
+    return {
+      uri: `https://source.unsplash.com/50x50/?${this.props.category}`
+    }
+  }
+
   render() {
     return (
       <TouchableOpacity
         onPress={() => this.handlePress()}
-        underlayColor={$primaryWhite}>
+        underlayColor={Colors.$primaryWhite}>
         <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            margin: 2.5,
-            justifyContent: 'space-between',
-            borderRadius: 50,
-            borderColor: $secondaryWhite,
-            borderWidth:
-              this.props.currentCategoryTitle === this.props.category ? 2 : 0,
-            backgroundColor:
-              this.props.currentCategoryTitle === this.props.category
-                ? $primaryWhite
-                : $secondaryWhite
-          }}>
-          <View
-            style={{
-              height: 50,
-              width: 50,
-              overflow: 'hidden',
-              borderRadius: 25,
-              marginLeft: 2.5,
-              marginTop: 2.5,
-              marginBottom: 2.5
-            }}>
+          style={[
+            styles.categoryWrapper,
+            {
+              borderWidth:
+                this.props.currentCategoryTitle === this.props.category ? 2 : 0,
+              backgroundColor:
+                this.props.currentCategoryTitle === this.props.category
+                  ? Colors.$primaryWhite
+                  : Colors.$secondaryWhite
+            }
+          ]}>
+          <View style={styles.imageWrapper}>
             <Image
-              source={{
-                uri: `https://source.unsplash.com/50x50/?${this.props.category}`
-              }}
+              source={this.getImageSrc()}
               indicator={ProgressPie}
               indicatorProps={{
+                ...styles.indicatorStyle,
                 size: 50,
-                borderWidth: 0,
-                color: $secondaryRed,
-                unfilledColor: $primaryWhite
+                unfilledColor: Colors.$primaryWhite
               }}
-              style={{
-                height: 50,
-                width: 50
-              }}
+              style={styles.imageStyle}
             />
           </View>
           <Text
-            style={{
-              marginLeft: 40,
-              marginRight: 40,
-              alignSelf: 'center',
-              color: $secondaryRed,
-              fontSize:
-                this.props.currentCategoryTitle === this.props.category
-                  ? 24
-                  : 18
-            }}>
+            style={[
+              styles.categoryTitle,
+              {
+                fontSize:
+                  this.props.currentCategoryTitle === this.props.category
+                    ? 24
+                    : 18
+              }
+            ]}>
             {this.props.category}
           </Text>
-          <Text
-            style={{
-              fontSize: 25,
-              color: $primaryRed,
-              alignSelf: 'center',
-              marginRight: 10
-            }}>
+          <Text style={styles.categoryItemCount}>
             {this.state.thisCategoryLength}
           </Text>
         </View>

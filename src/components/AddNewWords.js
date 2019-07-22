@@ -10,40 +10,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import styles, {
-  $secondaryWhite,
-  $tertiaryRed,
-  $secondaryRed,
-  $primaryWhite
-} from '../styles/styles'
-
-const $placeHolderBlue = '#014ea5'
-
-const boxStyles = StyleSheet.create({
-  newWordBox: {
-    width: 200,
-    height: 50,
-    textAlign: 'center',
-    backgroundColor: $secondaryWhite,
-    borderColor: $secondaryRed,
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    fontSize: 24
-  },
-  newSentenceBox: {
-    width: 300,
-    height: 200,
-    textAlign: 'center',
-    backgroundColor: $secondaryWhite,
-    borderColor: $secondaryRed,
-    borderWidth: 1,
-    borderRadius: 5,
-    padding: 10,
-    fontSize: 24,
-    flexWrap: 'wrap'
-  }
-})
+import styles from '../styles/addNewWordTabStyles'
+import { Colors } from '../styles/theme'
 
 class AddWords extends React.Component {
   constructor(props) {
@@ -67,36 +35,32 @@ class AddWords extends React.Component {
     const { wordToAdd, sentenceToAdd, category } = this.state
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <View style={{ height: 50 }} />
+        <View style={[styles.container, styles.pb40]}>
           <Text style={styles.header}>Add new Words</Text>
-          <Text style={{ color: $primaryWhite, fontSize: 18, padding: 10 }}>
+          <Text style={styles.instructions}>
             Add your own vocabulary to any category, or create a new category.
           </Text>
-          <View style={{ margin: 10 }}>
+          <View style={styles.m10}>
             <TextInput
               placeholder="your word..."
-              placeholderTextColor={$placeHolderBlue}
-              style={boxStyles.newWordBox}
+              placeholderTextColor={Colors.$placeHolderBlue}
+              style={styles.newWordBox}
               onEndEditing={e =>
                 this.setState({ wordToAdd: e.nativeEvent.text.toLowerCase() })
               }
             />
           </View>
-          <View style={{ margin: 10 }}>
+          <View style={styles.m10}>
             <TextInput
               placeholder="your sentence..."
-              placeholderTextColor={$placeHolderBlue}
-              style={boxStyles.newSentenceBox}
+              placeholderTextColor={Colors.$placeHolderBlue}
+              style={styles.newSentenceBox}
               onEndEditing={e =>
                 this.setState({ sentenceToAdd: e.nativeEvent.text })
               }
             />
           </View>
-          <Text style={{ margin: 10, color: 'white', fontSize: 18 }}>
-            Suggested Image:
-          </Text>
-
+          <Text style={styles.instructions}>Suggested Image:</Text>
           <View style={styles.wordBoxEng}>
             <Image
               source={{
@@ -106,16 +70,16 @@ class AddWords extends React.Component {
               style={styles.imageSize}
             />
           </View>
-          <View style={{ margin: 10 }}>
+          <View style={styles.m10}>
             <TextInput
               placeholder={this.props.currentCategory}
-              placeholderTextColor={$placeHolderBlue}
+              placeholderTextColor={Colors.$placeHolderBlue}
               style={styles.answerBox}
             />
           </View>
           <TouchableHighlight
             style={styles.button}
-            underlayColor={$tertiaryRed}
+            underlayColor={Colors.$tertiaryRed}
             onPress={() =>
               this.clickHandler(wordToAdd, sentenceToAdd, category)
             }>
@@ -126,7 +90,6 @@ class AddWords extends React.Component {
               )}
             </Text>
           </TouchableHighlight>
-          <View style={{ height: 50 }} />
         </View>
       </ScrollView>
     )

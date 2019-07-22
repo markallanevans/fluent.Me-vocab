@@ -13,12 +13,7 @@ import PointsScreen from '../components/points/PointsScreen'
 import AddNewWords from '../components/AddNewWords'
 import Login from '../components/Login'
 import Categories from '../components/categories/Categories'
-import {
-  $tertiaryRed,
-  $secondaryRed,
-  $primaryWhite,
-  $secondaryWhite
-} from '../styles/styles'
+import { Colors } from '../styles/theme/'
 
 const tabScreenConfigs = {
   Profile: { screen: Login },
@@ -30,8 +25,8 @@ const tabScreenConfigs = {
 }
 
 const otherTabConfigs = {
-  navigationOptions: ({ navigation }) => ({
-    tabBarIcon: ({ tintColor }) => {
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, horizontal, tintColor }) => {
       const { routeName } = navigation.state
       let iconName
       if (routeName === 'Vocab') {
@@ -53,13 +48,14 @@ const otherTabConfigs = {
   }),
   initialRouteName: 'Categories',
   tabBarOptions: {
-    activeTintColor: $primaryWhite,
-    inactiveTintColor: $secondaryWhite,
-    activeBackgroundColor: $tertiaryRed,
-    inactiveBackgroundColor: $secondaryRed,
+    activeTintColor: Colors.$primaryWhite,
+    inactiveTintColor: Colors.$secondaryWhite,
+    activeBackgroundColor: Colors.$tertiaryRed,
+    inactiveBackgroundColor: Colors.$secondaryRed,
+    showIcon: true,
     style: {
       borderTopWidth: 0,
-      shadowColor: $secondaryWhite,
+      shadowColor: Colors.$secondaryWhite,
       shadowOffset: {
         width: 0,
         height: 0

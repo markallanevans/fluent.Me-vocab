@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import StepIndicator from 'react-native-step-indicator'
-import { $secondaryRed, $primaryRed, $primaryWhite } from '../styles/styles'
+import { Colors } from '../styles/theme/'
 
 const labels = ['Vocab', 'VocabReview', 'Sentences']
 const customStyles = {
@@ -11,23 +11,23 @@ const customStyles = {
   currentStepIndicatorSize: 30,
   separatorStrokeWidth: 3,
   currentStepStrokeWidth: 1,
-  stepStrokeCurrentColor: $secondaryRed,
+  stepStrokeCurrentColor: Colors.$secondaryRed,
   stepStrokeWidth: 3,
-  stepStrokeFinishedColor: $secondaryRed,
-  stepStrokeUnFinishedColor: $primaryWhite,
-  separatorFinishedColor: $secondaryRed,
-  separatorUnFinishedColor: $primaryRed,
-  stepIndicatorFinishedColor: $secondaryRed,
+  stepStrokeFinishedColor: Colors.$secondaryRed,
+  stepStrokeUnFinishedColor: Colors.$primaryWhite,
+  separatorFinishedColor: Colors.$secondaryRed,
+  separatorUnFinishedColor: Colors.$primaryRed,
+  stepIndicatorFinishedColor: Colors.$secondaryRed,
   stepIndicatorUnFinishedColor: '#ffffff',
   stepIndicatorCurrentColor: '#ffffff',
   stepIndicatorLabelFontSize: 8,
   currentStepIndicatorLabelFontSize: 13,
-  stepIndicatorLabelCurrentColor: $primaryRed,
+  stepIndicatorLabelCurrentColor: Colors.$primaryRed,
   stepIndicatorLabelFinishedColor: '#ffffff',
-  stepIndicatorLabelUnFinishedColor: $primaryRed,
+  stepIndicatorLabelUnFinishedColor: Colors.$primaryRed,
   labelColor: '#999999',
   labelSize: 13,
-  currentStepLabelColor: $secondaryRed
+  currentStepLabelColor: Colors.$secondaryRed
 }
 
 const getCurrentScreenName = nav => {

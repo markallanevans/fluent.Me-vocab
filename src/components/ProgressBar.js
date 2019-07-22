@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-import { $secondaryRed, $tertiaryRed, $secondaryWhite } from '../styles/styles'
+import { Colors } from '../styles/theme'
 
 const styles = StyleSheet.create({
   progressBarContainer: {
@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
   emptyBar: {
     height: 9,
     width: 250,
-    backgroundColor: $secondaryWhite,
+    backgroundColor: Colors.$secondaryWhite,
     borderRadius: 50,
-    borderColor: $tertiaryRed,
+    borderColor: Colors.$tertiaryRed,
     borderWidth: 2
   },
   progress: {
     height: 5,
-    backgroundColor: $secondaryRed,
+    backgroundColor: Colors.$secondaryRed,
     borderRadius: 50
   }
 })

@@ -2,7 +2,9 @@ import React from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import appStyles from '../../styles/AppStyles'
 import styles from '../../styles/styles'
+import buttonStyles from '../../styles/buttonStyles'
 import CategoryItem from './CategoryItem'
 
 const category = 'Animals'
@@ -15,8 +17,8 @@ class Categories extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Categories</Text>
+        <View style={[buttonStyles.button, appStyles.mb10]}>
+          <Text style={buttonStyles.buttonText}>Categories</Text>
         </View>
         <FlatList
           data={Object.keys(this.props.categories)}

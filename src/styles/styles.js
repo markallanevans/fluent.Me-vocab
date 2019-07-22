@@ -1,11 +1,5 @@
 import { StyleSheet } from 'react-native'
-
-// COLORS
-export const $primaryRed = '#d65048'
-export const $secondaryRed = '#b13a33'
-export const $tertiaryRed = '#a13003'
-export const $primaryWhite = '#ffeeee'
-export const $secondaryWhite = '#ddaaaa'
+import { Colors } from './theme/'
 
 // DIMENSIONS
 export const $mainFont = 24
@@ -15,45 +9,14 @@ export const $p3 = 3 * 8
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: $primaryRed,
+    backgroundColor: Colors.$primaryRed,
     alignItems: 'center',
     justifyContent: 'center'
   },
   header: {
     fontSize: $headerFont,
-    color: $primaryWhite
-  },
-  button: {
-    marginTop: 16,
-    padding: $headerFont / 3,
-    backgroundColor: $secondaryRed,
-    width: 250,
-    borderRadius: 50,
-    shadowColor: $primaryWhite,
-    shadowOffset: {
-      width: 0,
-      height: 0
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 2
-  },
-  buttonWithoutWidth: {
-    marginTop: 16,
-    padding: $headerFont / 3,
-    backgroundColor: $secondaryRed,
-    borderRadius: 50,
-    shadowColor: $primaryWhite,
-    shadowOffset: {
-      width: 0,
-      height: 0
-    },
-    shadowOpacity: 0.5,
-    shadowRadius: 2
-  },
-  buttonText: {
-    fontSize: $headerFont,
-    textAlign: 'center',
-    color: $primaryWhite
+    color: Colors.$primaryWhite,
+    marginTop: 40
   },
   boxContainer: {
     marginTop: 25,
@@ -79,13 +42,13 @@ const styles = StyleSheet.create({
     height: 150,
     margin: 10,
     overflow: 'hidden',
-    backgroundColor: $secondaryRed,
-    borderColor: $secondaryWhite,
+    backgroundColor: Colors.$secondaryRed,
+    borderColor: Colors.$secondaryWhite,
     borderWidth: 2,
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: $primaryWhite,
+    shadowColor: Colors.$primaryWhite,
     shadowOffset: {
       width: 0,
       height: 0
@@ -97,13 +60,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     margin: 10,
-    backgroundColor: $tertiaryRed,
-    borderColor: $secondaryWhite,
+    backgroundColor: Colors.$tertiaryRed,
+    borderColor: Colors.$secondaryWhite,
     borderWidth: 2,
     borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: $primaryWhite,
+    shadowColor: Colors.$primaryWhite,
     shadowOffset: {
       width: 0,
       height: 0
@@ -112,7 +75,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5
   },
   vocabText: {
-    color: $primaryWhite,
+    color: Colors.$primaryWhite,
     fontSize: $mainFont
   },
   flashBox: {
@@ -124,8 +87,8 @@ const styles = StyleSheet.create({
   answerBox: {
     width: 200,
     textAlign: 'center',
-    backgroundColor: $secondaryWhite,
-    borderColor: $secondaryRed,
+    backgroundColor: Colors.$secondaryWhite,
+    borderColor: Colors.$secondaryRed,
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,

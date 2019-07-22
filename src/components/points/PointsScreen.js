@@ -10,22 +10,34 @@ const PointsScreen = ({
   wordsStudied,
   sentencesStudied,
   sentencesReviewed
-}) => (
-  <View style={styles.container}>
-    <View
-      style={{
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        justifyContent: 'center'
-      }}>
-      <View style={{ height: 100 }} />
-      <PointDetails title="Experience Points" content={expPoints} />
-      <PointDetails title="Words Studied" content={wordsStudied} />
-      <PointDetails title="Sentences Studied" content={sentencesStudied} />
-      <PointDetails title="Sentences Reviewed" content={sentencesReviewed} />
+}) => {
+  const elements = [
+    { id: 0, title: 'Experience Points', content: expPoints },
+    { id: 1, title: 'Words Studied', content: wordsStudied },
+    { id: 2, title: 'Sentences Studied', content: sentencesStudied },
+    { id: 3, title: 'Sentences Reviewed', content: sentencesReviewed }
+  ]
+
+  return (
+    <View style={styles.container}>
+      <View
+        style={{
+          flexWrap: 'wrap',
+          flexDirection: 'row',
+          justifyContent: 'center'
+        }}>
+        <View style={{ height: 100 }} />
+        {elements.map(element => (
+          <PointDetails
+            key={element.id}
+            title={element.title}
+            content={element.content}
+          />
+        ))}
+      </View>
     </View>
-  </View>
-)
+  )
+}
 
 PointsScreen.propTypes = {
   expPoints: PropTypes.number.isRequired,
