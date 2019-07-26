@@ -1,11 +1,5 @@
 import { StyleSheet } from 'react-native'
-
-// COLORS
-export const $primaryRed = '#D13C33'
-export const $secondaryRed = '#b13a33'
-export const $tertiaryRed = '#a13003'
-export const $primaryWhite = '#ffeeee'
-export const $secondaryWhite = '#ddaaaa'
+import { Colors } from './theme/'
 
 // DIMENSIONS
 export const $mainFont = 24
@@ -15,13 +9,13 @@ export const $p3 = 3 * 8
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: $primaryRed,
+    backgroundColor: Colors.$primaryRed,
     alignItems: 'center',
     justifyContent: 'center'
   },
   header: {
     fontSize: $headerFont,
-    color: $primaryWhite
+    color: Colors.$primaryWhite
   },
   button: {
     fontSize: $headerFont,
@@ -29,9 +23,9 @@ const styles = StyleSheet.create({
     padding: $headerFont / 2.5,
     width: 250,
     textAlign: 'center',
-    backgroundColor: $secondaryRed,
-    color: $primaryWhite,
-    shadowColor: $primaryWhite,
+    backgroundColor: Colors.$secondaryRed,
+    color: Colors.$primaryWhite,
+    shadowColor: Colors.$primaryWhite,
     shadowOffset: {
       width: 0,
       height: 0
@@ -52,13 +46,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     margin: 10,
-    backgroundColor: $secondaryRed,
-    borderColor: $secondaryWhite,
+    backgroundColor: Colors.$secondaryRed,
+    borderColor: Colors.$secondaryWhite,
     borderWidth: 2,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: $primaryWhite,
+    shadowColor: Colors.$primaryWhite,
     shadowOffset: {
       width: 0,
       height: 0
@@ -70,13 +64,13 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     margin: 10,
-    backgroundColor: $tertiaryRed,
-    borderColor: $secondaryWhite,
+    backgroundColor: Colors.$tertiaryRed,
+    borderColor: Colors.$secondaryWhite,
     borderWidth: 2,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: $primaryWhite,
+    shadowColor: Colors.$primaryWhite,
     shadowOffset: {
       width: 0,
       height: 0
@@ -85,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5
   },
   vocabText: {
-    color: $primaryWhite,
+    color: Colors.$primaryWhite,
     fontSize: $mainFont
   },
   flashBox: {
@@ -97,8 +91,8 @@ const styles = StyleSheet.create({
   answerBox: {
     width: 200,
     textAlign: 'center',
-    backgroundColor: $secondaryWhite,
-    borderColor: $secondaryRed,
+    backgroundColor: Colors.$secondaryWhite,
+    borderColor: Colors.$secondaryRed,
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
@@ -109,6 +103,22 @@ const styles = StyleSheet.create({
   },
   p15: {
     padding: 15
+  },
+  progressBarContainer: {
+    marginTop: 20
+  },
+  emptyBar: {
+    height: 9,
+    width: 250,
+    backgroundColor: Colors.$secondaryWhite,
+    borderRadius: 50,
+    borderColor: Colors.$tertiaryRed,
+    borderWidth: 2
+  },
+  progress: {
+    height: 5,
+    backgroundColor: Colors.$secondaryRed,
+    borderRadius: 50
   }
 })
 

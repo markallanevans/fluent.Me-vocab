@@ -1,31 +1,11 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { Colors } from '../styles/theme'
-
-const styles = StyleSheet.create({
-  progressBarContainer: {
-    marginTop: 20
-  },
-  emptyBar: {
-    height: 9,
-    width: 250,
-    backgroundColor: Colors.$secondaryWhite,
-    borderRadius: 50,
-    borderColor: Colors.$tertiaryRed,
-    borderWidth: 2
-  },
-  progress: {
-    height: 5,
-    backgroundColor: Colors.$secondaryRed,
-    borderRadius: 50
-  }
-})
+import styles from '../styles/progressBarStyles'
 
 class ProgressBar extends React.Component {
   render() {
-    const progress = this.props.progress
-    const total = this.props.total
+    const { progress, total } = this.props
     const progPercent = progress / total
 
     return (
