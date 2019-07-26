@@ -3,7 +3,7 @@ import { View, Text, TouchableHighlight } from 'react-native'
 import PropTypes from 'prop-types'
 import styles from '../../styles/buttonStyles'
 
-const TextButton = ({ text, navTo, navigation, action }) => (
+const NavButton = ({ text, navTo, navigation, action }) => (
   <View>
     <TouchableHighlight
       style={styles.button}
@@ -17,15 +17,15 @@ const TextButton = ({ text, navTo, navigation, action }) => (
   </View>
 )
 
-TextButton.defaultProps = {
+NavButton.defaultProps = {
   action: 'navigate'
 }
 
-TextButton.propTypes = {
+NavButton.propTypes = {
   text: PropTypes.string.isRequired,
   navTo: PropTypes.string.isRequired,
   navigation: PropTypes.object.isRequired,
   action: PropTypes.string
 }
 
-export default TextButton
+export default NavButton

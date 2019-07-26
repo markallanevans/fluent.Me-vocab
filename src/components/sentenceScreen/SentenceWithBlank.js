@@ -75,7 +75,6 @@ class SentenceWithBlank extends Component {
 }
 
 SentenceWithBlank.propTypes = {
-  loadCategory: PropTypes.func.isRequired,
   loadSentence: PropTypes.func.isRequired,
   currentSentenceIndex: PropTypes.number.isRequired,
   currentCategoryWords: PropTypes.array.isRequired,

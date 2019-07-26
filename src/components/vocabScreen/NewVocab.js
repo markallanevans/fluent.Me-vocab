@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import styles from '../../styles/styles'
 import WordBox from '../WordBox'
 import ProgressBar from '../ProgressBar'
-import TextButton from '../buttons/TextButton'
+import NavButton from '../buttons/NavButton'
 import VocabTools from './VocabTools'
 import AnimationThumbsUp from '../animations/AnimationThumbUp'
 
@@ -64,7 +64,7 @@ class NewVocab extends React.Component {
             it.
           </Text>
         ) : (
-          <TextButton
+          <NavButton
             text="Review Time!"
             navTo="VocabReview"
             navigation={this.props.navigation}
@@ -88,8 +88,7 @@ const mapDispatchToProps = dispatch => ({
 NewVocab.propTypes = {
   vocabList: PropTypes.object.isRequired,
   reviewList: PropTypes.array.isRequired,
-  navigation: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired
+  navigation: PropTypes.object.isRequired
 }
 
 export default connect(

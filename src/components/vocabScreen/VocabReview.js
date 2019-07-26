@@ -6,7 +6,7 @@ import styles, { $primaryWhite } from '../../styles/styles'
 import WordBox from '../WordBox'
 import ProgressBar from '../ProgressBar'
 import WordCheck from '../WordCheck'
-import TextButton from '../buttons/TextButton'
+import NavButton from '../buttons/NavButton'
 import AnimatedThumbsUp from '../animations/AnimationThumbUp'
 
 class VocabReview extends React.Component {
@@ -129,7 +129,7 @@ class VocabReview extends React.Component {
             total={1}
           />
           {(this.state.isCorrect || this.state.incorrectTries === 2) && (
-            <TextButton
+            <NavButton
               text="next"
               navTo={nextScreen}
               navigation={this.props.navigation}
