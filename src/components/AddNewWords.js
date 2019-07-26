@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styles from '../styles/addNewWordTabStyles'
+import buttonStyles from '../styles/buttonStyles'
 import { Colors } from '../styles/theme'
 
 class AddWords extends React.Component {
@@ -82,7 +83,7 @@ class AddWords extends React.Component {
             onPress={() =>
               this.clickHandler(wordToAdd, sentenceToAdd, category)
             }>
-            <Text style={styles.buttonText}>
+            <Text style={buttonStyles.buttonText}>
               Add!{' '}
               {this.state.wordsAdded > 0 && (
                 <Text>+{this.state.wordsAdded}</Text>
